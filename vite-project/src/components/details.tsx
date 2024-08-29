@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import Modal from './surveyquestions.tsx';
 import DetailsEntry from "./detailsentry";
 
 interface DetailsProps {
@@ -15,6 +17,11 @@ export default function Details({lang, setLang}: DetailsProps) {
             name: selectedOption,
         });
       };
+
+      const [isModalOpen, setIsModalOpen] = useState(false);
+      const openModal = () => setIsModalOpen(true);
+      const closeModal = () => setIsModalOpen(false);
+
     return (
         <div className="p-6 max-w-screen-md mx-auto bg-white dark:bg-gray-900 rounded-xl shadow-lg dark:shadow-gray-700">
                 <p className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200">
@@ -34,9 +41,12 @@ export default function Details({lang, setLang}: DetailsProps) {
                 {lang.isSet && (
                     <div className="mt-8 text-center">
                     <DetailsEntry selectedlang={lang.name}/>
-                    <button className="mt-6 px-6 py-3 text-white bg-orange-400 rounded-lg shadow-md hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-500">
+                    <button className="mt-6 px-6 py-3 text-white bg-orange-400 rounded-lg shadow-md hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-500"
+                            onClick={openModal}>
                         Submit
                     </button>
+                    
+                    <Modal isOpen={isModalOpen} onClose={closeModal} lang={lang.name} />
                     </div>
                     )}
         </div>

@@ -1,0 +1,19 @@
+{
+    "questions": [
+        {
+            "eng": "[Eng] How well do you know A?",
+            "hin": "[Hin] How well do you know A?",
+            "kan": "[Kan] How well do you know A?"
+        },
+        {
+            "eng": "[Eng] How well do you know B?",
+            "hin": "[Hin] How well do you know B?",
+            "kan": "[Kan] How well do you know B?"
+        },
+        {
+            "eng": "[Eng] How well do you know C?",
+            "hin": "[Hin] How well do you know C?",
+            "kan": "[Kan] How well do you know C?"
+        }
+    ]
+}
