@@ -3,17 +3,20 @@
         {
             "eng": "[Eng] How well do you know A?",
             "hin": "[Hin] How well do you know A?",
-            "kan": "[Kan] How well do you know A?"
+            "kan": "[Kan] How well do you know A?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
         },
         {
             "eng": "[Eng] How well do you know B?",
             "hin": "[Hin] How well do you know B?",
-            "kan": "[Kan] How well do you know B?"
+            "kan": "[Kan] How well do you know B?",
+            "options": ["Option A", "Option B", "Option C"]
         },
         {
             "eng": "[Eng] How well do you know C?",
             "hin": "[Hin] How well do you know C?",
-            "kan": "[Kan] How well do you know C?"
+            "kan": "[Kan] How well do you know C?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
         }
     ]
 }

@@ -1,0 +1,72 @@
+{
+    "classselection": {
+        "eng":"Select your class",
+        "hin":"अपना कक्षा चुनें",
+        "kan":"ನಿಮ್ಮ ತರಗತಿಯನ್ನು ಆಯ್ಕೆಮಾಡಿ"
+    },
+    "class": {
+        "eng":"Class",
+        "hin":"कक्षा",
+        "kan":"ತರಗತಿ"
+    },
+    "school": {
+        "eng":"School",
+        "hin":"स्कूल",
+        "kan":"ಶಾಲೆ"
+    },
+    "schoolselection": {
+        "eng":"Select your School",
+        "hin":"अपना स्कूल चुनें",
+        "kan":"ನಿಮ್ಮ ಶಾಲೆ ಆಯ್ಕೆಮಾಡಿ"
+    },
+    "sec": {
+        "eng":"Section",
+        "hin":"सेक्शन",
+        "kan":"ವಿಭಾಗ"
+    },
+    "secselection": {
+        "eng":"Select your section",
+        "hin":"अपनी सेक्शन दर्ज करें",
+        "kan":"ನಿಮ್ಮ ವಿಭಾಗವನ್ನು ನಮೂದಿಸಿ"
+    },
+    "gender": {
+        "eng":"Gender",
+        "hin":"लिंग",
+        "kan":"ಲಿಂಗ"
+    },
+    "genderselection": {
+        "eng":"Select your gender",
+        "hin":"अपनी लिंग चयन करें",
+        "kan":"ನಿಮ್ಮ ಲಿಂಗವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
+    },
+    "board": {
+        "eng":"Board",
+        "hin":"बोर्ड",
+        "kan":"ಬೋರ್ಡ್"
+    },
+    "boardselection": {
+        "eng":"Select your board",
+        "hin":"अपना बोर्ड चुनें",
+        "kan":"ನಿಮ್ಮ ಬೋರ್ಡ್ ಆಯ್ಕೆಮಾಡಿ"
+    },
+    "rollno": {
+        "eng":"Roll number",
+        "hin":"रोल नंबर",
+        "kan":"ಕ್ರಮ ಸಂಖ್ಯೆ"
+    },
+    "rollnoselection": {
+        "eng":"Enter your roll number",
+        "hin":"अपना रोल नंबर दर्ज करें",
+        "kan":"ನಿಮ್ಮ ಕ್ರಮ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ"
+    },
+    "genderoptions": {
+        "eng": ["Male", "Female", "Other"],
+        "hin": ["पुरुष", "स्त्री", "अन्य"],
+        "kan": ["ಪುರುಷ", "ಸ್ತ್ರೀ", "ಇತರ"]
+    },
+    "boardoptions": {
+        "eng": ["State", "CBSE", "ICSE/ISC"],
+        "hin": [],
+        "kan": []
+    }
+}
