@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import DropdownInput from "./dropdown";
 import data from '../data/DetailsDisplayLang.json';
-import { Translations, LanguageCode } from '../types/Data'; //I deeply apologize for not using the i18 library
+import schooldata from '../data/SchoolsList.json';
+import { Translations, LanguageCode, SchoolInterface } from '../types/Data'; //I deeply apologize for not using the i18 library
 
 interface DetailsEntryProps {
     selectedlang: string,
@@ -9,6 +10,8 @@ interface DetailsEntryProps {
 }
 
 const translations: Translations = data;
+const schools: SchoolInterface[] = schooldata;
+const schoolNames: string[] = schools.map(school => school.schoolName);
 
 function getTranslation(key: string, lang: LanguageCode): string {
     const translation = translations[key];
@@ -49,8 +52,8 @@ export default function DetailsEntry({selectedlang, setIsModalOpen}: DetailsEntr
         setSelectedGender(event.target.value);
     };
 
-    const handleSchoolChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSchool(event.target.value);
+    const handleSchoolChange = (value: string) => {
+        setSchool(value);
     };
 
     const handleClassChange = (value: string) => {
@@ -77,12 +80,12 @@ export default function DetailsEntry({selectedlang, setIsModalOpen}: DetailsEntr
             <label className="block text-left text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200">
                 {getTranslation('school',languageCode)}
             </label>
-            <input 
-                type="text" 
+            <DropdownInput 
+                className="w-full p-2 mb-9 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-900 text-gray-900"
+                options={schoolNames}
+                placeholder={getTranslation('schoolselection',languageCode)}
                 value={school}
                 onChange={handleSchoolChange}
-                placeholder={getTranslation('schoolselection',languageCode)}
-                className="w-full mb-9 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
             />
 
             {/* Class Selection */}
@@ -90,7 +93,7 @@ export default function DetailsEntry({selectedlang, setIsModalOpen}: DetailsEntr
                 {getTranslation('class',languageCode)}
             </label>
             <DropdownInput 
-                className="w-full p-2 mb-9 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                className="w-full p-2 mb-9 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-900 text-gray-900"
                 options={['1','2','3','4','5','6','7','8','9','10','11','12']}
                 placeholder={getTranslation('classselection',languageCode)}
                 value={classSelection}
@@ -102,7 +105,7 @@ export default function DetailsEntry({selectedlang, setIsModalOpen}: DetailsEntr
                 {getTranslation('sec',languageCode)}
             </label>
             <DropdownInput 
-                className="w-full p-2 mb-9 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                className="w-full p-2 mb-9 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-900 text-gray-900"
                 options={['A','B','C','D','E']}
                 placeholder={getTranslation('secselection',languageCode)}
                 value={section}
@@ -114,7 +117,7 @@ export default function DetailsEntry({selectedlang, setIsModalOpen}: DetailsEntr
                 {getTranslation('board',languageCode)}
             </label>
             <DropdownInput 
-                className="w-full p-2 mb-9 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                className="w-full p-2 mb-9 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-900 text-gray-900"
                 options={['State','CBSE',(classSelection == '11' || classSelection == '12')? 'ISC':'ICSE']}
                 placeholder={getTranslation('boardselection',languageCode)}
                 value={board}
@@ -130,7 +133,7 @@ export default function DetailsEntry({selectedlang, setIsModalOpen}: DetailsEntr
                 value={rollNo}
                 onChange={handleRollNoChange}
                 placeholder={getTranslation('rollnoselection', languageCode)}
-                className="w-full mb-9 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
+                className="w-full mb-9 p-2 border border-gray-300 dark:text-black rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
             />
 
             {/* Gender Selection */}
@@ -156,7 +159,10 @@ export default function DetailsEntry({selectedlang, setIsModalOpen}: DetailsEntr
             </fieldset>
         </div>
         <button className="mt-6 px-6 py-3 text-white bg-orange-400 rounded-lg shadow-md hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-500"
-                            onClick={() => setIsModalOpen(true)}>
+                            onClick={() => setIsModalOpen(true)}
+                            disabled={
+                                school === '' || classSelection === '' || section === '' || board === '' || rollNo === '' || selectedGender === null
+                            }>
                         Submit
                     </button>
         </>

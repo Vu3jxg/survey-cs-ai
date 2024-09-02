@@ -12,3 +12,7 @@ export interface QuestionsInterface {
 
   export type LanguageCode = 'eng' | 'hin' | 'kan';
   
+  export interface SchoolInterface {
+    schoolCode: string;
+    schoolName: string;
+  }
