@@ -4,7 +4,9 @@ interface DropdownInputProps {
   options: string[];
   placeholder?: string;
   onSelect?: (selectedOption: string) => void;
-  className?: string; // Add className prop here
+  className?: string;
+  value?: string;
+  onChange?: (value: string) => void;
 }
 
 const DropdownInput: React.FC<DropdownInputProps> = ({
@@ -12,9 +14,10 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
   placeholder = 'Select an option...',
   onSelect,
   className = '', // Default to empty string if no className is provided
+  value = '',
+  onChange,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -34,7 +37,7 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
   };
 
   const handleOptionClick = (option: string) => {
-    setSelectedOption(option);
+    if (onChange) onChange(option); // Call onChange if provided
     setIsOpen(false);
     if (onSelect) onSelect(option);
   };
@@ -43,7 +46,7 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
     <div className={`relative ${className}`}>
       <input
         type="text"
-        value={selectedOption}
+        value={value}
         placeholder={placeholder}
         onClick={handleInputClick}
         readOnly

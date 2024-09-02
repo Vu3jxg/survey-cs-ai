@@ -59,14 +59,19 @@
         "hin":"अपना रोल नंबर दर्ज करें",
         "kan":"ನಿಮ್ಮ ಕ್ರಮ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ"
     },
-    "genderoptions": {
-        "eng": ["Male", "Female", "Other"],
-        "hin": ["पुरुष", "स्त्री", "अन्य"],
-        "kan": ["ಪುರುಷ", "ಸ್ತ್ರೀ", "ಇತರ"]
+    "genderoptionsmale": {
+        "eng": "Male",
+        "hin": "पुरुष",
+        "kan": "ಪುರುಷ"
     },
-    "boardoptions": {
-        "eng": ["State", "CBSE", "ICSE/ISC"],
-        "hin": [],
-        "kan": []
+    "genderoptionsfemale": {
+        "eng": "Female",
+        "hin": "स्त्री",
+        "kan": "ಸ್ತ್ರೀ"
+    },
+    "genderoptionsother": {
+        "eng": "Other",
+        "hin": "अन्य",
+        "kan": "ಇತರ"
     }
 }

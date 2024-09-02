@@ -40,12 +40,7 @@ export default function Details({lang, setLang}: DetailsProps) {
                 </div>
                 {lang.isSet && (
                     <div className="mt-8 text-center">
-                    <DetailsEntry selectedlang={lang.name}/>
-                    <button className="mt-6 px-6 py-3 text-white bg-orange-400 rounded-lg shadow-md hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-500"
-                            onClick={openModal}>
-                        Submit
-                    </button>
-                    
+                    <DetailsEntry selectedlang={lang.name} setIsModalOpen={openModal}/>                    
                     <Modal isOpen={isModalOpen} onClose={closeModal} lang={lang.name} />
                     </div>
                     )}

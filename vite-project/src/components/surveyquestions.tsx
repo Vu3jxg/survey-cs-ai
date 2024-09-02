@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import data from '../data/Questions.json';
-import { QuestionsInterface } from '../types/Data';
+import { QuestionsInterface } from '../types/Data'; //I deeply apologize for not using the i18 library
 
 interface ModalProps {
   isOpen: boolean;
@@ -10,7 +10,7 @@ interface ModalProps {
 
 const Modal = ({ isOpen, onClose, lang }: ModalProps) => {
 
-  const questionsData: QuestionsInterface[] = data.questions;
+  const questionsData: QuestionsInterface[] = data.questions; //load the list from Questions.json
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -27,6 +27,18 @@ const Modal = ({ isOpen, onClose, lang }: ModalProps) => {
       }
       else {
         alert('Quiz completed!');
+      }
+    }
+  }
+
+  const handlePrev = () => {
+    if(selectedAnswer) {
+      if(currentQuestionIndex > 0) {
+        setCurrentQuestionIndex(currentQuestionIndex - 1);
+        //fetch value from db, setSelectedAnswer to that value.
+      }
+      else {
+        alert('Can\'t go back!')
       }
     }
   }
@@ -49,14 +61,14 @@ const Modal = ({ isOpen, onClose, lang }: ModalProps) => {
       />
       
       {/* Modal Content */}
-      <div className='bg-white p-32 rounded-lg shadow-lg z-10'>
+      <div className='bg-black text-white p-32 rounded-lg shadow-lg z-10 dark:bg-white dark:text-black'>
         <h2 className='text-2xl mb-4'>{renderQuestion()}</h2>
 
         <div className='flex flex-row gap-4 mb-4'>
           {['Option 1','Option 2','Option 3','Option 4'].map((option, index) => (
             <button
               key={index}
-              className={`p-2 border rounded ${selectedAnswer === option ? 'bg-blue-500 text-white' : 'bg-white text-black'}`}
+              className={`p-2 border rounded ${selectedAnswer === option ? 'bg-blue-500 text-white' : 'bg-gray-100 text-black'}`}
               onClick={() => handleAnswerSelect(option)}
             >
               {option}
@@ -64,18 +76,22 @@ const Modal = ({ isOpen, onClose, lang }: ModalProps) => {
           ))}
         </div>
 
+        <button onClick={handlePrev} className='p-2 text-white rounded bg-gray-300'
+        > Next
+        </button>
+          
+        {(currentQuestionIndex === questionsData.length - 1)? 
         <button
-          className="mt-4 px-4 py-2 bg-red-500 text-white rounded"
-          onClick={onClose}
-        >
-          Close
-        </button>
-
-        <button onClick={handleNext} className={`p-2 ml-2 text-white rounded ${selectedAnswer ? 'bg-green-500' : 'bg-gray-300 cursor-not-allowed'}`}
-          disabled={!selectedAnswer} //disables next button until answer is selected
-          > Next
-        </button>
-
+        className="mt-4 px-4 py-2 bg-red-500 text-white rounded"
+        onClick={onClose}
+      >
+        Submit
+      </button> :
+        <button onClick={handleNext} className={`p-2 text-white rounded ${selectedAnswer ? 'bg-green-500' : 'bg-gray-300 cursor-not-allowed'}`}
+        disabled={!selectedAnswer} //disables next button until answer is selected
+        > Next
+      </button>
+      }
       </div>
     </div>
   );

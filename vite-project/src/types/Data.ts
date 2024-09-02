@@ -3,3 +3,12 @@ export interface QuestionsInterface {
     hin: string;
     kan: string;
   }
+
+  export interface Translations {
+    [key: string]: {
+      [lang: string]: string;
+    };
+  }
+
+  export type LanguageCode = 'eng' | 'hin' | 'kan';
+  
