@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import data from '../data/Questions.json';
 import { QuestionsInterface } from '../types/Data'; //I deeply apologize for not using the i18 library
+import { useNavigate } from 'react-router-dom';
 
 interface ModalProps {
   isOpen: boolean;
@@ -17,6 +18,8 @@ const Modal = ({ isOpen, onClose, lang }: ModalProps) => {
 
   const currentQuestion = questionsData[currentQuestionIndex];
 
+  const navigate = useNavigate();
+
   if (!isOpen) return null;
   
   const handleNext = () => {
@@ -26,8 +29,8 @@ const Modal = ({ isOpen, onClose, lang }: ModalProps) => {
         setSelectedAnswer(null);
       }
       else {
-        alert('Quiz completed!');
         onClose();
+        navigate('/finish');
       }
     }
   }
@@ -82,7 +85,7 @@ const Modal = ({ isOpen, onClose, lang }: ModalProps) => {
           {(currentQuestionIndex === questionsData.length - 1)? 
             <button
               className="ml-4 px-4 py-2 bg-red-500 text-white rounded"
-              onClick={onClose}
+              onClick={handleNext}
             > Submit
             </button> :
             <button onClick={handleNext} className={`p-2 ml-4 text-white rounded ${selectedAnswer ? 'bg-green-500' : 'bg-gray-300 cursor-not-allowed'}`}

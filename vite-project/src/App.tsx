@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from "./components/header";
 import Details from "./components/details";
+import Ending from "./components/endingpage";
 
 function App() {
 
@@ -35,13 +38,20 @@ function App() {
   };
 
   return (
-    <main className={`min-h-screen ${isLightMode ? 'bg-gray-100 text-gray-900' : 'bg-gray-900 text-gray-100'}`}>
-      <Header willReadScreen={willReadScreen} setWillReadScreen={setWillReadScreen} isLightMode={isLightMode} setLightMode={toggleLightMode}/>
-      <h1 className="text-center text-3xl font-bold mb-6">Cybersecurity and AI Survey Form</h1>
-      <div>
-        <Details lang={lang} setLang={setLang}/>
-      </div>
-    </main>
+    <Router>
+        <Routes>
+          <Route path="/" element={
+		        <main className={`min-h-screen ${isLightMode ? 'bg-gray-100 text-gray-900' : 'bg-gray-900 text-gray-100'}`}>
+              <Header willReadScreen={willReadScreen} setWillReadScreen={setWillReadScreen} isLightMode={isLightMode} setLightMode={toggleLightMode}/>
+              <h1 className="text-center text-3xl font-bold mb-6">Cybersecurity and AI Survey Form</h1>
+              <div>
+                 <Details lang={lang} setLang={setLang}/>
+              </div>
+            </main>
+		      } />
+          <Route path="/finish" element={<Ending />} />
+        </Routes>
+    </Router>
   )
 }
 
