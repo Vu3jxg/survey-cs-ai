@@ -1,21 +1,187 @@
 {
-    "questions": [
+    "questions_elementary": [
         {
-            "eng": "[Eng] How well do you know A?",
-            "hin": "[Hin] How well do you know A?",
-            "kan": "[Kan] How well do you know A?",
+            "eng": "[Eng] How well do you know Q1?",
+            "hin": "[Hin] How well do you know Q1?",
+            "kan": "[Kan] How well do you know Q1?",
             "options": ["Option A", "Option B", "Option C", "Option D"]
         },
         {
-            "eng": "[Eng] How well do you know B?",
-            "hin": "[Hin] How well do you know B?",
-            "kan": "[Kan] How well do you know B?",
+            "eng": "[Eng] How well do you know Q2?",
+            "hin": "[Hin] How well do you know Q2?",
+            "kan": "[Kan] How well do you know Q2?",
             "options": ["Option A", "Option B", "Option C"]
         },
         {
-            "eng": "[Eng] How well do you know C?",
-            "hin": "[Hin] How well do you know C?",
-            "kan": "[Kan] How well do you know C?",
+            "eng": "[Eng] How well do you know Q3?",
+            "hin": "[Hin] How well do you know Q3?",
+            "kan": "[Kan] How well do you know Q3?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q4?",
+            "hin": "[Hin] How well do you know Q4?",
+            "kan": "[Kan] How well do you know Q4?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q5?",
+            "hin": "[Hin] How well do you know Q5?",
+            "kan": "[Kan] How well do you know Q5?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
+        }
+    ],
+    "questions_middle": [
+        {
+            "eng": "[Eng] How well do you know Q1?",
+            "hin": "[Hin] How well do you know Q1?",
+            "kan": "[Kan] How well do you know Q1?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q2?",
+            "hin": "[Hin] How well do you know Q2?",
+            "kan": "[Kan] How well do you know Q2?",
+            "options": ["Option A", "Option B", "Option C"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q3?",
+            "hin": "[Hin] How well do you know Q3?",
+            "kan": "[Kan] How well do you know Q3?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q4?",
+            "hin": "[Hin] How well do you know Q4?",
+            "kan": "[Kan] How well do you know Q4?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q5?",
+            "hin": "[Hin] How well do you know Q5?",
+            "kan": "[Kan] How well do you know Q5?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q6?",
+            "hin": "[Hin] How well do you know Q6?",
+            "kan": "[Kan] How well do you know Q6?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q7?",
+            "hin": "[Hin] How well do you know Q7?",
+            "kan": "[Kan] How well do you know Q7?",
+            "options": ["Option A", "Option B", "Option C"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q8?",
+            "hin": "[Hin] How well do you know Q8?",
+            "kan": "[Kan] How well do you know Q8?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q9?",
+            "hin": "[Hin] How well do you know Q9?",
+            "kan": "[Kan] How well do you know Q9?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q10?",
+            "hin": "[Hin] How well do you know Q10?",
+            "kan": "[Kan] How well do you know Q10?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
+        }
+    ],
+    "questions_high": [
+        {
+            "eng": "[Eng] How well do you know Q1?",
+            "hin": "[Hin] How well do you know Q1?",
+            "kan": "[Kan] How well do you know Q1?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q2?",
+            "hin": "[Hin] How well do you know Q2?",
+            "kan": "[Kan] How well do you know Q2?",
+            "options": ["Option A", "Option B", "Option C"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q3?",
+            "hin": "[Hin] How well do you know Q3?",
+            "kan": "[Kan] How well do you know Q3?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q4?",
+            "hin": "[Hin] How well do you know Q4?",
+            "kan": "[Kan] How well do you know Q4?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q5?",
+            "hin": "[Hin] How well do you know Q5?",
+            "kan": "[Kan] How well do you know Q5?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q6?",
+            "hin": "[Hin] How well do you know Q6?",
+            "kan": "[Kan] How well do you know Q6?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q7?",
+            "hin": "[Hin] How well do you know Q7?",
+            "kan": "[Kan] How well do you know Q7?",
+            "options": ["Option A", "Option B", "Option C"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q8?",
+            "hin": "[Hin] How well do you know Q8?",
+            "kan": "[Kan] How well do you know Q8?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q9?",
+            "hin": "[Hin] How well do you know Q9?",
+            "kan": "[Kan] How well do you know Q9?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q10?",
+            "hin": "[Hin] How well do you know Q10?",
+            "kan": "[Kan] How well do you know Q10?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q11?",
+            "hin": "[Hin] How well do you know Q11?",
+            "kan": "[Kan] How well do you know Q11?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q12?",
+            "hin": "[Hin] How well do you know Q12?",
+            "kan": "[Kan] How well do you know Q12?",
+            "options": ["Option A", "Option B", "Option C"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q13?",
+            "hin": "[Hin] How well do you know Q13?",
+            "kan": "[Kan] How well do you know Q13?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q14?",
+            "hin": "[Hin] How well do you know Q14?",
+            "kan": "[Kan] How well do you know Q14?",
+            "options": ["Option A", "Option B", "Option C", "Option D"]
+        },
+        {
+            "eng": "[Eng] How well do you know Q15?",
+            "hin": "[Hin] How well do you know Q15?",
+            "kan": "[Kan] How well do you know Q15?",
             "options": ["Option A", "Option B", "Option C", "Option D"]
         }
     ]

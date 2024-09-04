@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
-import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from "./components/header";
 import Details from "./components/details";
 import Ending from "./components/endingpage";
+import ElementarySurvey from "./components/elementarysurvey";
+import MiddleSurvey from "./components/middlesurvey";
+import HighSurvey from "./components/highsurvey";
 
 function App() {
 
@@ -12,10 +14,10 @@ function App() {
   const [isLightMode, setLightMode] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
-      return savedTheme === 'dark';
+      return savedTheme === 'light';
     }
     // Default to dark mode if no preference is saved and system prefers dark mode
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return window.matchMedia('(prefers-color-scheme: light)').matches;
   });
 
   const [lang, setLang] = useState({
@@ -49,6 +51,9 @@ function App() {
               </div>
             </main>
 		      } />
+          <Route path="/elementarysurvey" element={<ElementarySurvey />} />
+          <Route path="/middlesurvey" element={<MiddleSurvey />} />
+          <Route path="/highsurvey" element={<HighSurvey />} />
           <Route path="/finish" element={<Ending />} />
         </Routes>
     </Router>

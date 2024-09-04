@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends, HTTPException
+from starlette.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from .database import SessionLocal_db1, engine_db1, SessionLocal_db2, engine_db2, SessionLocal_db3, engine_db3, Base_db1, Base_db2, Base_db3
 from . import crud
@@ -10,6 +11,15 @@ Base_db2.metadata.create_all(bind=engine_db2)  # For Middle DB
 Base_db3.metadata.create_all(bind=engine_db3)  # For High DB
 
 app = FastAPI()
+
+# Configure CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  # Allow requests from this origin, Replace http://localhost:5173 with the origin of your frontend application.
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods
+    allow_headers=["*"],  # Allow all headers
+)
 
 # Dependency to get the SQLAlchemy session for Elementary model
 def get_db_elementary():
@@ -127,3 +137,7 @@ def delete_high(high_id: int, db: Session = Depends(get_db_high)):
     if not success:
         raise HTTPException(status_code=404, detail="High record not found")
     return {"detail": "High record deleted"}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8000)

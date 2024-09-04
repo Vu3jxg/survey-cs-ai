@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import Modal from './surveyquestions.tsx';
 import DetailsEntry from "./detailsentry";
 
 interface DetailsProps {
@@ -11,16 +9,13 @@ interface DetailsProps {
 }
 
 export default function Details({lang, setLang}: DetailsProps) { 
+
     const handleSelect = (selectedOption: string) => {
         setLang({
             isSet: true,
             name: selectedOption,
         });
       };
-
-      const [isModalOpen, setIsModalOpen] = useState(false);
-      const openModal = () => setIsModalOpen(true);
-      const closeModal = () => setIsModalOpen(false);
 
     return (
         <div className="p-6 max-w-screen-md mx-auto bg-white dark:bg-gray-900 rounded-xl shadow-lg dark:shadow-gray-700">
@@ -40,8 +35,7 @@ export default function Details({lang, setLang}: DetailsProps) {
                 </div>
                 {lang.isSet && (
                     <div className="mt-8 text-center">
-                    <DetailsEntry selectedlang={lang.name} setIsModalOpen={openModal}/>                    
-                    <Modal isOpen={isModalOpen} onClose={closeModal} lang={lang.name} />
+                    <DetailsEntry selectedlang={lang.name} />
                     </div>
                     )}
         </div>

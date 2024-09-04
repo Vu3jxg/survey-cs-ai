@@ -1,3 +1,5 @@
+import { RecordType } from "./Record";
+
 export interface QuestionsInterface {
     eng: string;
     hin: string;
@@ -17,3 +19,8 @@ export interface QuestionsInterface {
     schoolCode: string;
     schoolName: string;
   }
+
+  export interface SurveyQuestionsProps {
+    lang: string;
+    record: RecordType;
+  } 
