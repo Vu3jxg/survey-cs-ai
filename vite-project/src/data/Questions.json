@@ -1,188 +1,356 @@
 {
     "questions_elementary": [
         {
-            "eng": "[Eng] How well do you know Q1?",
+            "eng": "Do you use the internet to watch videos or play games?",
             "hin": "[Hin] How well do you know Q1?",
             "kan": "[Kan] How well do you know Q1?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "options": ["Yes, I watch videos.", "Yes, I play games.", "Yes, I do both.", "No, I don’t use the internet."]
         },
         {
-            "eng": "[Eng] How well do you know Q2?",
+            "eng": "Do you ask a parent or teacher before visiting a new website?",
             "hin": "[Hin] How well do you know Q2?",
             "kan": "[Kan] How well do you know Q2?",
-            "options": ["Option A", "Option B", "Option C"]
+            "options": ["Yes, I always ask.", "Sometimes I ask.", "No, I decide myself.", "I don’t visit new websites."]
         },
         {
-            "eng": "[Eng] How well do you know Q3?",
+            "eng": "Do you have rules at home about using the internet?",
             "hin": "[Hin] How well do you know Q3?",
             "kan": "[Kan] How well do you know Q3?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "options": ["Yes, I have rules.", "No, I don’t have any rules.", "I’m not sure."]
         },
         {
-            "eng": "[Eng] How well do you know Q4?",
+            "eng": "Do you ever talk to people online that you don't know in real life?",
             "hin": "[Hin] How well do you know Q4?",
             "kan": "[Kan] How well do you know Q4?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "options": ["Yes, I do.", "No, I don’t.", "I’m not sure."]
         },
         {
-            "eng": "[Eng] How well do you know Q5?",
+            "eng": "Do you think everything you read or see on the internet is true?",
             "hin": "[Hin] How well do you know Q5?",
             "kan": "[Kan] How well do you know Q5?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "options": ["Yes, everything is true.", "No, I don’t think so.", "I’m not sure."]
+        },
+        {
+            "eng": "Do you share your passwords with friends?",
+            "hin": "[Hin] How well do you know Q6?",
+            "kan": "[Kan] How well do you know Q6?",
+            "options": ["Yes, I share them.", "No, I keep them private.", "I don’t use passwords."]
+        },
+        {
+            "eng": "Do you tell your parents about new games or apps you want to use?",
+            "hin": "[Hin] How well do you know Q7?",
+            "kan": "[Kan] How well do you know Q7?",
+            "options": ["Yes, I always tell them.", "Sometimes I tell them.", "No, I don’t tell them."]
+        },
+        {
+            "eng": "Have you ever seen something online that made you feel uncomfortable or scared?",
+            "hin": "[Hin] How well do you know Q8?",
+            "kan": "[Kan] How well do you know Q8?",
+            "options": ["Yes, I have.", "No, I haven’t.", "I’m not sure."]
+        },
+        {
+            "eng": "Do you know what to do if someone you don’t know tries to talk to you online?",
+            "hin": "[Hin] How well do you know Q9?",
+            "kan": "[Kan] How well do you know Q9?",
+            "options": ["Yes, I know what to do.", "No, I’m not sure.", "I’ve never thought about it."]
+        },
+        {
+            "eng": "Do you have time limits for using the internet at home or school?",
+            "hin": "[Hin] How well do you know Q10?",
+            "kan": "[Kan] How well do you know Q10?",
+            "options": ["Yes, I have time limits.", "No, I can use it anytime.", "I’m not sure."]
         }
     ],
     "questions_middle": [
         {
-            "eng": "[Eng] How well do you know Q1?",
+            "eng": "Have you ever used the internet?",
             "hin": "[Hin] How well do you know Q1?",
             "kan": "[Kan] How well do you know Q1?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "options": ["Yes", "No"]
         },
         {
-            "eng": "[Eng] How well do you know Q2?",
+            "eng": "How often do you use the internet?",
             "hin": "[Hin] How well do you know Q2?",
             "kan": "[Kan] How well do you know Q2?",
-            "options": ["Option A", "Option B", "Option C"]
+            "options": ["Every day", "A few times a week", "A few times a month", "Rarely"]
         },
         {
-            "eng": "[Eng] How well do you know Q3?",
+            "eng": "What devices do you use to access the internet?",
             "hin": "[Hin] How well do you know Q3?",
             "kan": "[Kan] How well do you know Q3?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "options": ["Smartphone", "Tablet", "Computer/Laptop", "Other"]
         },
         {
-            "eng": "[Eng] How well do you know Q4?",
+            "eng": "What do you mainly use the internet for?",
             "hin": "[Hin] How well do you know Q4?",
             "kan": "[Kan] How well do you know Q4?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "options": ["Schoolwork/Research", "Social media", "Online games", "Watching videos", "Other"]
         },
         {
-            "eng": "[Eng] How well do you know Q5?",
+            "eng": "Do you know what cybersecurity means?",
             "hin": "[Hin] How well do you know Q5?",
             "kan": "[Kan] How well do you know Q5?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "options": ["Yes", "No", "Not sure"]
         },
         {
-            "eng": "[Eng] How well do you know Q6?",
+            "eng": "Have you ever heard about cyberbullying?",
             "hin": "[Hin] How well do you know Q6?",
             "kan": "[Kan] How well do you know Q6?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "options": ["Yes", "No"]
         },
         {
-            "eng": "[Eng] How well do you know Q7?",
+            "eng": "Have you or anyone you know been a victim of cyberbullying?",
             "hin": "[Hin] How well do you know Q7?",
             "kan": "[Kan] How well do you know Q7?",
-            "options": ["Option A", "Option B", "Option C"]
+            "options": ["Yes", "No", "Not sure"]
         },
         {
-            "eng": "[Eng] How well do you know Q8?",
+            "eng": "Do you know what to do if you experience or witness cyberbullying?",
             "hin": "[Hin] How well do you know Q8?",
             "kan": "[Kan] How well do you know Q8?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "options": ["Yes", "No"]
         },
         {
-            "eng": "[Eng] How well do you know Q9?",
+            "eng": "Do you know how to create a strong password?",
             "hin": "[Hin] How well do you know Q9?",
             "kan": "[Kan] How well do you know Q9?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "options": ["Yes", "No"]
         },
         {
-            "eng": "[Eng] How well do you know Q10?",
+            "eng": "Do you change your passwords regularly?",
             "hin": "[Hin] How well do you know Q10?",
             "kan": "[Kan] How well do you know Q10?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "options": ["Yes", "No", "Sometimes"]
+        },
+        {
+            "eng": "Do you share your passwords with friends or family?",
+            "hin": "[Hin] How well do you know Q11?",
+            "kan": "[Kan] How well do you know Q11?",
+            "options": ["Yes", "No", "Sometimes"]
+        },
+        {
+            "eng": "Have you ever clicked on a suspicious link or ad online?",
+            "hin": "[Hin] How well do you know Q12?",
+            "kan": "[Kan] How well do you know Q12?",
+            "options": ["Yes", "No", "Not sure"]
+        },
+        {
+            "eng": "Do you know what a computer virus is?",
+            "hin": "[Hin] How well do you know Q13?",
+            "kan": "[Kan] How well do you know Q13?",
+            "options": ["Yes", "No", "Not sure"]
+        },
+        {
+            "eng": "Have you ever used antivirus software on your devices?",
+            "hin": "[Hin] How well do you know Q14?",
+            "kan": "[Kan] How well do you know Q14?",
+            "options": ["Yes", "No", "Not sure"]
+        },
+        {
+            "eng": "Do you know what phishing means?",
+            "hin": "[Hin] How well do you know Q15?",
+            "kan": "[Kan] How well do you know Q15?",
+            "options": ["Yes", "No", "Not sure"]
+        },
+        {
+            "eng": "Do you know how to recognize a phishing email or message?",
+            "hin": "[Hin] How well do you know Q16?",
+            "kan": "[Kan] How well do you know Q16?",
+            "options": ["Yes", "No"]
+        },
+        {
+            "eng": "Do you know what personal information is safe to share online?",
+            "hin": "[Hin] How well do you know Q17?",
+            "kan": "[Kan] How well do you know Q17?",
+            "options": ["Yes", "No", "Not sure"]
+        },
+        {
+            "eng": "Have you ever adjusted privacy settings on social media accounts?",
+            "hin": "[Hin] How well do you know Q18?",
+            "kan": "[Kan] How well do you know Q18?",
+            "options": ["Yes", "No", "Not sure"]
+        },
+        {
+            "eng": "Do you know what to do if you suspect someone has accessed your account without permission?",
+            "hin": "[Hin] How well do you know Q19?",
+            "kan": "[Kan] How well do you know Q19?",
+            "options": ["Yes", "No"]
+        },
+        {
+            "eng": "Would you like to learn more about how to stay safe online?",
+            "hin": "[Hin] How well do you know Q20?",
+            "kan": "[Kan] How well do you know Q20?",
+            "options": ["Yes", "No"]
         }
     ],
     "questions_high": [
         {
-            "eng": "[Eng] How well do you know Q1?",
+            "eng": "How would you rate your understanding of cybersecurity?",
             "hin": "[Hin] How well do you know Q1?",
             "kan": "[Kan] How well do you know Q1?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "options": ["Excellent", "Good", "Average", "Poor", "Very Poor"]
         },
         {
-            "eng": "[Eng] How well do you know Q2?",
+            "eng": "Have you ever attended a workshop or seminar on cybersecurity?",
             "hin": "[Hin] How well do you know Q2?",
             "kan": "[Kan] How well do you know Q2?",
-            "options": ["Option A", "Option B", "Option C"]
+            "options": ["Yes", "No"]
         },
         {
-            "eng": "[Eng] How well do you know Q3?",
+            "eng": "Which of the following are examples of cybersecurity threats? (Select all that apply)",
             "hin": "[Hin] How well do you know Q3?",
             "kan": "[Kan] How well do you know Q3?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "options": ["Phishing", "Hacking", "Malware", "Identity theft", "Online Shopping"]
         },
         {
-            "eng": "[Eng] How well do you know Q4?",
+            "eng": "What is a strong password?",
             "hin": "[Hin] How well do you know Q4?",
             "kan": "[Kan] How well do you know Q4?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "options": ["A password that is easy to remember", "A combination of letters, numbers, and symbols", "Your birthdate", "Your pet's name"]
         },
         {
-            "eng": "[Eng] How well do you know Q5?",
+            "eng": "Have you ever changed your online account passwords?",
             "hin": "[Hin] How well do you know Q5?",
             "kan": "[Kan] How well do you know Q5?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "options": ["Regularly", "Sometimes", "Rarely", "Never"]
         },
         {
-            "eng": "[Eng] How well do you know Q6?",
+            "eng": "How often do you update your software and apps?",
             "hin": "[Hin] How well do you know Q6?",
             "kan": "[Kan] How well do you know Q6?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "options": ["Always", "Often", "Sometimes", "Rarely", "Never"]
         },
         {
-            "eng": "[Eng] How well do you know Q7?",
+            "eng": "What should you do if you receive a suspicious email or message?",
             "hin": "[Hin] How well do you know Q7?",
             "kan": "[Kan] How well do you know Q7?",
-            "options": ["Option A", "Option B", "Option C"]
+            "options": ["Ignore it", "Click the links", "Delete it without opening", "Forward it to friends"]
         },
         {
-            "eng": "[Eng] How well do you know Q8?",
+            "eng": "Do you know what two-factor authentication (2FA) is?",
             "hin": "[Hin] How well do you know Q8?",
             "kan": "[Kan] How well do you know Q8?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "options": ["Yes", "No"]
         },
         {
-            "eng": "[Eng] How well do you know Q9?",
+            "eng": "How often do you use public Wi-Fi for online activities?",
             "hin": "[Hin] How well do you know Q9?",
             "kan": "[Kan] How well do you know Q9?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "options": ["Always", "Often", "Sometimes", "Rarely", "Never"]
         },
         {
-            "eng": "[Eng] How well do you know Q10?",
+            "eng": "What is the primary purpose of antivirus software?",
             "hin": "[Hin] How well do you know Q10?",
             "kan": "[Kan] How well do you know Q10?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "options": ["To speed up your computer", "To protect against malware", "To organize your files", "To improve battery life", "Cybersecurity Practices and Behavior"]
         },
         {
-            "eng": "[Eng] How well do you know Q11?",
-            "hin": "[Hin] How well do you know Q11?",
-            "kan": "[Kan] How well do you know Q11?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "eng": "How careful are you when sharing personal information online?",
+            "hin": "[Hin] How well do you know Q1?",
+            "kan": "[Kan] How well do you know Q1?",
+            "options": ["Very careful", "Somewhat careful", "Not very careful", "Not careful at all"]
         },
         {
-            "eng": "[Eng] How well do you know Q12?",
-            "hin": "[Hin] How well do you know Q12?",
-            "kan": "[Kan] How well do you know Q12?",
-            "options": ["Option A", "Option B", "Option C"]
+            "eng": "Have you ever encountered cyberbullying?",
+            "hin": "[Hin] How well do you know Q2?",
+            "kan": "[Kan] How well do you know Q2?",
+            "options": ["Yes, as a victim", "Yes, as a witness", "No", "Prefer not to say"]
         },
         {
-            "eng": "[Eng] How well do you know Q13?",
-            "hin": "[Hin] How well do you know Q13?",
-            "kan": "[Kan] How well do you know Q13?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "eng": "Do you think your school provides enough education on cybersecurity?",
+            "hin": "[Hin] How well do you know Q3?",
+            "kan": "[Kan] How well do you know Q3?",
+            "options": ["Yes", "No", "Not sure"]
         },
         {
-            "eng": "[Eng] How well do you know Q14?",
-            "hin": "[Hin] How well do you know Q14?",
-            "kan": "[Kan] How well do you know Q14?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "eng": "How often do you review the privacy settings on your social media accounts?",
+            "hin": "[Hin] How well do you know Q4?",
+            "kan": "[Kan] How well do you know Q4?",
+            "options": ["Regularly", "Sometimes", "Rarely", "Never"]
         },
         {
-            "eng": "[Eng] How well do you know Q15?",
-            "hin": "[Hin] How well do you know Q15?",
-            "kan": "[Kan] How well do you know Q15?",
-            "options": ["Option A", "Option B", "Option C", "Option D"]
+            "eng": "Have you ever been a victim of a cyber-attack (e.g., hacked account, malware)?",
+            "hin": "[Hin] How well do you know Q5?",
+            "kan": "[Kan] How well do you know Q5?",
+            "options": ["Yes", "No", "Not sure"]
+        },
+        {
+            "eng": "Do you back up important data on your devices?",
+            "hin": "[Hin] How well do you know Q6?",
+            "kan": "[Kan] How well do you know Q6?",
+            "options": ["Regularly", "Sometimes", "Rarely", "Never"]
+        },
+        {
+            "eng": "What should you do if your social media account is hacked?",
+            "hin": "[Hin] How well do you know Q7?",
+            "kan": "[Kan] How well do you know Q7?",
+            "options": ["Change your password immediately", "Ignore it", "Create a new account", "Inform your friends"]
+        },
+        {
+            "eng": "Do you know how to report inappropriate or illegal content online?",
+            "hin": "[Hin] How well do you know Q8?",
+            "kan": "[Kan] How well do you know Q8?",
+            "options": ["Yes", "No"]
+        },
+        {
+            "eng": "Have you ever downloaded pirated software, music, or movies?",
+            "hin": "[Hin] How well do you know Q9?",
+            "kan": "[Kan] How well do you know Q9?",
+            "options": ["Yes", "No"]
+        },
+        {
+            "eng": "Do you think cybersecurity is essential for protecting personal privacy?",
+            "hin": "[Hin] How well do you know Q10?",
+            "kan": "[Kan] How well do you know Q10?",
+            "options": ["Very important", "Somewhat important", "Not important", "Not sure", "Attitudes and Opinions"]
+        },
+        {
+            "eng": "How concerned are you about online privacy?",
+            "hin": "[Hin] How well do you know Q1?",
+            "kan": "[Kan] How well do you know Q1?",
+            "options": ["Very concerned", "Somewhat concerned", "Not very concerned", "Not concerned at all"]
+        },
+        {
+            "eng": "Do you think cyber crimes are increasing in India?",
+            "hin": "[Hin] How well do you know Q2?",
+            "kan": "[Kan] How well do you know Q2?",
+            "options": ["Yes", "No", "Not sure"]
+        },
+        {
+            "eng": "How likely are you to pursue a career in cybersecurity?",
+            "hin": "[Hin] How well do you know Q3?",
+            "kan": "[Kan] How well do you know Q3?",
+            "options": ["Very likely", "Somewhat likely", "Not likely", "Not interested"]
+        },
+        {
+            "eng": "Do you discuss cybersecurity topics with your friends or family?",
+            "hin": "[Hin] How well do you know Q4?",
+            "kan": "[Kan] How well do you know Q4?",
+            "options": ["Often", "Sometimes", "Rarely", "Never"]
+        },
+        {
+            "eng": "Would you be interested in learning more about cybersecurity through courses or workshops?",
+            "hin": "[Hin] How well do you know Q5?",
+            "kan": "[Kan] How well do you know Q5?",
+            "options": ["Yes", "No"]
+        },
+        {
+            "eng": "Do you believe cybersecurity should be a mandatory part of the school curriculum?",
+            "hin": "[Hin] How well do you know Q6?",
+            "kan": "[Kan] How well do you know Q6?",
+            "options": ["Yes", "No"]
+        },
+        {
+            "eng": "How would you feel about participating in a cybersecurity awareness campaign at your school?",
+            "hin": "[Hin] How well do you know Q7?",
+            "kan": "[Kan] How well do you know Q7?",
+            "options": ["Very interested", "Somewhat interested", "Not interested"]
+        },
+        {
+            "eng": "What areas of cybersecurity would you like to learn more about? (Select all that apply)",
+            "hin": "[Hin] How well do you know Q8?",
+            "kan": "[Kan] How well do you know Q8?",
+            "options": ["Online safety and privacy", "Cyber threats and how to prevent them", "Ethical hacking", "Careers in cybersecurity"]
         }
     ]
 }
