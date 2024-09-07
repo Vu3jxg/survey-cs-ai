@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Depends, HTTPException
-from starlette.middleware.cors import CORSMiddleware
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from .database import SessionLocal_db1, engine_db1, SessionLocal_db2, engine_db2, SessionLocal_db3, engine_db3, Base_db1, Base_db2, Base_db3
 from . import crud
