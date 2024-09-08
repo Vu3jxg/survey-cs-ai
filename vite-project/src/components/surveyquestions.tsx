@@ -1,113 +1,176 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import data from '../data/Questions.json';
 import { RecordType } from '../types/Record';
-import { QuestionsInterface } from '../types/Data'; //I deeply apologize for not using the i18 library
+import { QuestionsInterface } from '../types/Data';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-const SurveyQuestions = () => {
+interface SurveyQuestionsProps {
+  db_name: string;
+}
 
+const SurveyQuestions = ({ db_name }: SurveyQuestionsProps) => {
   const location = useLocation();
-  const { state } = location;
   const navigateToFinish = useNavigate();
 
-  // Access the `class_name` property from the state
-  const record = state as RecordType;
+  // Extract record from location state
+  const record = location.state as RecordType | undefined;
 
-  // Determine the correct set of questions based on `class_name`
-  let questionsData: QuestionsInterface[] = [];
-
-  if (record.class_name <= 5) {
-    questionsData = data.questions_elementary;
-  } else if (record.class_name <= 8) {
-    questionsData = data.questions_middle;
-  } else {
-    questionsData = data.questions_high;
-  }
-
+  // Default to an empty object if record is not provided
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-
-  const currentQuestion = questionsData[currentQuestionIndex];
   
-  const handleNext = () => {
-    if(selectedAnswer) {
-      // Dynamically set the property in the record based on currentQuestionIndex
-      const questionKey = `q${currentQuestionIndex + 1}` as keyof RecordType;
+  //to store the user's choices for the survey questions. 
+  const [responses, setResponses] = useState<Record<string, string>>({});
 
-      // Create a new record object with the updated answer
-      const updatedRecord = { ...record, [questionKey]: selectedAnswer };
+  // Determine questionsData based on record.class_name
+  const [questionsData, setQuestionsData] = useState<QuestionsInterface[]>([]);
 
-      // Update record in the state or send it back to the server if needed
-      // For example, send updatedRecord to a server
-      // axios.post('http://server-endpoint', updatedRecord)
-      //   .then(response => console.log('Record updated:', response.data))
-      //   .catch(error => console.error('Error updating record:', error));
-
-      if(currentQuestionIndex < questionsData.length - 1) {
-        setCurrentQuestionIndex(currentQuestionIndex + 1);
-        setSelectedAnswer(null);
+  useEffect(() => {
+    if (record) {
+      let questions: QuestionsInterface[] = [];
+      if (record.class_name <= 5) {
+        questions = data.questions_elementary;
+      } else if (record.class_name <= 8) {
+        questions = data.questions_middle;
+      } else {
+        questions = data.questions_high;
       }
-      else {
-        navigateToFinish('/finish');
+      setQuestionsData(questions); //set QuestionsData which is an array of type QuestionsInterface (Basically the structure of Questions.json) depending on class_name)
+      setSelectedAnswer(responses[`q${currentQuestionIndex + 1}`] || null); // Initialize selectedAnswer for the first question
+    } else {
+      // Handle the case where record is not available
+      console.error('Record is not available.');
+      setQuestionsData([]);
+    }
+
+    // Update selectedAnswer when currentQuestionIndex or responses change
+    const currentQuestionKey = `q${currentQuestionIndex + 1}`;
+    setSelectedAnswer(responses[currentQuestionKey] || null);
+  }, [currentQuestionIndex, record, responses]);
+
+  const currentQuestion = questionsData[currentQuestionIndex] || { eng: '', hin: '', kan: '', options: [], multiselect: 'No' };
+
+  const handleNext = () => {
+    if (selectedAnswer) {
+      const questionKey = `q${currentQuestionIndex + 1}`;
+
+      //store selectedAnswer in responses array every time handleNext is called and an answer is selected
+      setResponses(prevResponses => ({
+        ...prevResponses,
+        [questionKey]: selectedAnswer
+      }));
+
+      if (currentQuestionIndex < questionsData.length - 1) {
+        setCurrentQuestionIndex(index => index + 1); //increment index
+      } else {
+        // runs after user clicks submit, i.e. when currentQuestionIndex = questionsData.length - 1
+        const updatedRecord = { ...record, ...responses, [`q${currentQuestionIndex + 1}`]: selectedAnswer };
+        axios.put(`http://127.0.0.1:8000/${db_name}/${record?.id}`, updatedRecord)
+          .then(res => {
+            console.log('PUT request success', res.data);
+            navigateToFinish('/finish'); // navigating to the finish page
+          })
+          .catch(error => {
+            console.error('There was an error with the PUT request!', error);
+          });
       }
     }
   };
 
   const handlePrev = () => {
-    if(currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(currentQuestionIndex - 1);
-      //fetch value from db, setSelectedAnswer to that value.
-    }
-    else {
-      alert('Can\'t go back!')
-    }
-  }
+    if (currentQuestionIndex > 0) {
+      // Save the current answer to responses before moving to the previous question
+      if (selectedAnswer) {
+        const questionKey = `q${currentQuestionIndex + 1}`;
+        setResponses(prevResponses => ({
+          ...prevResponses,
+          [questionKey]: selectedAnswer
+        }));
+      }
 
-  const handleAnswerSelect = (answer: string) => {
-    setSelectedAnswer(answer);
-  }
+      // Move to the previous question
+      setCurrentQuestionIndex(prevIndex => {
+        const newIndex = prevIndex - 1;
+        const prevQuestionKey = `q${newIndex + 1}`;
+        setSelectedAnswer(responses[prevQuestionKey] || null); // Set the answer for the previous question
+        return newIndex;
+      });
+    } else {
+      alert('Can\'t go back!');
+    }
+  };
+
+  const handleAnswerSelect = (index: number) => {
+    if(questionsData[currentQuestionIndex].multiselect === 'No')
+      setSelectedAnswer(String.fromCharCode(index + 65)); //Converts index to ascii (0 -> 'A', 1 -> 'B', etc)
+    else {
+      //check if answer is already in selectedAnswer, remove if already present
+      setSelectedAnswer(prevSelection => {
+        if(prevSelection == null)
+          return String.fromCharCode(index + 65)
+        else {
+          if(selectedAnswer?.includes(String.fromCharCode(index + 65)))
+            return prevSelection.replace(', '+String.fromCharCode(index + 65), '') // removes the option from selectedAnswer
+          else
+            return prevSelection + ', ' + String.fromCharCode(index + 65)
+        }
+      })
+    }
+  };
 
   const renderQuestion = () => {
-    if(record.lang === "English") return currentQuestion.eng;
-    else if(record.lang === "Hindi") return currentQuestion.hin;
+    if (record?.lang === "English") return currentQuestion.eng;
+    else if (record?.lang === "Hindi") return currentQuestion.hin;
     else return currentQuestion.kan;
   };
 
   return (
-      <div className='bg-black text-white p-32 rounded-lg shadow-lg z-10 dark:bg-white dark:text-black'>
-        <h2 className='text-2xl mb-4'>{renderQuestion()}</h2>
+    <div className='bg-black text-white p-32 rounded-lg shadow-lg z-10 dark:bg-white dark:text-black'>
+      <h2 className='text-2xl mb-4'>{renderQuestion()}</h2>
 
-        <div className='flex flex-row gap-4 mb-4'>
-        {questionsData[currentQuestionIndex]?.options.map((option, index) => (
-            <button
-              key={index}
-              className={`p-2 border rounded ${selectedAnswer === option ? 'bg-blue-500 text-white' : 'bg-gray-100 text-black'}`}
-              onClick={() => handleAnswerSelect(option)}
-            >
-              {option}
-            </button>
-          ))}
-        </div>
-
-        <div className='flex items-center justify-center mt-16'>
-          <button onClick={handlePrev} className='p-2 text-white rounded bg-orange-400'
-            disabled={currentQuestionIndex === 0}
-            > Prev
-          </button>
-          
-          {(currentQuestionIndex === questionsData.length - 1)? 
-            <button
-              className="ml-4 px-4 py-2 bg-red-500 text-white rounded"
-              onClick={handleNext}
-            > Submit
-            </button> :
-            <button onClick={handleNext} className={`p-2 ml-4 text-white rounded ${selectedAnswer ? 'bg-green-500' : 'bg-gray-300 cursor-not-allowed'}`}
-              disabled={!selectedAnswer} //disables next button until answer is selected
-            > Next
-            </button>
-          }
-        </div>
+      <div className='flex flex-row gap-4 mb-4'>
+        {questionsData[currentQuestionIndex]?.multiselect.toLowerCase() === 'no' ?
+            questionsData[currentQuestionIndex]?.options.map((option, index) => (
+              <button
+                key={index}
+                className={`p-2 border rounded ${selectedAnswer === String.fromCharCode(index + 65) ? 'bg-blue-500 text-white' : 'bg-gray-100 text-black'}`}
+                onClick={() => handleAnswerSelect(index)}
+              >
+                {option}
+              </button>
+            )) :
+            questionsData[currentQuestionIndex]?.options.map((option, index) => (
+              <button
+                key={index}
+                className={`p-2 border rounded ${selectedAnswer?.includes(String.fromCharCode(index + 65)) ? 'bg-blue-500 text-white' : 'bg-gray-100 text-black'}`}
+                onClick={() => handleAnswerSelect(index)}
+              >
+                {option}
+              </button>
+            ))
+        }
       </div>
+
+      <div className='flex items-center justify-center mt-16'>
+        <button onClick={handlePrev} className='p-2 text-white rounded bg-orange-400'
+          disabled={currentQuestionIndex === 0}
+        > Prev
+        </button>
+
+        {currentQuestionIndex === questionsData.length - 1 ? 
+          <button
+            className="ml-4 px-4 py-2 bg-red-500 text-white rounded"
+            onClick={handleNext}
+          > Submit
+          </button> :
+          <button onClick={handleNext} className={`p-2 ml-4 text-white rounded ${selectedAnswer ? 'bg-green-500' : 'bg-gray-300 cursor-not-allowed'}`}
+            disabled={selectedAnswer == null} // disables next button until answer is selected
+          > Next
+          </button>
+        }
+      </div>
+    </div>
   );
 };
 

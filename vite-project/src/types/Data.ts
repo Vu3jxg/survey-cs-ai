@@ -5,6 +5,7 @@ export interface QuestionsInterface {
     hin: string;
     kan: string;
     options: string[];
+    multiselect: string;
   }
 
   export interface Translations {

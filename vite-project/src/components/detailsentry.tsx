@@ -100,8 +100,8 @@ export default function DetailsEntry({selectedlang}: DetailsEntryProps) {
             board: board,
             gender: (() => {
                 const index = genderOptions.indexOf(selectedGender);
-                if(index == 1) return 'M';
-                else if(index == 2) return 'F';
+                if(index == 0) return 'M';
+                else if(index == 1) return 'F';
                 else return 'O';
             })(),
             lang: selectedlang,
@@ -112,14 +112,12 @@ export default function DetailsEntry({selectedlang}: DetailsEntryProps) {
           // on success
           .then(res => {
             console.log('POST request success', res.data);
-            navigateToCategory(`/${category}survey`, {state: res.data.item}); // navigating to the relevant survey questions page and passing the response (Record) as props
+            navigateToCategory(`/${category}survey`, {state: res.data}); // navigating to the relevant survey questions page and passing the response (Record) as props
           })
           // on failure
           .catch(error => {
             console.error('There was an error with the POST request!', error);
           });
-
-        console.log('Component rendered');
     };
 
     return (
