@@ -1,9 +1,10 @@
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from .database import SessionLocal_db1, engine_db1, SessionLocal_db2, engine_db2, SessionLocal_db3, engine_db3, Base_db1, Base_db2, Base_db3
 from . import crud
 from . import schema
+from . import models
 
 # Create all tables in the respective databases that are defined by models inheriting from the base classes
 Base_db1.metadata.create_all(bind=engine_db1)  # For Elementary DB
@@ -49,7 +50,18 @@ def get_db_high():
 
 @app.post("/elementary/", response_model=schema.Elementary)
 def create_elementary(elementary: schema.ElementaryCreate, db: Session = Depends(get_db_elementary)):
-    return crud.create_elementary(db=db, elementary=elementary)
+     # Check if an Elementary record with the same ID already exists
+    existing_elementary = db.query(models.Elementary).filter(
+        models.Elementary.school_code == elementary.school_code,
+        models.Elementary.class_name == elementary.class_name,
+        models.Elementary.rollno == elementary.rollno,
+        models.Elementary.board == elementary.board
+    ).first()
+    
+    if existing_elementary:
+        return existing_elementary
+    else:
+        return crud.create_elementary(db=db, elementary=elementary)
 
 @app.get("/elementary/{elementary_id}", response_model=schema.Elementary)
 def read_elementary(elementary_id: int, db: Session = Depends(get_db_elementary)):
@@ -80,7 +92,18 @@ def delete_elementary(elementary_id: int, db: Session = Depends(get_db_elementar
 
 @app.post("/middle/", response_model=schema.Middle)
 def create_middle(middle: schema.MiddleCreate, db: Session = Depends(get_db_middle)):
-    return crud.create_middle(db=db, middle=middle)
+    # Check if a Middle record with the same ID already exists
+    existing_middle = db.query(models.Middle).filter(
+        models.Middle.school_code == middle.school_code,
+        models.Middle.class_name == middle.class_name,
+        models.Middle.rollno == middle.rollno,
+        models.Middle.board == middle.board
+    ).first()
+    
+    if existing_middle:
+        return existing_middle
+    else:
+        return crud.create_middle(db=db, middle=middle)
 
 @app.get("/middle/{middle_id}", response_model=schema.Middle)
 def read_middle(middle_id: int, db: Session = Depends(get_db_middle)):
@@ -111,7 +134,18 @@ def delete_middle(middle_id: int, db: Session = Depends(get_db_middle)):
 
 @app.post("/high/", response_model=schema.High)
 def create_high(high: schema.HighCreate, db: Session = Depends(get_db_high)):
-    return crud.create_high(db=db, high=high)
+    # Check if a High record with the same ID already exists
+    existing_high = db.query(models.High).filter(
+        models.High.school_code == high.school_code,
+        models.High.class_name == high.class_name,
+        models.High.rollno == high.rollno,
+        models.High.board == high.board
+    ).first()
+    
+    if existing_high:
+        return existing_high
+    else:
+        return crud.create_high(db=db, high=high)
 
 @app.get("/high/{high_id}", response_model=schema.High)
 def read_high(high_id: int, db: Session = Depends(get_db_high)):
