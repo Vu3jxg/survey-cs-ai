@@ -13,11 +13,7 @@ function App() {
 
   const [isLightMode, setLightMode] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      return savedTheme === 'light';
-    }
-    // Default to dark mode if no preference is saved and system prefers dark mode
-    return window.matchMedia('(prefers-color-scheme: light)').matches;
+    return savedTheme? savedTheme === 'light' : false;
   });
 
   const [lang, setLang] = useState({
