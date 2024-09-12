@@ -171,7 +171,7 @@ const SurveyQuestions = ({ db_name, willReadScreen }: SurveyQuestionsProps) => {
         }
       </div>
 
-      <div className='flex items-center justify-center mt-16'>
+      <div className='flex items-center justify-center mt-8'>
         <button onClick={handlePrev} className='p-2 text-white rounded bg-orange-400'
           disabled={currentQuestionIndex === 0}
         > Prev
