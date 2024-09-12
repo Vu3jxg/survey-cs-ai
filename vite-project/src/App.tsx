@@ -47,7 +47,7 @@ function App() {
               </div>
             </main>
 		      } />
-          <Route path="/elementarysurvey" element={<ElementarySurvey />} />
+          <Route path="/elementarysurvey" element={<ElementarySurvey willReadScreen={willReadScreen} />} />
           <Route path="/middlesurvey" element={<MiddleSurvey />} />
           <Route path="/highsurvey" element={<HighSurvey />} />
           <Route path="/finish" element={<Ending />} />

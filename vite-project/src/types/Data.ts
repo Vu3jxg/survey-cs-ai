@@ -4,7 +4,9 @@ export interface QuestionsInterface {
     eng: string;
     hin: string;
     kan: string;
-    options: string[];
+    eng_options: string[];
+    hin_options: string[];
+    kan_options: string[];
     multiselect: string;
   }
 

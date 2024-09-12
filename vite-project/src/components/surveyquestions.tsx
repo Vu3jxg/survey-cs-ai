@@ -4,12 +4,14 @@ import { RecordType } from '../types/Record';
 import { QuestionsInterface } from '../types/Data';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import AnimAvatar from './animavatar';
 
 interface SurveyQuestionsProps {
   db_name: string;
+  willReadScreen: boolean;
 }
 
-const SurveyQuestions = ({ db_name }: SurveyQuestionsProps) => {
+const SurveyQuestions = ({ db_name, willReadScreen }: SurveyQuestionsProps) => {
   const location = useLocation();
   const navigateToFinish = useNavigate();
 
@@ -125,13 +127,30 @@ const SurveyQuestions = ({ db_name }: SurveyQuestionsProps) => {
     else return currentQuestion.kan;
   };
 
+  //set options language
+  const options: string[] = (() => {
+    const currentQuestion = questionsData[currentQuestionIndex];
+    if (currentQuestion) {
+      switch (record?.lang) {
+        case "English":
+          return currentQuestion.eng_options || [];
+        case "Hindi":
+          return currentQuestion.hin_options || [];
+        default:
+          return currentQuestion.kan_options || [];
+      }
+    }
+    return [];
+  })();
+
   return (
-    <div className='bg-black text-white p-32 rounded-lg shadow-lg z-10 dark:bg-white dark:text-black'>
+    <div className='flex flex-row w-full items-center justify-center min-h-screen dark:bg-black dark:text-white'>
+    <div>
       <h2 className='text-2xl mb-4'>{renderQuestion()}</h2>
 
       <div className='flex flex-row gap-4 mb-4'>
         {questionsData[currentQuestionIndex]?.multiselect.toLowerCase() === 'no' ?
-            questionsData[currentQuestionIndex]?.options.map((option, index) => (
+            options.map((option, index) => (
               <button
                 key={index}
                 className={`p-2 border rounded ${selectedAnswer === String.fromCharCode(index + 65) ? 'bg-blue-500 text-white' : 'bg-gray-100 text-black'}`}
@@ -140,7 +159,7 @@ const SurveyQuestions = ({ db_name }: SurveyQuestionsProps) => {
                 {option}
               </button>
             )) :
-            questionsData[currentQuestionIndex]?.options.map((option, index) => (
+            options.map((option, index) => (
               <button
                 key={index}
                 className={`p-2 border rounded ${selectedAnswer?.includes(String.fromCharCode(index + 65)) ? 'bg-blue-500 text-white' : 'bg-gray-100 text-black'}`}
@@ -170,6 +189,10 @@ const SurveyQuestions = ({ db_name }: SurveyQuestionsProps) => {
           </button>
         }
       </div>
+    </div>
+    <div className="pl-16">
+      <AnimAvatar willReadScreen={willReadScreen} lang={record?.lang} currentQuestionIndex={currentQuestionIndex} />
+    </div>
     </div>
   );
 };

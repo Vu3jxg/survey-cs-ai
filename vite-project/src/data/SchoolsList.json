@@ -1,18 +1,58 @@
 [
     {
       "schoolCode": "001",
-      "schoolName": "NITK English Medium School, Surathkal"
+      "schoolName": "NITK English Medium School, Srinivas Nagar"
     },
     {
       "schoolCode": "002",
-      "schoolName": "Vidyadayinee English Medium School, Surathkal"
+      "schoolName": "KREC Higher Primary School, Srinivas Nagar"
     },
     {
       "schoolCode": "003",
-      "schoolName": "Holy Spirit School, Mukka"
+      "schoolName": "NITK High School, Srinivas Nagar"
     },
     {
       "schoolCode": "004",
-      "schoolName": "Sri Vani School, Pavanje"
+      "schoolName": "Vidyadayinee School, Surathkal"
+    },
+    {
+      "schoolCode": "005",
+      "schoolName": "Vidyadayinee English Medium School, Surathkal"
+    },
+    {
+      "schoolCode": "006",
+      "schoolName": "Sri Mahalingeshwara School, Iddya"
+    },
+    {
+      "schoolCode": "007",
+      "schoolName": "Sacred Heart School, Iddya"
+    },
+    {
+      "schoolCode": "008",
+      "schoolName": "Khilriya English Medium School, Iddya"
+    },
+    {
+      "schoolCode": "009",
+      "schoolName": "Govinda Dasa Pre University College, Surathkal"
+    },
+    {
+      "schoolCode": "010",
+      "schoolName": "Holy Family School, Surathkal"
+    },
+    {
+      "schoolCode": "011",
+      "schoolName": "Holy Spirit School, Mukka"
+    },
+    {
+      "schoolCode": "012",
+      "schoolName": "Sri Dhoomavathi School, Mukka"
+    },
+    {
+      "schoolCode": "013",
+      "schoolName": "Anjuman English Medium School, Mukka"
+    },
+    {
+      "schoolCode": "014",
+      "schoolName": "Lions Special School, Surathkal"
     }
   ]
