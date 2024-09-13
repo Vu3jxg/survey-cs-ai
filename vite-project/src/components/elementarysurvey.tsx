@@ -1,10 +1,10 @@
 import SurveyQuestions from "./surveyquestions";
 
-interface ElementarySurveyProps {
+export interface SurveyProps {
     willReadScreen: boolean;
 }
 
-export default function ElementarySurvey ({ willReadScreen }: ElementarySurveyProps) {
+export default function ElementarySurvey ({ willReadScreen }: SurveyProps) {
     return (
         <SurveyQuestions db_name="elementary" willReadScreen={willReadScreen}/>
     )

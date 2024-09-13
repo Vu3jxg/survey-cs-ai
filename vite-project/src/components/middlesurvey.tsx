@@ -1,9 +1,8 @@
 import SurveyQuestions from "./surveyquestions";
+import { SurveyProps } from "./elementarysurvey";
 
-export default function MiddleSurvey () {
+export default function MiddleSurvey ({willReadScreen}: SurveyProps) {
     return (
-        <div className='bg-black text-white min-h-screen z-10 dark:bg-white dark:text-black'>
-            <SurveyQuestions db_name="middle"/>
-        </div>
+        <SurveyQuestions db_name="middle" willReadScreen={willReadScreen}/>
     )
 }

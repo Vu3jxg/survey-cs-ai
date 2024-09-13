@@ -48,8 +48,8 @@ function App() {
             </main>
 		      } />
           <Route path="/elementarysurvey" element={<ElementarySurvey willReadScreen={willReadScreen} />} />
-          <Route path="/middlesurvey" element={<MiddleSurvey />} />
-          <Route path="/highsurvey" element={<HighSurvey />} />
+          <Route path="/middlesurvey" element={<MiddleSurvey willReadScreen={willReadScreen} />} />
+          <Route path="/highsurvey" element={<HighSurvey willReadScreen={willReadScreen} />} />
           <Route path="/finish" element={<Ending />} />
         </Routes>
     </Router>
