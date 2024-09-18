@@ -9,7 +9,7 @@ import HighSurvey from "./components/highsurvey";
 
 function App() {
 
-  const [willReadScreen, setWillReadScreen] = useState(false);
+  const [willReadScreen, setWillReadScreen] = useState(true);
 
   const [isLightMode, setLightMode] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
