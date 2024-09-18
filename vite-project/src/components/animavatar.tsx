@@ -10,7 +10,7 @@ export interface AnimProps {
 export default function AnimAvatar({ willReadScreen, lang, currentQuestionIndex }: AnimProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Determine the video map based on the language
+  // Determine the video map based on the language -- add other video maps when middle and high are implemented.
   let videoMap: Record<number, string>;
 
   if (lang === 'English') {

@@ -1,21 +1,30 @@
+import { useState, useRef } from "react";
 import DetailsEntry from "./detailsentry";
+import videoSrc from '../assets/elementary/hin/animq1.mp4';
 
 interface DetailsProps {
     lang: {
         isSet: boolean,
         name: string,
     };
-    setLang: (value: {isSet: boolean; name: string}) => void;
+    setLang: (value: {isSet: boolean; name?: string}) => void;
 }
 
 export default function Details({lang, setLang}: DetailsProps) { 
 
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const [hasVideoEnded, setVideoEnded] = useState(false);
     const handleSelect = (selectedOption: string) => {
         setLang({
             isSet: true,
             name: selectedOption,
         });
       };
+
+    const handleVideoEnd = () => {
+        setVideoEnded(true);
+        setLang({isSet: false})
+    }
 
     return (
         <div className="p-6 max-w-screen-md mx-auto bg-white dark:bg-gray-900 rounded-xl shadow-lg dark:shadow-gray-700">
@@ -34,10 +43,24 @@ export default function Details({lang, setLang}: DetailsProps) {
                         onClick={() => handleSelect('English')}>English</button>
                 </div>
                 {lang.isSet && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center">
+                        {/* Backdrop */}
+                        <div className="fixed inset-0 bg-gray-800 opacity-50" />
+                    
+                        {/* Modal Content */}
+                        <div className='bg-black text-white p-32 rounded-lg shadow-lg z-10 dark:bg-white dark:text-black'>
+                        <video ref={videoRef} width='350' height='350' autoPlay onEnded={handleVideoEnd} onError={(e) => console.error('Error loading video:', e)}>
+                            <source src={videoSrc} type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                        </div>
+                    </div>
+                )}
+                {hasVideoEnded && (
                     <div className="mt-8 text-center">
                     <DetailsEntry selectedlang={lang.name} />
                     </div>
-                    )}
+                )}
         </div>
     );
 }
