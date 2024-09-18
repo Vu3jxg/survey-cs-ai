@@ -1,25 +1,20 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import data from '../data/Questions.json';
-import { RecordType } from '../types/Record';
 import { QuestionsInterface } from '../types/Data';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { RecordType } from '../types/Record';
 import axios from 'axios';
-import AnimAvatar from './animavatar';
 
 interface SurveyQuestionsProps {
   db_name: string;
-  willReadScreen: boolean;
+  record: RecordType | undefined;
+  currentQuestionIndex: number;
+  setCurrentQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const SurveyQuestions = ({ db_name, willReadScreen }: SurveyQuestionsProps) => {
-  const location = useLocation();
+const SurveyQuestions = ({ db_name, record, currentQuestionIndex, setCurrentQuestionIndex }: SurveyQuestionsProps) => {
+  
   const navigateToFinish = useNavigate();
-
-  // Extract record from location state
-  const record = location.state as RecordType | undefined;
-
-  // Default to an empty object if record is not provided
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   
   //to store the user's choices for the survey questions. 
@@ -144,7 +139,6 @@ const SurveyQuestions = ({ db_name, willReadScreen }: SurveyQuestionsProps) => {
   })();
 
   return (
-    <div className='flex flex-row w-full items-center justify-center min-h-screen dark:bg-black dark:text-white'>
     <div>
       <h2 className='text-2xl mb-4'>{renderQuestion()}</h2>
 
@@ -189,10 +183,6 @@ const SurveyQuestions = ({ db_name, willReadScreen }: SurveyQuestionsProps) => {
           </button>
         }
       </div>
-    </div>
-    <div className="pl-16">
-      <AnimAvatar willReadScreen={willReadScreen} lang={record?.lang} currentQuestionIndex={currentQuestionIndex} />
-    </div>
     </div>
   );
 };

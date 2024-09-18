@@ -18,7 +18,7 @@ export default function AnimAvatar({ willReadScreen, lang, currentQuestionIndex 
   } else if (lang === 'Hindi') {
     videoMap = videoMaps.ElementaryHinVideoMap;
   } else {
-    videoMap = videoMaps.ElementaryEngVideoMap; // Fallback to English
+    videoMap = videoMaps.ElementaryKanVideoMap; // Fallback to English
   }
 
   const videoSrc = videoMap[currentQuestionIndex + 1];

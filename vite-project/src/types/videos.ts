@@ -20,16 +20,16 @@ import ElemHinq8 from '../assets/elementary/hin/animq8.mp4';
 import ElemHinq9 from '../assets/elementary/hin/animq9.mp4';
 import ElemHinq10 from '../assets/elementary/hin/animq10.mp4';
 
-import ElemKanq1 from '../assets/elementary/eng/animq1.mp4';
-import ElemKanq2 from '../assets/elementary/eng/animq2.mp4';
-import ElemKanq3 from '../assets/elementary/eng/animq3.mp4';
-import ElemKanq4 from '../assets/elementary/eng/animq4.mp4';
-import ElemKanq5 from '../assets/elementary/eng/animq5.mp4';
-import ElemKanq6 from '../assets/elementary/eng/animq6.mp4';
-import ElemKanq7 from '../assets/elementary/eng/animq7.mp4';
-import ElemKanq8 from '../assets/elementary/eng/animq8.mp4';
-import ElemKanq9 from '../assets/elementary/eng/animq9.mp4';
-import ElemKanq10 from '../assets/elementary/eng/animq10.mp4';
+import ElemKanq1 from '../assets/elementary/kan/animq1.mp4';
+import ElemKanq2 from '../assets/elementary/kan/animq2.mp4';
+import ElemKanq3 from '../assets/elementary/kan/animq3.mp4';
+import ElemKanq4 from '../assets/elementary/kan/animq4.mp4';
+import ElemKanq5 from '../assets/elementary/kan/animq5.mp4';
+import ElemKanq6 from '../assets/elementary/kan/animq6.mp4';
+import ElemKanq7 from '../assets/elementary/kan/animq7.mp4';
+import ElemKanq8 from '../assets/elementary/kan/animq8.mp4';
+import ElemKanq9 from '../assets/elementary/kan/animq9.mp4';
+import ElemKanq10 from '../assets/elementary/kan/animq10.mp4';
 
 export const ElementaryEngVideoMap: Record<number, string> = {
     1: ElemEngq1,
