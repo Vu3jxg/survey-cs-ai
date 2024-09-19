@@ -9,6 +9,7 @@ CREATE DATABASE "High"
     LC_COLLATE = 'English_India.utf8'
     LC_CTYPE = 'English_India.utf8'
     LOCALE_PROVIDER = 'libc'
+	TEMPLATE = template0
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1
     IS_TEMPLATE = False;

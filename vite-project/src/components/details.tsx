@@ -28,18 +28,18 @@ export default function Details({lang, setLang}: DetailsProps) {
 
     return (
         <div className="p-6 max-w-screen-md mx-auto bg-white dark:bg-gray-900 rounded-xl shadow-lg dark:shadow-gray-700">
-                <p className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200">
+                <center><p className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200">
                     Choose your language
-                </p>
+                </p></center>
                 <div className="flex flex-row px-12 py-3 items-center justify-between">
                     <button 
-                        className="px-12 py-4 text-white bg-blue-400 rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-500"
-                        onClick={() => handleSelect('Kannada')}>Kannada</button>
+                        className="px-12 py-4 text-3xl text-purple-500 font-bold bg-white border-4 border-purple-700 rounded-lg shadow-neon-purple hover:bg-purple-300 focus:outline-none focus:ring-4 focus:ring-purple-500 focus:ring-opacity-50 hover:border-purple-600 dark:bg-purple-500 dark:hover:bg-purple-700 dark:focus:ring-purple-700 dark:shadow-neon-purple"
+                        onClick={() => handleSelect('Kannada')}>ಕನ್ನಡ</button>
                     <button 
-                        className="px-12 py-4 text-white bg-green-400 rounded-lg shadow-md hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-500"
-                        onClick={() => handleSelect('Hindi')}>Hindi</button>
+                        className="px-12 py-4 text-3xl text-purple-500 font-bold bg-white border-4 border-purple-700 rounded-lg shadow-neon-purple hover:bg-purple-300 focus:outline-none focus:ring-4 focus:ring-purple-500 focus:ring-opacity-50 hover:border-purple-600 dark:bg-purple-500 dark:hover:bg-purple-700 dark:focus:ring-purple-700 dark:shadow-neon-purple"
+                        onClick={() => handleSelect('Hindi')}>हिंदी</button>
                     <button 
-                        className="px-12 py-4 text-white bg-red-400 rounded-lg shadow-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-500"
+                        className="px-12 py-4 text-3xl text-purple-500 font-bold bg-white border-4 border-purple-700 rounded-lg shadow-neon-purple hover:bg-purple-300 focus:outline-none focus:ring-4 focus:ring-purple-500 focus:ring-opacity-50 hover:border-purple-600 dark:bg-purple-500 dark:hover:bg-purple-700 dark:focus:ring-purple-700 dark:shadow-neon-purple"
                         onClick={() => handleSelect('English')}>English</button>
                 </div>
                 {lang.isSet && (
