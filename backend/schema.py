@@ -33,6 +33,7 @@ class ElementaryBase(BaseModel): #base model for elementary school data
     q8: Optional[ResponseOption] = None
     q9: Optional[ResponseOption] = None
     q10: Optional[ResponseOption] = None
+    rating: Optional[int] = None
 
 class ElementaryCreate(ElementaryBase): #model for creating a new elementary school record. Inherits all attributes from ElementaryBase
     pass
@@ -55,6 +56,7 @@ class ElementaryUpdate(BaseModel): #model for updating an existing elementary sc
     q8: Optional[ResponseOption] = None
     q9: Optional[ResponseOption] = None
     q10: Optional[ResponseOption] = None
+    rating: Optional[int] = None
 
 class Elementary(ElementaryBase): #model for returning elementary school record details, including the unique identifier
     id: int
@@ -90,6 +92,7 @@ class MiddleBase(BaseModel): #base model for middle school data
     q18: Optional[ResponseOption] = None
     q19: Optional[ResponseOption] = None
     q20: Optional[ResponseOption] = None
+    rating: Optional[int] = None
 
 class MiddleCreate(MiddleBase): #model for creating a new middle school record. Inherits all attributes from MiddleBase
     pass
@@ -122,6 +125,7 @@ class MiddleUpdate(BaseModel): #model for updating an existing middle school rec
     q18: Optional[ResponseOption] = None
     q19: Optional[ResponseOption] = None
     q20: Optional[ResponseOption] = None
+    rating: Optional[int] = None
 
 class Middle(MiddleBase): #model for returning middle school record details, including the unique identifier
     id: int
@@ -166,6 +170,7 @@ class HighBase(BaseModel):
     q26: Optional[ResponseOption] = None
     q27: Optional[ResponseOption] = None
     q28: Optional[str] = None
+    rating: Optional[int] = None
 
 class HighCreate(HighBase):
     pass
@@ -206,6 +211,7 @@ class HighUpdate(BaseModel):
     q26: Optional[ResponseOption] = None
     q27: Optional[ResponseOption] = None
     q28: Optional[str] = None
+    rating: Optional[int] = None
 
 class High(HighBase):
     id: int
