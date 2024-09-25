@@ -1,6 +1,8 @@
 .venv
-
+package-lock.json
+package.json
 __pycache__/
 *.pyc
 *.pyo
 *.log
+.env
