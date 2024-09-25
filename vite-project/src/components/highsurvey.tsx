@@ -16,7 +16,7 @@ export default function HighSurvey ({willReadScreen}: HighSurveyProps) {
     
     return (
         <div>
-            <div>
+            <div className="flex flex-row w-full items-center justify-center min-h-screen dark:bg-black dark:text-white">
                 <SurveyQuestions db_name="high" record={record} currentQuestionIndex={currentQuestionIndex} setCurrentQuestionIndex={setCurrentQuestionIndex}/>
             </div>
         </div>

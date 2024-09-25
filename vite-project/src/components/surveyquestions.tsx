@@ -141,10 +141,11 @@ const SurveyQuestions = ({ db_name, record, currentQuestionIndex, setCurrentQues
   return (
     <div>
       <h2 className='text-2xl mb-4'>{renderQuestion()}</h2>
-
-      <div className='flex flex-row gap-4 mb-4'>
-        {questionsData[currentQuestionIndex]?.multiselect.toLowerCase() === 'no' ?
-            options.map((option, index) => (
+  
+      {/* Options section with a grid layout */}
+      <div className='grid grid-cols-2 gap-4 mb-4'>
+        {questionsData[currentQuestionIndex]?.multiselect.toLowerCase() === 'no'
+          ? options.map((option, index) => (
               <button
                 key={index}
                 className={`p-2 border rounded ${selectedAnswer === String.fromCharCode(index + 65) ? 'bg-blue-500 text-white' : 'bg-gray-100 text-black'}`}
@@ -152,8 +153,8 @@ const SurveyQuestions = ({ db_name, record, currentQuestionIndex, setCurrentQues
               >
                 {option}
               </button>
-            )) :
-            options.map((option, index) => (
+            ))
+          : options.map((option, index) => (
               <button
                 key={index}
                 className={`p-2 border rounded ${selectedAnswer?.includes(String.fromCharCode(index + 65)) ? 'bg-blue-500 text-white' : 'bg-gray-100 text-black'}`}
@@ -164,27 +165,34 @@ const SurveyQuestions = ({ db_name, record, currentQuestionIndex, setCurrentQues
             ))
         }
       </div>
-
+  
       <div className='flex items-center justify-center mt-8'>
         <button onClick={handlePrev} className='p-2 text-white rounded bg-orange-400'
           disabled={currentQuestionIndex === 0}
-        > Prev
+        >
+          Prev
         </button>
-
-        {currentQuestionIndex === questionsData.length - 1 ? 
+  
+        {currentQuestionIndex === questionsData.length - 1 ? (
           <button
             className="ml-4 px-4 py-2 bg-red-500 text-white rounded"
             onClick={handleNext}
-          > Submit
-          </button> :
-          <button onClick={handleNext} className={`p-2 ml-4 text-white rounded ${selectedAnswer ? 'bg-green-500' : 'bg-gray-300 cursor-not-allowed'}`}
-            disabled={selectedAnswer == null} // disables next button until answer is selected
-          > Next
+          >
+            Submit
           </button>
-        }
+        ) : (
+          <button
+            onClick={handleNext}
+            className={`p-2 ml-4 text-white rounded ${selectedAnswer ? 'bg-green-500' : 'bg-gray-300 cursor-not-allowed'}`}
+            disabled={selectedAnswer == null} // disables next button until an answer is selected
+          >
+            Next
+          </button>
+        )}
       </div>
     </div>
   );
+  
 };
 
 export default SurveyQuestions;
