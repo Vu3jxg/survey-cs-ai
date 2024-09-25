@@ -21,6 +21,7 @@ class Elementary(Base_db1):
     q8 = Column(String(1))
     q9 = Column(String(1))
     q10 = Column(String(1))
+    rating = Column(Integer)
 
 class Middle(Base_db2):
     __tablename__ = 'responses'
@@ -52,6 +53,7 @@ class Middle(Base_db2):
     q18 = Column(String(1))
     q19 = Column(String(1))
     q20 = Column(String(1))
+    rating = Column(Integer)
 
 class High(Base_db3):
     __tablename__ = 'responses'
@@ -91,3 +93,4 @@ class High(Base_db3):
     q26 = Column(String(1))
     q27 = Column(String(1))
     q28 = Column(String(12))
+    rating = Column(Integer)

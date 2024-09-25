@@ -35,7 +35,8 @@ CREATE TABLE responses
 	q7 response_option,
 	q8 response_option,
 	q9 response_option,
-	q10 response_option
+	q10 response_option,
+	rating int
 );
 
 CREATE UNIQUE INDEX unique_entry ON responses (school_code, class_name, section, board, rollno);

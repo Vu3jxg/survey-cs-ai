@@ -56,7 +56,8 @@ CREATE TABLE responses
 	q25 response_option,
 	q26 response_option,
 	q27 response_option,
-	q28 varchar(12)
+	q28 varchar(12),
+	rating int
 );
 
 CREATE UNIQUE INDEX unique_entry ON responses (school_code, class_name, section, board, rollno);
