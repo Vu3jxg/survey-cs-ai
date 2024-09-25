@@ -7,7 +7,7 @@ import Ending from "./components/endingpage";
 import ElementarySurvey from "./components/elementarysurvey";
 import MiddleSurvey from "./components/middlesurvey";
 import HighSurvey from "./components/highsurvey";
-
+import blackLogo from './assets/logos/NITK_black.png'; // NITK black logo
 
 function App() {
 
@@ -41,9 +41,34 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={
-          <main className={`min-h-screen ${isLightMode ? 'bg-gray-100 text-gray-900' : 'bg-gray-900 text-gray-100'}`}>
+          <main className={`min-h-screen relative ${isLightMode ? 'bg-gray-100 text-gray-900' : 'bg-gray-900 text-gray-100'}`}>
+            {/* Watermark Background */}
+            <div className="absolute inset-0 flex flex-col justify-center items-center opacity-10 pointer-events-none">
+              {/* Larger Logo */}
+              <img src={blackLogo} alt="NITK Logo" className="w-[450px] h-[450px]" />
+  
+              {/* Text below the logo */}
+              <div className="mt-4 text-center text-4xl font-bold text-gray-700 dark:text-gray-300">
+                Cyber Security Research Laboratory
+               </div>
+            </div>
+
+
+            {/* Main Content */}
             <Header willReadScreen={willReadScreen} setWillReadScreen={setWillReadScreen} isLightMode={isLightMode} setLightMode={toggleLightMode} />
-            <h1 className="text-center text-3xl font-bold mb-6">Cybersecurity and AI Survey Form</h1>
+            
+            {/* Glowing Text */}
+            <h1 className="text-center text-3xl font-bold mb-2 text-shadow-neon-purple">
+              Cybersecurity and AI Survey Form
+            </h1>
+            
+            {/* Description Below Title */}
+            <p className="text-center text-lg mb-6 max-w-3xl mx-auto font-semibold">
+            Welcome to a special activity designed just for you! In today’s world, the internet plays a huge role in our lives, from learning new things to staying connected with friends. But just like in real life, it’s important to stay safe online too! This activity will take you on a quick journey to explore how much you know about using the internet wisely and safely.
+
+Let’s find out together what you already know about online safety and how we can help you learn even more. Your responses will help us create a safer, smarter online world for students like you!
+            </p>
+
             <div>
               {isLightMode 
                 ? <Details lang={lang} setLang={setLang} /> 

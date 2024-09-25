@@ -17,15 +17,26 @@ export default function Header({ willReadScreen, setWillReadScreen, isLightMode,
         isLightMode ? 'bg-white text-gray-800' : 'bg-gray-900 text-gray-200'
       }`} // Dark background and text color for dark mode
     >
-      {/* Left Section: Logo and Name */}
-      <div className="flex items-center space-x-4">
-        {/* Conditionally render the logo based on theme */}
+      {/* Left Section: Logo and Name */}  
+      <div className="flex items-center space-x-4"> {/* Flex container with horizontal alignment */}
+        {/* Logo */}
         <img 
           src={isLightMode ? blackLogo : whiteLogo}  
           alt="Logo" 
           className="w-12 h-12" 
         />
-        <div className="text-2xl font-semibold">National Institute of Technology Karnataka</div> {/* Logo Name */}
+
+        {/* Text container to stack the lab and institute name vertically */}
+        <div className="flex flex-col">
+          {/* Cyber Security Research Laboratory text */}
+          <div className="text-2xl font-semibold text-purple-500">
+            Cyber Security Research Laboratory
+          </div>
+          {/* National Institute of Technology text */}
+          <div className="text-2xl font-semibold">
+            National Institute of Technology Karnataka
+          </div>
+        </div>
       </div>
 
       {/* Right Section: Controls */}
@@ -36,7 +47,7 @@ export default function Header({ willReadScreen, setWillReadScreen, isLightMode,
         <button 
           onClick={setLightMode} 
           className={`p-2 rounded-md ${
-            isLightMode ? ' hover:bg-blue-600 text-black' : 'hover:bg-green-600 text-white'
+            isLightMode ? 'hover:bg-blue-600 text-black' : 'hover:bg-green-600 text-red-500'
           }`}
         >
           {isLightMode ? <FaRegMoon className="text-2xl" /> : <FaRegSun className="text-2xl" />}

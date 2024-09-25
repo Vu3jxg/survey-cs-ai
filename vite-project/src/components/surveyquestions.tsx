@@ -140,7 +140,7 @@ const SurveyQuestions = ({ db_name, record, currentQuestionIndex, setCurrentQues
 
   return (
     <div>
-      <h2 className='text-2xl mb-4'>{renderQuestion()}</h2>
+      <h2 className='text-2xl mb-4 font-semibold'>{renderQuestion()}</h2>
   
       {/* Options section with a grid layout */}
       <div className='grid grid-cols-2 gap-4 mb-4'>
@@ -148,7 +148,9 @@ const SurveyQuestions = ({ db_name, record, currentQuestionIndex, setCurrentQues
           ? options.map((option, index) => (
               <button
                 key={index}
-                className={`p-2 border rounded ${selectedAnswer === String.fromCharCode(index + 65) ? 'bg-blue-500 text-white' : 'bg-gray-100 text-black'}`}
+                className={`p-2 border rounded shadow-md ${selectedAnswer?.includes(String.fromCharCode(index + 65)) 
+                  ? 'bg-blue-500 text-white' 
+                  : 'bg-purple-600 text-white border-white hover:bg-purple-900 shadow-lg hover:shadow-xl'}`}   
                 onClick={() => handleAnswerSelect(index)}
               >
                 {option}
@@ -157,7 +159,9 @@ const SurveyQuestions = ({ db_name, record, currentQuestionIndex, setCurrentQues
           : options.map((option, index) => (
               <button
                 key={index}
-                className={`p-2 border rounded ${selectedAnswer?.includes(String.fromCharCode(index + 65)) ? 'bg-blue-500 text-white' : 'bg-gray-100 text-black'}`}
+                className={`p-2 border rounded shadow-md ${selectedAnswer?.includes(String.fromCharCode(index + 65)) 
+                  ? 'bg-blue-500 text-white' 
+                  : 'bg-purple-600 text-white border-white hover:bg-purple-900 shadow-lg hover:shadow-xl'}`}              
                 onClick={() => handleAnswerSelect(index)}
               >
                 {option}

@@ -5,23 +5,42 @@ export interface AnimProps {
   willReadScreen: boolean;
   lang: string | undefined;
   currentQuestionIndex: number;
+  schoolLevel: 'elementary' | 'middle' | 'high'; 
 }
 
-export default function AnimAvatar({ willReadScreen, lang, currentQuestionIndex }: AnimProps) {
+export default function AnimAvatar({ willReadScreen, lang, currentQuestionIndex, schoolLevel }: AnimProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Determine the video map based on the language -- add other video maps when middle and high are implemented.
+  // Determine the video map based on the language and school level
   let videoMap: Record<number, string>;
 
-  if (lang === 'English') {
-    videoMap = videoMaps.ElementaryEngVideoMap;
-  } else if (lang === 'Hindi') {
-    videoMap = videoMaps.ElementaryHinVideoMap;
-  } else {
-    videoMap = videoMaps.ElementaryKanVideoMap; // Fallback to English
+  if (schoolLevel === 'elementary') {
+    if (lang === 'English') {
+      videoMap = videoMaps.ElementaryEngVideoMap;
+    } else if (lang === 'Hindi') {
+      videoMap = videoMaps.ElementaryHinVideoMap;
+    } else {
+      videoMap = videoMaps.ElementaryKanVideoMap; // Fallback to Kannada
+    }
+  } else if (schoolLevel === 'middle') {
+    if (lang === 'English') {
+      videoMap = videoMaps.MiddleEngVideoMap;
+    } else if (lang === 'Hindi') {
+      videoMap = videoMaps.MiddleHinVideoMap;
+    } else {
+      videoMap = videoMaps.MiddleKanVideoMap; // Fallback to Kannada
+    }
+  } else if (schoolLevel === 'high') {
+    if (lang === 'English') {
+      videoMap = videoMaps.HighEngVideoMap;
+    } else if (lang === 'Hindi') {
+      videoMap = videoMaps.HighHinVideoMap;
+    } else {
+      videoMap = videoMaps.HighKanVideoMap; // Fallback to Kannada
+    }
   }
 
-  const videoSrc = videoMap[currentQuestionIndex + 1];
+  const videoSrc = videoMap[currentQuestionIndex + 1]; // Fetching the correct video based on the question index
   
   useEffect(() => {
     const videoElement = videoRef.current;
@@ -33,7 +52,7 @@ export default function AnimAvatar({ willReadScreen, lang, currentQuestionIndex 
       videoElement.play()
         .catch((error) => console.error('Error attempting to play video:', error));
     }
-  }, [videoSrc, willReadScreen]); // Run effect when videoSrc or willReadScreen changes
+  }, [videoSrc, willReadScreen]); // Effect runs when videoSrc or willReadScreen changes
 
   return (
     <div>
