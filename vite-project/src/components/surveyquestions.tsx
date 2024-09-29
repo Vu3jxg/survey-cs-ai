@@ -4,6 +4,7 @@ import data from '../data/Questions.json';
 import { QuestionsInterface } from '../types/Data';
 import { RecordType } from '../types/Record';
 import axios from 'axios';
+import { FaStar } from 'react-icons/fa';  // Import FaStar from react-icons
 
 interface SurveyQuestionsProps {
   db_name: string;
@@ -13,12 +14,14 @@ interface SurveyQuestionsProps {
 }
 
 const SurveyQuestions = ({ db_name, record, currentQuestionIndex, setCurrentQuestionIndex }: SurveyQuestionsProps) => {
-  
+
   const navigateToFinish = useNavigate();
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   
-  //to store the user's choices for the survey questions. 
-  const [responses, setResponses] = useState<Record<string, string>>({});
+  // To store the user's choices for the survey questions.
+  const [responses, setResponses] = useState<Record<string, string | number>>({});
+  const [selectedRating, setSelectedRating] = useState<number | null>(null); // Star rating state
+  const [hoveredStar, setHoveredStar] = useState<number | null>(null); // For hover effect on stars
 
   // Determine questionsData based on record.class_name
   const [questionsData, setQuestionsData] = useState<QuestionsInterface[]>([]);
@@ -33,10 +36,9 @@ const SurveyQuestions = ({ db_name, record, currentQuestionIndex, setCurrentQues
       } else {
         questions = data.questions_high;
       }
-      setQuestionsData(questions); //set QuestionsData which is an array of type QuestionsInterface (Basically the structure of Questions.json) depending on class_name)
-      setSelectedAnswer(responses[`q${currentQuestionIndex + 1}`] || null); // Initialize selectedAnswer for the first question
+      setQuestionsData(questions); // Set QuestionsData
+      setSelectedAnswer(responses[`q${currentQuestionIndex + 1}`] || null); // Initialize selectedAnswer
     } else {
-      // Handle the case where record is not available
       console.error('Record is not available.');
       setQuestionsData([]);
     }
@@ -49,24 +51,24 @@ const SurveyQuestions = ({ db_name, record, currentQuestionIndex, setCurrentQues
   const currentQuestion = questionsData[currentQuestionIndex] || { eng: '', hin: '', kan: '', options: [], multiselect: 'No' };
 
   const handleNext = () => {
-    if (selectedAnswer) {
+    if (selectedAnswer || selectedRating !== null) {
       const questionKey = `q${currentQuestionIndex + 1}`;
 
-      //store selectedAnswer in responses array every time handleNext is called and an answer is selected
       setResponses(prevResponses => ({
         ...prevResponses,
-        [questionKey]: selectedAnswer
+        [questionKey]: selectedAnswer,
+        rating: selectedRating // Store the selected rating as well
       }));
 
       if (currentQuestionIndex < questionsData.length - 1) {
-        setCurrentQuestionIndex(index => index + 1); //increment index
+        setCurrentQuestionIndex(index => index + 1); // Increment index
       } else {
-        // runs after user clicks submit, i.e. when currentQuestionIndex = questionsData.length - 1
-        const updatedRecord = { ...record, ...responses, [`q${currentQuestionIndex + 1}`]: selectedAnswer };
+        // Submit the final answers and rating
+        const updatedRecord = { ...record, ...responses, rating: selectedRating };
         axios.put(`http://127.0.0.1:8000/${db_name}/${record?.id}`, updatedRecord)
           .then(res => {
             console.log('PUT request success', res.data);
-            navigateToFinish('/finish'); // navigating to the finish page
+            navigateToFinish('/finish'); // Navigate to the finish page
           })
           .catch(error => {
             console.error('There was an error with the PUT request!', error);
@@ -77,7 +79,6 @@ const SurveyQuestions = ({ db_name, record, currentQuestionIndex, setCurrentQues
 
   const handlePrev = () => {
     if (currentQuestionIndex > 0) {
-      // Save the current answer to responses before moving to the previous question
       if (selectedAnswer) {
         const questionKey = `q${currentQuestionIndex + 1}`;
         setResponses(prevResponses => ({
@@ -86,11 +87,10 @@ const SurveyQuestions = ({ db_name, record, currentQuestionIndex, setCurrentQues
         }));
       }
 
-      // Move to the previous question
       setCurrentQuestionIndex(prevIndex => {
         const newIndex = prevIndex - 1;
         const prevQuestionKey = `q${newIndex + 1}`;
-        setSelectedAnswer(responses[prevQuestionKey] || null); // Set the answer for the previous question
+        setSelectedAnswer(responses[prevQuestionKey] || null);
         return newIndex;
       });
     } else {
@@ -99,20 +99,19 @@ const SurveyQuestions = ({ db_name, record, currentQuestionIndex, setCurrentQues
   };
 
   const handleAnswerSelect = (index: number) => {
-    if(questionsData[currentQuestionIndex].multiselect === 'No')
-      setSelectedAnswer(String.fromCharCode(index + 65)); //Converts index to ascii (0 -> 'A', 1 -> 'B', etc)
+    if (questionsData[currentQuestionIndex].multiselect === 'No')
+      setSelectedAnswer(String.fromCharCode(index + 65)); // Converts index to ASCII (0 -> 'A', 1 -> 'B', etc)
     else {
-      //check if answer is already in selectedAnswer, remove if already present
       setSelectedAnswer(prevSelection => {
-        if(prevSelection == null)
+        if (prevSelection == null)
           return String.fromCharCode(index + 65)
         else {
-          if(selectedAnswer?.includes(String.fromCharCode(index + 65)))
-            return prevSelection.replace(', '+String.fromCharCode(index + 65), '') // removes the option from selectedAnswer
+          if (selectedAnswer?.includes(String.fromCharCode(index + 65)))
+            return prevSelection.replace(', ' + String.fromCharCode(index + 65), '') // Remove option from selectedAnswer
           else
             return prevSelection + ', ' + String.fromCharCode(index + 65)
         }
-      })
+      });
     }
   };
 
@@ -122,7 +121,6 @@ const SurveyQuestions = ({ db_name, record, currentQuestionIndex, setCurrentQues
     else return currentQuestion.kan;
   };
 
-  //set options language
   const options: string[] = (() => {
     const currentQuestion = questionsData[currentQuestionIndex];
     if (currentQuestion) {
@@ -138,45 +136,70 @@ const SurveyQuestions = ({ db_name, record, currentQuestionIndex, setCurrentQues
     return [];
   })();
 
+  // Star rating system for the last page
+  const renderStarRating = () => {
+    return (
+      <div className="star-rating mb-4">
+        <h3 className="text-lg font-semibold mb-2">Rate your experience:</h3>
+        <div className='flex space-x-1'>
+        {[1, 2, 3, 4, 5].map(star => ( // Now 5 stars
+          <FaStar
+            key={star}
+            size={48} // Make stars bigger
+            className={`cursor-pointer ${hoveredStar && star <= hoveredStar ? 'text-yellow-400' : star <= (selectedRating || 0) ? 'text-yellow-500' : 'text-gray-400'}`}
+            onMouseEnter={() => setHoveredStar(star)}
+            onMouseLeave={() => setHoveredStar(null)}
+            onClick={() => setSelectedRating(star)}
+          />
+        ))}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div>
       <h2 className='text-2xl mb-4 font-semibold'>{renderQuestion()}</h2>
-  
+
       {/* Options section with a grid layout */}
       <div className='grid grid-cols-2 gap-4 mb-4'>
-        {questionsData[currentQuestionIndex]?.multiselect.toLowerCase() === 'no'
-          ? options.map((option, index) => (
-              <button
-                key={index}
-                className={`p-2 border rounded shadow-md ${selectedAnswer?.includes(String.fromCharCode(index + 65)) 
-                  ? 'bg-blue-500 text-white' 
-                  : 'bg-purple-600 text-white border-white hover:bg-purple-900 shadow-lg hover:shadow-xl'}`}   
-                onClick={() => handleAnswerSelect(index)}
-              >
-                {option}
-              </button>
-            ))
-          : options.map((option, index) => (
-              <button
-                key={index}
-                className={`p-2 border rounded shadow-md ${selectedAnswer?.includes(String.fromCharCode(index + 65)) 
-                  ? 'bg-blue-500 text-white' 
-                  : 'bg-purple-600 text-white border-white hover:bg-purple-900 shadow-lg hover:shadow-xl'}`}              
-                onClick={() => handleAnswerSelect(index)}
-              >
-                {option}
-              </button>
-            ))
-        }
+        {currentQuestionIndex === questionsData.length - 1 ? null : ( // Hide options for the last question
+          questionsData[currentQuestionIndex]?.multiselect.toLowerCase() === 'no'
+            ? options.map((option, index) => (
+                <button
+                  key={index}
+                  className={`p-2 border rounded shadow-md ${selectedAnswer?.includes(String.fromCharCode(index + 65)) 
+                    ? 'bg-blue-500 text-white' 
+                    : 'bg-purple-600 text-white border-white hover:bg-purple-900 shadow-lg hover:shadow-xl'}`}   
+                  onClick={() => handleAnswerSelect(index)}
+                >
+                  {option}
+                </button>
+              ))
+            : options.map((option, index) => (
+                <button
+                  key={index}
+                  className={`p-2 border rounded shadow-md ${selectedAnswer?.includes(String.fromCharCode(index + 65)) 
+                    ? 'bg-blue-500 text-white' 
+                    : 'bg-purple-600 text-white border-white hover:bg-purple-900 shadow-lg hover:shadow-xl'}`}              
+                  onClick={() => handleAnswerSelect(index)}
+                >
+                  {option}
+                </button>
+              ))
+        )}
       </div>
-  
+
+      {/* Render star rating on the last question page */}
+      {currentQuestionIndex === questionsData.length - 1 && renderStarRating()}
+
       <div className='flex items-center justify-center mt-8'>
         <button onClick={handlePrev} className='p-2 text-white rounded bg-orange-400'
           disabled={currentQuestionIndex === 0}
         >
           Prev
         </button>
-  
+
         {currentQuestionIndex === questionsData.length - 1 ? (
           <button
             className="ml-4 px-4 py-2 bg-red-500 text-white rounded"
@@ -187,8 +210,8 @@ const SurveyQuestions = ({ db_name, record, currentQuestionIndex, setCurrentQues
         ) : (
           <button
             onClick={handleNext}
-            className={`p-2 ml-4 text-white rounded ${selectedAnswer ? 'bg-green-500' : 'bg-gray-300 cursor-not-allowed'}`}
-            disabled={selectedAnswer == null} // disables next button until an answer is selected
+            className={`p-2 ml-4 text-white rounded ${selectedAnswer || selectedRating !== null ? 'bg-green-500' : 'bg-gray-300 cursor-not-allowed'}`}
+            disabled={selectedAnswer == null && selectedRating == null} // Disables next button until an answer is selected or rating is provided
           >
             Next
           </button>
@@ -196,7 +219,6 @@ const SurveyQuestions = ({ db_name, record, currentQuestionIndex, setCurrentQues
       </div>
     </div>
   );
-  
 };
 
 export default SurveyQuestions;

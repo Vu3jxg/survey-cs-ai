@@ -22,4 +22,5 @@ export interface RecordType {
     q13?: string;
     q14?: string;
     q15?: string;
+    rating?: number;
   }

@@ -25,7 +25,7 @@ def update_elementary(db: Session, item_id: int, update_data: ElementaryUpdate):
         return None
     
     update_data_dict = update_data.model_dump(exclude_unset=True)  #convert pydantic model to dict, exclude unset fields
-    
+
     for key, value in update_data_dict.items():
         if hasattr(db_elementary, key):
             setattr(db_elementary, key, value)
@@ -101,7 +101,7 @@ def update_high(db: Session, item_id: int, update_data: HighUpdate):
         return None
     
     update_data_dict = update_data.model_dump(exclude_unset=True)  #convert pydantic model to dict, exclude unset fields
-    
+
     for key, value in update_data_dict.items():
         if hasattr(db_high, key):
             setattr(db_high, key, value)
