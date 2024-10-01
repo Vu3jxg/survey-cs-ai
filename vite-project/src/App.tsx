@@ -8,6 +8,7 @@ import ElementarySurvey from "./components/elementarysurvey";
 import MiddleSurvey from "./components/middlesurvey";
 import HighSurvey from "./components/highsurvey";
 import blackLogo from './assets/logos/NITK_black.png'; // NITK black logo
+import DetailsEntry from "./components/detailsentry";
 
 function App() {
 
@@ -76,6 +77,7 @@ Let’s find out together what you already know about online safety and how we c
             </div>
           </main>
         } />
+        <Route path="/about" element={<DetailsEntry selectedlang={lang.name} />} />
         <Route path="/elementarysurvey" element={<ElementarySurvey willReadScreen={willReadScreen} />} />
         <Route path="/middlesurvey" element={<MiddleSurvey willReadScreen={willReadScreen} />} />
         <Route path="/highsurvey" element={<HighSurvey willReadScreen={willReadScreen} />} />

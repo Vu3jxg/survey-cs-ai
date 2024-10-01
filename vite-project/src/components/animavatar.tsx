@@ -12,7 +12,7 @@ export default function AnimAvatar({ willReadScreen, lang, currentQuestionIndex,
   const videoRef = useRef<HTMLVideoElement>(null);
 
   // Determine the video map based on the language and school level
-  let videoMap: Record<number, string>;
+  let videoMap: Record<number, string> = {};
 
   if (schoolLevel === 'elementary') {
     if (lang === 'English') {

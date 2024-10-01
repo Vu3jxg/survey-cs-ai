@@ -26,7 +26,7 @@ export default function HighSurvey ({willReadScreen}: HighSurveyProps) {
                              willReadScreen={willReadScreen}
                         lang={record?.lang}
                         currentQuestionIndex={currentQuestionIndex}
-                        schoolLevel={"middle"}
+                        schoolLevel={"high"}
                     />
                 </div>
             </div>

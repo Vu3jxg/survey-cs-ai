@@ -52,8 +52,10 @@ export default function Header({ willReadScreen, setWillReadScreen, isLightMode,
         >
           {isLightMode ? <FaRegMoon className="text-2xl" /> : <FaRegSun className="text-2xl" />}
         </button>
-        <FaBars className={`text-2xl ${isLightMode ? '' : 'text-red-500'}`} />
-      </div>
+          <a href="https://www.nitk.ac.in/" target="_blank" rel="noopener noreferrer">
+            <FaBars className={`text-2xl ${isLightMode ? '' : 'text-red-500'}`} />
+          </a>
+       </div>
     </header>
   );
 }

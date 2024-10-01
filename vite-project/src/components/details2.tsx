@@ -1,9 +1,8 @@
 import { useState, useRef } from "react";
 import DetailsEntry from "./detailsentry";
-import whiteLogo from '../assets/logos/NITK_white.png'; // Watermark image
-import videoSrcKannada from '../assets/elementary/kan/animq1.mp4';
-import videoSrcHindi from '../assets/elementary/hin/animq1.mp4';
-import videoSrcEnglish from '../assets/elementary/eng/animq1.mp4';
+import videoSrcKannada from '../assets/intro/WhatsApp Video 2024-09-27 at 22.01.18_6328378a.mp4';
+import videoSrcHindi from '../assets/intro/WhatsApp Video 2024-09-27 at 22.01.18_6328378a.mp4';
+import videoSrcEnglish from '../assets/intro/WhatsApp Video 2024-09-27 at 22.01.18_6328378a.mp4';
 
 interface DetailsProps {
     lang: {

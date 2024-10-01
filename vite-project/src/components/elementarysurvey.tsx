@@ -35,7 +35,7 @@ export default function ElementarySurvey ({ willReadScreen }: ElemSurveyProps) {
           willReadScreen={willReadScreen}
           lang={record?.lang}
           currentQuestionIndex={currentQuestionIndex}
-          schoolLevel={"middle"}
+          schoolLevel={"elementary"}
         />
       </div>
     </div>

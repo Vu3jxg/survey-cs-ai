@@ -1,8 +1,8 @@
 import { useState, useRef } from "react";
-import DetailsEntry from "./detailsentry";
-import videoSrcKannada from '../assets/elementary/kan/animq1.mp4';  // Add respective paths
-import videoSrcHindi from '../assets/elementary/hin/animq1.mp4';
-import videoSrcEnglish from '../assets/elementary/eng/animq1.mp4';
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import videoSrcKannada from '../assets/intro/WhatsApp Video 2024-09-27 at 22.01.18_6328378a.mp4';
+import videoSrcHindi from '../assets/intro/Hindi_intro.mp4';
+import videoSrcEnglish from '../assets/intro/Kannada_intro.mp4';
 
 interface DetailsProps {
     lang: {
@@ -15,6 +15,7 @@ interface DetailsProps {
 export default function Details({ lang, setLang }: DetailsProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [hasVideoEnded, setVideoEnded] = useState(false);
+    const navigate = useNavigate(); // Use navigate to redirect
 
     // Get the correct video source based on selected language
     const getVideoSrc = (language: string) => {
@@ -40,6 +41,7 @@ export default function Details({ lang, setLang }: DetailsProps) {
 
     const handleVideoEnd = () => {
         setVideoEnded(true);
+        navigate("/about"); // Redirect to /about route when the video ends
     };
 
     return (
@@ -91,13 +93,6 @@ export default function Details({ lang, setLang }: DetailsProps) {
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                </div>
-            )}
-
-            {/* Show DetailsEntry component after video ends */}
-            {hasVideoEnded && (
-                <div className="mt-8 text-center">
-                    <DetailsEntry selectedlang={lang.name} />
                 </div>
             )}
         </div>

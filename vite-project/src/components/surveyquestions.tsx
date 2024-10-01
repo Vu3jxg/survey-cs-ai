@@ -142,7 +142,7 @@ const SurveyQuestions = ({ db_name, record, currentQuestionIndex, setCurrentQues
       <div className="star-rating mb-4">
         <h3 className="text-lg font-semibold mb-2">Rate your experience:</h3>
         <div className='flex space-x-1'>
-        {[1, 2, 3, 4, 5].map(star => ( // Now 5 stars
+        {[1, 2, 3, 4, 5].map(star => ( 
           <FaStar
             key={star}
             size={48} // Make stars bigger

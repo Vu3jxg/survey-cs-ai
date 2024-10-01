@@ -122,94 +122,98 @@ export default function DetailsEntry({selectedlang}: DetailsEntryProps) {
 
     return (
         <>
-        <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-700">
-            {/* School Selection */}
-            <label className="block text-left text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                {getTranslation('school',languageCode)}
-            </label>
-            <DropdownInput 
-                className="w-full p-2 mb-9 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-900 text-gray-900"
-                options={schoolNames}
-                placeholder={getTranslation('schoolselection',languageCode)}
-                value={school}
-                onChange={handleSchoolChange}
-            />
+        <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div className="p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-md w-full dark:shadow-gray-700">
+        {/* School Selection */}
+        <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
+            {getTranslation('school',languageCode)}
+        </label>
+        <DropdownInput 
+            className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
+            options={schoolNames}
+            placeholder={getTranslation('schoolselection',languageCode)}
+            value={school}
+            onChange={handleSchoolChange}
+        />
 
-            {/* Class Selection */}
-            <label className="block text-left text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                {getTranslation('class',languageCode)}
-            </label>
-            <DropdownInput 
-                className="w-full p-2 mb-9 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-900 text-gray-900"
-                options={['1','2','3','4','5','6','7','8','9','10','11','12']}
-                placeholder={getTranslation('classselection',languageCode)}
-                value={classSelection}
-                onChange={handleClassChange}
-            />
+        {/* Class Selection */}
+        <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
+            {getTranslation('class',languageCode)}
+        </label>
+        <DropdownInput 
+            className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
+            options={['1','2','3','4','5','6','7','8','9','10','11','12']}
+            placeholder={getTranslation('classselection',languageCode)}
+            value={classSelection}
+            onChange={handleClassChange}
+        />
 
-            {/* Sec Selection */}
-            <label className="block text-left text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                {getTranslation('sec',languageCode)}
-            </label>
-            <DropdownInput 
-                className="w-full p-2 mb-9 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-900 text-gray-900"
-                options={['A','B','C','D','E']}
-                placeholder={getTranslation('secselection',languageCode)}
-                value={section}
-                onChange={handleSectionChange}
-            />
+        {/* Section Selection */}
+        <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
+            {getTranslation('sec',languageCode)}
+        </label>
+        <DropdownInput 
+            className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
+            options={['A','B','C','D','E']}
+            placeholder={getTranslation('secselection',languageCode)}
+            value={section}
+            onChange={handleSectionChange}
+        />
 
-            {/* Board Selection */}
-            <label className="block text-left text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                {getTranslation('board',languageCode)}
-            </label>
-            <DropdownInput 
-                className="w-full p-2 mb-9 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-900 text-gray-900"
-                options={['State','CBSE',(classSelection == '11' || classSelection == '12')? 'ISC':'ICSE']}
-                placeholder={getTranslation('boardselection',languageCode)}
-                value={board}
-                onChange={handleBoardChange}
-            />
+        {/* Board Selection */}
+        <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
+            {getTranslation('board',languageCode)}
+        </label>
+        <DropdownInput 
+            className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
+            options={['State', 'CBSE', (classSelection == '11' || classSelection == '12')? 'ISC':'ICSE']}
+            placeholder={getTranslation('boardselection',languageCode)}
+            value={board}
+            onChange={handleBoardChange}
+        />
 
-            {/* Rollno Selection */}
-            <label className="block text-left text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                {getTranslation('rollno', languageCode)}
-            </label>
-            <input 
-                type="text" 
-                value={rollNo}
-                onChange={handleRollNoChange}
-                placeholder={getTranslation('rollnoselection', languageCode)}
-                className="w-full mb-9 p-2 border border-gray-300 dark:text-black rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
-            />
+        {/* Roll No Selection */}
+        <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
+            {getTranslation('rollno',languageCode)}
+        </label>
+        <input 
+            type="text" 
+            value={rollNo}
+            onChange={handleRollNoChange}
+            placeholder={getTranslation('rollnoselection',languageCode)}
+            className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
+        />
 
-            {/* Gender Selection */}
-            <fieldset className="mb-4">
-                <legend className="block text-left text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                    {Gender}
-                </legend>
-                <div className="flex flex-col space-y-2">
-                    {genderOptions.map((option: string, index: number) => (
-                        <label key={index} className="flex items-center space-x-2 text-gray-800 dark:text-gray-200">
-                            <input
-                                type="radio"
-                                name="gender"
-                                value={option}
-                                checked={selectedGender === option}
-                                onChange={handleGenderChange}
-                                className="h-4 w-4 text-blue-600 focus:ring-blue-500 dark:focus:ring-blue-400"
-                            />
-                            <span>{option}</span>
-                        </label>
-                    ))}
-                </div>
-            </fieldset>
-        </div>
-        <button className="mt-6 px-6 py-3 text-white bg-orange-400 rounded-lg shadow-md hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-500"
+        {/* Gender Selection */}
+        <fieldset className="mb-6">
+            <legend className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
+                {getTranslation('gender',languageCode)}
+            </legend>
+            <div className="flex flex-col space-y-2">
+                {genderOptions.map((option: string, index: number) => (
+                    <label key={index} className="flex items-center space-x-3 text-gray-800 dark:text-gray-300">
+                        <input
+                            type="radio"
+                            name="gender"
+                            value={option}
+                            checked={selectedGender === option}
+                            onChange={handleGenderChange}
+                            className="h-5 w-5 text-purple-600 focus:ring-purple-500 dark:focus:ring-purple-400"
+                        />
+                        <span>{option}</span>
+                    </label>
+                ))}
+            </div>
+        </fieldset>
+
+        <button className="w-full mt-6 px-6 py-3 font-semibold text-white bg-purple-500 rounded-lg shadow-lg hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:bg-purple-700 dark:hover:bg-purple-800 dark:focus:ring-purple-600 transition-all duration-300"
             onClick={handleCreate}
             disabled={school === '' || classSelection === '' || section === '' || board === '' || rollNo === '' || selectedGender === ''}>
                 Submit
         </button>
+    </div>
+</div>
+
         </>
     );
 }
