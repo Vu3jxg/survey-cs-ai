@@ -4,28 +4,37 @@ export default {
   theme: {
     extend: {
       colors: {
-        lavender: "#E6E6FA", // Define lavender color if not already defined
+        lavender: "#E6E6FA", 
         purple: {
-          500: '#6B21A8', // Example color for purple
-          700: '#4C1D95', // Example color for purple
+          500: '#6B21A8', 
+          700: '#4C1D95',
         },
       },
       boxShadow: {
-        'neon-lavender': '0 0 10px rgba(230, 230, 250, 0.8), 0 0 20px rgba(230, 230, 250, 0.6), 0 0 30px rgba(230, 230, 250, 0.4)', // Neon lavender effect
-        'neon-purple': '0 0 10px rgba(107, 33, 168, 0.8), 0 0 20px rgba(107, 33, 168, 0.6), 0 0 30px rgba(107, 33, 168, 0.4)', // Neon purple effect
+        'neon-lavender': '0 0 10px rgba(230, 230, 250, 0.8), 0 0 20px rgba(230, 230, 250, 0.6), 0 0 30px rgba(230, 230, 250, 0.4)',
+        'neon-purple': '0 0 10px rgba(107, 33, 168, 0.8), 0 0 20px rgba(107, 33, 168, 0.6), 0 0 30px rgba(107, 33, 168, 0.4)',
       },
       textShadow: {
-        'neon-lavender': '0 0 5px rgba(230, 230, 250, 0.8), 0 0 10px rgba(230, 230, 250, 0.6), 0 0 15px rgba(230, 230, 250, 0.4)', // Neon lavender text shadow effect
-        'neon-purple': '0 0 5px rgba(107, 33, 168, 0.8), 0 0 10px rgba(107, 33, 168, 0.6), 0 0 15px rgba(107, 33, 168, 0.4)', // Neon purple text shadow effect
+        'neon-lavender': '0 0 5px rgba(230, 230, 250, 0.8), 0 0 10px rgba(230, 230, 250, 0.6), 0 0 15px rgba(230, 230, 250, 0.4)',
+        'neon-purple': '0 0 5px rgba(107, 33, 168, 0.8), 0 0 10px rgba(107, 33, 168, 0.6), 0 0 15px rgba(107, 33, 168, 0.4)',
       },
       fontSize: {
-        '4xl': '2.25rem', // Customize the size if needed
-        '5xl': '3rem', // Customize the size if needed
+        '4xl': '2.25rem', 
+        '5xl': '3rem', 
       },
       spacing: {
         'watermark-logo-width': '200px',
         'watermark-logo-margin': '10px',
         'watermark-text-size': '24px',
+      },
+      keyframes: {
+        slide: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+      },
+      animation: {
+        slide: 'slide 40s linear infinite',
       },
     },
   },
@@ -33,7 +42,6 @@ export default {
     extend: {},
   },
   plugins: [
-    // Add text-shadow plugin
     function ({ addUtilities }) {
       addUtilities({
         '.text-shadow-neon-lavender': {

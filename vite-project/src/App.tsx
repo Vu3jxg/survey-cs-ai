@@ -10,6 +10,12 @@ import HighSurvey from "./components/highsurvey";
 import blackLogo from './assets/logos/NITK_black.png'; // NITK black logo
 import DetailsEntry from "./components/detailsentry";
 
+// Developer images (replace these with actual images)
+import Dev1 from './assets/devs/Anoop.jpg';
+import Dev2 from './assets/devs/Shreya.jpg';
+import Dev3 from './assets/devs/mehul.jpg';
+import Dev4 from './assets/devs/sinchana.jpg';
+
 function App() {
 
   const [willReadScreen, setWillReadScreen] = useState(true);
@@ -54,7 +60,6 @@ function App() {
                </div>
             </div>
 
-
             {/* Main Content */}
             <Header willReadScreen={willReadScreen} setWillReadScreen={setWillReadScreen} isLightMode={isLightMode} setLightMode={toggleLightMode} />
             
@@ -75,6 +80,59 @@ Let’s find out together what you already know about online safety and how we c
                 ? <Details lang={lang} setLang={setLang} /> 
                 : <Details2 lang={lang} setLang={setLang} />}
             </div>
+
+            {/* Developer Images Animation */}
+            <div className="mt-16 bg-gray-300 py-3"> {/* Background color and padding */}
+  <div className="overflow-hidden">
+    <div className="flex animate-slide space-x-40 pb-1"> {/* Added padding at the bottom */}
+      
+      {/* Developer 1 */}
+      <div className="flex flex-col items-center mx-4">
+        <img 
+          src={Dev1} 
+          alt="Developer 1" 
+          className="w-28 h-28 rounded-lg shadow-lg transition-transform duration-500 hover:scale-105 border-4 border-purple-800" 
+        /> {/* Shadow and hover effect */}
+        <p className="mt-1 text-center text-lg font-semibold text-purple-700">Anoop S Prabhu</p>
+      </div>
+
+      {/* Developer 2 */}
+      <div className="flex flex-col items-center mx-4">
+        <img 
+          src={Dev2} 
+          alt="Developer 2" 
+          className="w-28 h-28 rounded-lg shadow-lg transition-transform duration-500 hover:scale-105 border-4 border-purple-800" 
+        />
+        <p className="mt-1 text-center text-lg font-semibold text-purple-700">Shreya S Rao</p>
+      </div>
+
+      {/* Developer 3 */}
+      <div className="flex flex-col items-center mx-4">
+        <img 
+          src={Dev3} 
+          alt="Developer 3" 
+          className="w-28 h-28 rounded-lg shadow-lg transition-transform duration-500 hover:scale-105 border-4 border-purple-800" 
+        />
+        <p className="mt-1 text-center text-lg font-semibold text-purple-700">Mehul Muralidhar Kini</p>
+      </div>
+
+      {/* Developer 4 */}
+      <div className="flex flex-col items-center mx-4">
+        <img 
+          src={Dev4} 
+          alt="Developer 4" 
+          className="w-28 h-28 rounded-lg bg-slate-400 shadow-lg transition-transform duration-500 hover:scale-105 border-4 border-purple-800" 
+        />
+        <p className="mt-1 text-center text-lg font-semibold text-purple-700">
+          Sinchana N
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
           </main>
         } />
         <Route path="/about" element={<DetailsEntry selectedlang={lang.name} />} />

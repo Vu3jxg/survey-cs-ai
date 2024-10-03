@@ -17,7 +17,8 @@ export default function ElementarySurvey ({ willReadScreen }: ElemSurveyProps) {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
     
     return (
-        <div className='flex flex-row w-full items-center justify-center min-h-screen dark:bg-black dark:text-white'>
+        <div className='flex flex-row w-full items-center justify-center min-h-screen dark:bg-black dark:text-purple-900'>
+  
   <div className="mr-8"> {/* Add margin-right to create space */}
     <SurveyQuestions 
       db_name="elementary" 

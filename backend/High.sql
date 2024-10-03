@@ -59,6 +59,7 @@ CREATE TABLE responses
 	q27 response_option,
 	q28 varchar(12),
 	rating int
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE UNIQUE INDEX unique_entry ON responses (school_code, class_name, section, board, rollno);
