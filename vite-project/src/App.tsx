@@ -15,6 +15,8 @@ import Dev1 from './assets/devs/Anoop.jpg';
 import Dev2 from './assets/devs/Shreya.jpg';
 import Dev3 from './assets/devs/mehul.jpg';
 import Dev4 from './assets/devs/sinchana.jpg';
+import Dev5 from './assets/devs/MPS-Photo-2023.jpg';
+import Dev6 from './assets/devs/GAURAV.jpg';
 
 function App() {
 
@@ -86,51 +88,94 @@ Let’s find out together what you already know about online safety and how we c
   <div className="overflow-hidden">
     <div className="flex animate-slide space-x-40 pb-1"> {/* Added padding at the bottom */}
       
-      {/* Developer 1 */}
-      <div className="flex flex-col items-center mx-4">
+      <div className="flex flex-col items-center mx-6">
+        <img 
+          src={Dev5} 
+          alt="Developer 5" 
+          className="w-28 h-28 rounded-lg shadow-lg transition-transform duration-500 hover:scale-105 border-4 border-purple-800" 
+        />
+        <p className="mt-1 text-center text-lg font-semibold text-purple-700 whitespace-nowrap">
+          Dr. Mahendra Pratap Singh
+        </p>
+        <p className="text-center text-sm text-purple-700 whitespace-nowrap">
+          Asst. Professor, NITK Surathkal
+        </p>
+      </div>
+
+      <div className="flex flex-col items-center mx-5">
+        <img 
+          src={Dev6} 
+          alt="Developer 6" 
+          className="w-28 h-28 rounded-lg shadow-lg transition-transform duration-500 hover:scale-105 border-4 border-purple-800" 
+        />
+        <p className="mt-1 text-center text-lg font-semibold text-purple-700 whitespace-nowrap">
+          Mr. Gaurav Pal
+        </p>
+        <p className="text-center text-sm text-purple-700 whitespace-nowrap">
+          Asst. Professor, NITK Surathkal
+        </p>
+      </div>
+      
+      <div className="flex flex-col items-center mx-5">
         <img 
           src={Dev1} 
           alt="Developer 1" 
           className="w-28 h-28 rounded-lg shadow-lg transition-transform duration-500 hover:scale-105 border-4 border-purple-800" 
-        /> {/* Shadow and hover effect */}
-        <p className="mt-1 text-center text-lg font-semibold text-purple-700">Anoop S Prabhu</p>
+        />
+        <p className="mt-1 text-center text-lg font-semibold text-purple-700 whitespace-nowrap">
+          Mr. Anoop S Prabhu
+        </p>
+        <p className="text-center text-sm text-purple-700 whitespace-nowrap">
+          Intern, CSRL NITK
+        </p>
       </div>
 
-      {/* Developer 2 */}
-      <div className="flex flex-col items-center mx-4">
+      <div className="flex flex-col items-center mx-5">
         <img 
           src={Dev2} 
           alt="Developer 2" 
           className="w-28 h-28 rounded-lg shadow-lg transition-transform duration-500 hover:scale-105 border-4 border-purple-800" 
         />
-        <p className="mt-1 text-center text-lg font-semibold text-purple-700">Shreya S Rao</p>
+        <p className="mt-1 text-center text-lg font-semibold text-purple-700 whitespace-nowrap">
+          Ms. Shreya S Rao
+        </p>
+        <p className="text-center text-sm text-purple-700 whitespace-nowrap">
+          Intern, CSRL NITK
+        </p>
       </div>
 
-      {/* Developer 3 */}
-      <div className="flex flex-col items-center mx-4">
+      <div className="flex flex-col items-center mx-5">
         <img 
           src={Dev3} 
           alt="Developer 3" 
           className="w-28 h-28 rounded-lg shadow-lg transition-transform duration-500 hover:scale-105 border-4 border-purple-800" 
         />
-        <p className="mt-1 text-center text-lg font-semibold text-purple-700">Mehul Muralidhar Kini</p>
+        <p className="mt-1 text-center text-lg font-semibold text-purple-700 whitespace-nowrap">
+          Mr. Mehul Muralidhar Kini
+        </p>
+        <p className="text-center text-sm text-purple-700 whitespace-nowrap">
+          Intern, CSRL NITK
+        </p>
       </div>
 
-      {/* Developer 4 */}
-      <div className="flex flex-col items-center mx-4">
+      <div className="flex flex-col items-center mx-5">
         <img 
           src={Dev4} 
           alt="Developer 4" 
           className="w-28 h-28 rounded-lg bg-slate-400 shadow-lg transition-transform duration-500 hover:scale-105 border-4 border-purple-800" 
         />
-        <p className="mt-1 text-center text-lg font-semibold text-purple-700">
-          Sinchana N
+        <p className="mt-1 text-center text-lg font-semibold text-purple-700 whitespace-nowrap">
+          Ms. Sinchana N
+        </p>
+        <p className="text-center text-sm text-purple-700 whitespace-nowrap">
+          Intern, CSRL NITK
         </p>
       </div>
 
     </div>
   </div>
 </div>
+
 
 
           </main>
