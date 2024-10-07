@@ -63,7 +63,7 @@ export default function MiddleSurvey({ willReadScreen, setWillReadScreen }: Midd
                 <div className="relative p-1 rounded-lg">
                     {/* Gradient border using background-clip */}
                     <div className="rounded-lg border-4 border-transparent bg-gradient-to-r from-purple-300 via-purple-500 to-purple-700 p-1">
-                        <div className="bg-white dark:bg-gray-900 rounded-lg p-4">
+                        <div className="bg-white dark:bg-gray-900 rounded-lg p-1">
                             <AnimAvatar
                                 willReadScreen={willReadScreen}
                                 lang={record?.lang}

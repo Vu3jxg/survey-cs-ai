@@ -80,7 +80,7 @@ export default function Details({ lang, setLang }: DetailsProps) {
                     <div className="fixed inset-0 bg-gray-800 opacity-50" />
                     
                     {/* Modal Content */}
-                    <div className="bg-black text-white p-32 rounded-lg shadow-lg z-10 dark:bg-white dark:text-black">
+                    <div className="bg-black text-white p-2 rounded-lg shadow-lg z-10 dark:bg-white dark:text-black">
                         <video
                             ref={videoRef}
                             width="350"

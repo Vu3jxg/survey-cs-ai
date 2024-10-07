@@ -115,20 +115,6 @@ Let’s find out together what you already know about online safety and how we c
           Asst. Professor, NITK Surathkal
         </p>
       </div>
-      
-      <div className="flex flex-col items-center mx-5">
-        <img 
-          src={Dev1} 
-          alt="Developer 1" 
-          className="w-28 h-28 rounded-lg shadow-lg transition-transform duration-500 hover:scale-105 border-4 border-purple-800" 
-        />
-        <p className="mt-1 text-center text-lg font-semibold text-purple-700 whitespace-nowrap">
-          Mr. Anoop S Prabhu
-        </p>
-        <p className="text-center text-sm text-purple-700 whitespace-nowrap">
-          Intern, CSRL NITK
-        </p>
-      </div>
 
       <div className="flex flex-col items-center mx-5">
         <img 
@@ -138,6 +124,20 @@ Let’s find out together what you already know about online safety and how we c
         />
         <p className="mt-1 text-center text-lg font-semibold text-purple-700 whitespace-nowrap">
           Ms. Shreya S Rao
+        </p>
+        <p className="text-center text-sm text-purple-700 whitespace-nowrap">
+          Intern, CSRL NITK
+        </p>
+      </div>
+      
+      <div className="flex flex-col items-center mx-5">
+        <img 
+          src={Dev1} 
+          alt="Developer 1" 
+          className="w-28 h-28 rounded-lg shadow-lg transition-transform duration-500 hover:scale-105 border-4 border-purple-800" 
+        />
+        <p className="mt-1 text-center text-lg font-semibold text-purple-700 whitespace-nowrap">
+          Mr. Anoop S Prabhu
         </p>
         <p className="text-center text-sm text-purple-700 whitespace-nowrap">
           Intern, CSRL NITK

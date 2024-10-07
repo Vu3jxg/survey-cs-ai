@@ -1,5 +1,5 @@
 export interface RecordType {
-    id?: number; // Optional, since it might not be available when creating a new item
+    id?: number; 
     school_code: number; 
     class_name: number;
     section: string;
