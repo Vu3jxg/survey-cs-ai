@@ -56,7 +56,7 @@ export default function AnimAvatar({ willReadScreen, lang, currentQuestionIndex,
 
   return (
     <div>
-      <video ref={videoRef} width='350' height='350' autoPlay controls onError={(e) => console.error('Error loading video:', e)}>
+      <video ref={videoRef} width='480' height='480' autoPlay controls onError={(e) => console.error('Error loading video:', e)}>
         <source src={videoSrc} type="video/mp4" />
         Your browser does not support the video tag.
       </video>

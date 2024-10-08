@@ -158,66 +158,69 @@ const SurveyQuestions = ({ db_name, record, currentQuestionIndex, setCurrentQues
   };
 
   return (
-    <div>
-      <h2 className='text-2xl mb-4 font-semibold'>{renderQuestion()}</h2>
-
-      {/* Options section with a grid layout */}
-      <div className='grid grid-cols-2 gap-4 mb-4'>
-        {currentQuestionIndex === questionsData.length - 1 ? null : ( // Hide options for the last question
-          questionsData[currentQuestionIndex]?.multiselect.toLowerCase() === 'no'
-            ? options.map((option, index) => (
-                <button
-                  key={index}
-                  className={`p-2 border rounded shadow-md ${selectedAnswer?.includes(String.fromCharCode(index + 65)) 
-                    ? 'bg-blue-500 text-white' 
-                    : 'bg-purple-600 text-white border-white hover:bg-purple-900 shadow-lg hover:shadow-xl'}`}   
-                  onClick={() => handleAnswerSelect(index)}
-                >
-                  {option}
-                </button>
-              ))
-            : options.map((option, index) => (
-                <button
-                  key={index}
-                  className={`p-2 border rounded shadow-md ${selectedAnswer?.includes(String.fromCharCode(index + 65)) 
-                    ? 'bg-blue-500 text-white' 
-                    : 'bg-purple-600 text-white border-white hover:bg-purple-900 shadow-lg hover:shadow-xl'}`}              
-                  onClick={() => handleAnswerSelect(index)}
-                >
-                  {option}
-                </button>
-              ))
-        )}
-      </div>
-
-      {/* Render star rating on the last question page */}
-      {currentQuestionIndex === questionsData.length - 1 && renderStarRating()}
-
-      <div className='flex items-center justify-center mt-8'>
-        <button onClick={handlePrev} className='p-2 text-white rounded bg-orange-400'
-          disabled={currentQuestionIndex === 0}
-        >
-          Prev
-        </button>
-
-        {currentQuestionIndex === questionsData.length - 1 ? (
-          <button
-            className="ml-4 px-4 py-2 bg-red-500 text-white rounded"
-            onClick={handleNext}
-          >
-            Submit
-          </button>
-        ) : (
-          <button
-            onClick={handleNext}
-            className={`p-2 ml-4 text-white rounded ${selectedAnswer || selectedRating !== null ? 'bg-green-500' : 'bg-gray-300 cursor-not-allowed'}`}
-            disabled={selectedAnswer == null && selectedRating == null} // Disables next button until an answer is selected or rating is provided
-          >
-            Next
-          </button>
-        )}
-      </div>
+    <div className="min-h-screen flex flex-col justify-start mt-0"> {/* Ensure the container spans the full height */}
+    <h2 className="text-2xl mt-4 mb-6 font-semibold text-center">{renderQuestion()}</h2> {/* Added margin-top to move it to the top */}
+  
+    {/* Options section with a grid layout */}
+    <div className="grid grid-cols-2 gap-4 mb-4">
+      {currentQuestionIndex === questionsData.length - 1 ? null : (
+        questionsData[currentQuestionIndex]?.multiselect.toLowerCase() === 'no'
+          ? options.map((option, index) => (
+              <button
+                key={index}
+                className={`p-2 border rounded shadow-md ${selectedAnswer?.includes(String.fromCharCode(index + 65)) 
+                  ? 'bg-blue-500 text-white' 
+                  : 'bg-purple-600 text-white border-white hover:bg-purple-900 shadow-lg hover:shadow-xl'}`}
+                onClick={() => handleAnswerSelect(index)}
+              >
+                {option}
+              </button>
+            ))
+          : options.map((option, index) => (
+              <button
+                key={index}
+                className={`p-2 border rounded shadow-md ${selectedAnswer?.includes(String.fromCharCode(index + 65)) 
+                  ? 'bg-blue-500 text-white' 
+                  : 'bg-purple-600 text-white border-white hover:bg-purple-900 shadow-lg hover:shadow-xl'}`}
+                onClick={() => handleAnswerSelect(index)}
+              >
+                {option}
+              </button>
+            ))
+      )}
     </div>
+  
+    {/* Render star rating on the last question page */}
+    {currentQuestionIndex === questionsData.length - 1 && renderStarRating()}
+  
+    <div className="flex items-center justify-center mt-6">
+      <button
+        onClick={handlePrev}
+        className="p-2 text-white rounded bg-orange-400"
+        disabled={currentQuestionIndex === 0}
+      >
+        Prev
+      </button>
+  
+      {currentQuestionIndex === questionsData.length - 1 ? (
+        <button
+          className="ml-4 px-4 py-2 bg-red-500 text-white rounded"
+          onClick={handleNext}
+        >
+          Submit
+        </button>
+      ) : (
+        <button
+          onClick={handleNext}
+          className={`p-2 ml-4 text-white rounded ${selectedAnswer || selectedRating !== null ? 'bg-green-500' : 'bg-gray-300 cursor-not-allowed'}`}
+          disabled={selectedAnswer == null && selectedRating == null} // Disables next button until an answer is selected or rating is provided
+        >
+          Next
+        </button>
+      )}
+    </div>
+  </div>
+  
   );
 };
 

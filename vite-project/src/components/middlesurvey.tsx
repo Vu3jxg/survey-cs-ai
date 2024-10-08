@@ -42,39 +42,42 @@ export default function MiddleSurvey({ willReadScreen, setWillReadScreen }: Midd
 
     return (
         <>
-            <Header
-                willReadScreen={willReadScreen}
-                setWillReadScreen={setWillReadScreen}
-                isLightMode={isLightMode}
-                setLightMode={toggleLightMode} // Pass toggle function for light mode
-                className="fixed top-0 left-0 w-full z-50" // Fixing header at the top
-            />
-            <div className='flex flex-col w-full items-center justify-center min-h-screen dark:bg-black dark:text-white'>
+  <Header
+      willReadScreen={willReadScreen}
+      setWillReadScreen={setWillReadScreen}
+      isLightMode={isLightMode}
+      setLightMode={toggleLightMode} // Pass toggle function for light mode
+      className="fixed top-0 left-0 w-full z-50" // Fixing header at the top
+  />
+  <div className='flex flex-col w-full items-center justify-center min-h-screen dark:bg-gray-800 dark:text-white'>
 
-                {/* Add top margin to prevent overlap with the header */}
-                <div className="flex flex-row w-full items-center justify-center mt-2">
-                    <SurveyQuestions
-                        db_name="middle"
-                        record={record}
-                        currentQuestionIndex={currentQuestionIndex}
-                        setCurrentQuestionIndex={setCurrentQuestionIndex}
-                    />
-                </div>
-                <div className="relative p-1 rounded-lg">
-                    {/* Gradient border using background-clip */}
-                    <div className="rounded-lg border-4 border-transparent bg-gradient-to-r from-purple-300 via-purple-500 to-purple-700 p-1">
-                        <div className="bg-white dark:bg-gray-900 rounded-lg p-1">
-                            <AnimAvatar
-                                willReadScreen={willReadScreen}
-                                lang={record?.lang}
-                                currentQuestionIndex={currentQuestionIndex}
-                                schoolLevel={"middle"}
-                                videoRef={videoRef} // Passing video reference to AnimAvatar
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </>
+      {/* Add top margin to prevent content overlap with the fixed header */}
+      <div className='mt-24'>
+          {/* Video and Survey Questions side by side */}
+          <div className='flex justify-center items-start gap-8'>
+              {/* Video Section */}
+              <div className='rounded-lg border-4 border-transparent bg-gradient-to-r from-purple-300 via-purple-500 to-purple-700 p-1 shadow-lg'>
+                  <AnimAvatar
+                      willReadScreen={willReadScreen}
+                      lang={record?.lang}
+                      currentQuestionIndex={currentQuestionIndex}
+                      schoolLevel={"middle"}
+                      videoRef={videoRef} // Pass videoRef for control
+                  />
+              </div>
+
+              {/* Survey Questions Section */}
+              <div className='bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-2xl mx-4 overflow-hidden'>
+                  <SurveyQuestions
+                      db_name="middle"
+                      record={record}
+                      currentQuestionIndex={currentQuestionIndex}
+                      setCurrentQuestionIndex={setCurrentQuestionIndex} 
+                  />
+              </div>
+          </div>
+      </div>
+  </div>
+</>
     );
 }

@@ -87,35 +87,9 @@ Let’s find out together what you already know about online safety and how we c
             <div className="mt-16 bg-gray-300 py-3"> {/* Background color and padding */}
   <div className="overflow-hidden">
     <div className="flex animate-slide space-x-40 pb-1"> {/* Added padding at the bottom */}
-      
-      <div className="flex flex-col items-center mx-6">
-        <img 
-          src={Dev5} 
-          alt="Developer 5" 
-          className="w-28 h-28 rounded-lg shadow-lg transition-transform duration-500 hover:scale-105 border-4 border-purple-800" 
-        />
-        <p className="mt-1 text-center text-lg font-semibold text-purple-700 whitespace-nowrap">
-          Dr. Mahendra Pratap Singh
-        </p>
-        <p className="text-center text-sm text-purple-700 whitespace-nowrap">
-          Asst. Professor, NITK Surathkal
-        </p>
-      </div>
-
-      <div className="flex flex-col items-center mx-5">
-        <img 
-          src={Dev6} 
-          alt="Developer 6" 
-          className="w-28 h-28 rounded-lg shadow-lg transition-transform duration-500 hover:scale-105 border-4 border-purple-800" 
-        />
-        <p className="mt-1 text-center text-lg font-semibold text-purple-700 whitespace-nowrap">
-          Mr. Gaurav Pal
-        </p>
-        <p className="text-center text-sm text-purple-700 whitespace-nowrap">
-          Asst. Professor, NITK Surathkal
-        </p>
-      </div>
-
+    <p className="mt-1 text-center text-lg font-semibold text-purple-700 whitespace-nowrap">
+        Developed By:
+      </p>
       <div className="flex flex-col items-center mx-5">
         <img 
           src={Dev2} 
@@ -171,6 +145,37 @@ Let’s find out together what you already know about online safety and how we c
           Intern, CSRL NITK
         </p>
       </div>
+      <p className="mt-1 text-center text-lg font-semibold text-purple-700 whitespace-nowrap">
+        Under the Guidence of:
+      </p>
+      <div className="flex flex-col items-center mx-6">
+        <img 
+          src={Dev5} 
+          alt="Developer 5" 
+          className="w-28 h-28 rounded-lg shadow-lg transition-transform duration-500 hover:scale-105 border-4 border-purple-800" 
+        />
+        <p className="mt-1 text-center text-lg font-semibold text-purple-700 whitespace-nowrap">
+          Dr. Mahendra Pratap Singh
+        </p>
+        <p className="text-center text-sm text-purple-700 whitespace-nowrap">
+          Asst. Professor, Dept. of Computer Science & Engineering, NITK Surathkal
+        </p>
+      </div>
+
+      <div className="flex flex-col items-center mx-5">
+        <img 
+          src={Dev6} 
+          alt="Developer 6" 
+          className="w-28 h-28 rounded-lg shadow-lg transition-transform duration-500 hover:scale-105 border-4 border-purple-800" 
+        />
+        <p className="mt-1 text-center text-lg font-semibold text-purple-700 whitespace-nowrap">
+          Mr. Gaurav Pal
+        </p>
+        <p className="text-center text-sm text-purple-700 whitespace-nowrap">
+          Project Co-ordinator, CSRL, NITK Surathkal
+        </p>
+      </div>
+      
 
     </div>
   </div>
@@ -180,10 +185,18 @@ Let’s find out together what you already know about online safety and how we c
 
           </main>
         } />
-        <Route path="/about" element={<DetailsEntry selectedlang={lang.name} />} />
-        <Route path="/elementarysurvey" element={<ElementarySurvey willReadScreen={willReadScreen} />} />
-        <Route path="/middlesurvey" element={<MiddleSurvey willReadScreen={willReadScreen} />} />
-        <Route path="/highsurvey" element={<HighSurvey willReadScreen={willReadScreen} />} />
+        <Route path="/about" element={<DetailsEntry selectedlang={lang.name} willReadScreen={false} setWillReadScreen={function (): void {
+          throw new Error("Function not implemented.");
+        } } />} />
+        <Route path="/elementarysurvey" element={<ElementarySurvey willReadScreen={willReadScreen} setWillReadScreen={function (): void {
+          throw new Error("Function not implemented.");
+        } } />} />
+        <Route path="/middlesurvey" element={<MiddleSurvey willReadScreen={willReadScreen} setWillReadScreen={function (): void {
+          throw new Error("Function not implemented.");
+        } } />} />
+        <Route path="/highsurvey" element={<HighSurvey willReadScreen={willReadScreen} setWillReadScreen={function (): void {
+          throw new Error("Function not implemented.");
+        } } />} />
         <Route path="/finish" element={<Ending />} />
       </Routes>
     </Router>
