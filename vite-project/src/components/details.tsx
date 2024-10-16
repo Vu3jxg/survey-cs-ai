@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import videoSrcEnglish from '../assets/intro/WhatsApp Video 2024-09-27 at 22.01.18_6328378a.mp4';
 import videoSrcHindi from '../assets/intro/Hindi_intro.mp4';
 import videoSrcKannada from '../assets/intro/Kannada_intro.mp4';
@@ -15,9 +15,8 @@ interface DetailsProps {
 export default function Details({ lang, setLang }: DetailsProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [hasVideoEnded, setVideoEnded] = useState(false);
-    const navigate = useNavigate(); // Use navigate to redirect
+    const navigate = useNavigate();
 
-    // Get the correct video source based on selected language
     const getVideoSrc = (language: string) => {
         switch (language) {
             case 'Kannada':
@@ -27,7 +26,7 @@ export default function Details({ lang, setLang }: DetailsProps) {
             case 'English':
                 return videoSrcEnglish;
             default:
-                return videoSrcEnglish; // Fallback to English
+                return videoSrcEnglish; 
         }
     };
 
@@ -36,55 +35,51 @@ export default function Details({ lang, setLang }: DetailsProps) {
             isSet: true,
             name: selectedOption,
         });
-        setVideoEnded(false); // Reset video ended state
+        setVideoEnded(false); 
     };
 
     const handleVideoEnd = () => {
         setVideoEnded(true);
-        navigate("/about"); // Redirect to /about route when the video ends
+        navigate("/about"); 
     };
 
     return (
-        <div className="p-6 max-w-screen-md mx-auto bg-white bg-opacity-100 dark:bg-gray-900 dark:bg-opacity-90 rounded-xl shadow-lg dark:shadow-gray-700">
+        <div className="relative w-full h-[30vh] max-w-[90vw] mx-auto bg-white dark:bg-gray-900 rounded-xl shadow-lg dark:shadow-gray-700">
 
             <center>
-                <p className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200">
-                    Choose your language
+                <p className="text-[2vw] font-bold mb-1 text-gray-800 dark:text-gray-200">
+                    CHOOSE YOUR LANGUAGE
                 </p>
             </center>
-            <div className="flex flex-row px-12 py-3 items-center justify-between">
+
+            <div className="flex flex-wrap gap-6 justify-center items-center px-4 py-6">
                 <button
-                    className="px-12 py-4 text-3xl text-purple-500 font-bold bg-white border-4 border-purple-700 rounded-lg shadow-neon-purple hover:bg-purple-300 focus:outline-none focus:ring-4 focus:ring-purple-500 focus:ring-opacity-50 hover:border-purple-600 dark:bg-purple-500 dark:hover:bg-purple-700 dark:focus:ring-purple-700 dark:shadow-neon-purple"
+                    className="w-[10vw] h-[10vh] text-[vw] font-bold text-purple-600 bg-white border-4 border-purple-700 rounded-lg shadow-lg hover:bg-purple-300 focus:outline-none focus:ring-4 focus:ring-purple-500 dark:bg-purple-500 dark:hover:bg-purple-700 dark:focus:ring-purple-700 dark:text-white dark:border-purple-500"
                     onClick={() => handleSelect('Kannada')}
                 >
                     ಕನ್ನಡ
                 </button>
                 <button
-                    className="px-12 py-4 text-3xl text-purple-500 font-bold bg-white border-4 border-purple-700 rounded-lg shadow-neon-purple hover:bg-purple-300 focus:outline-none focus:ring-4 focus:ring-purple-500 focus:ring-opacity-50 hover:border-purple-600 dark:bg-purple-500 dark:hover:bg-purple-700 dark:focus:ring-purple-700 dark:shadow-neon-purple"
+                    className="w-[10vw] h-[10vh] text-[vw] font-bold text-purple-600 bg-white border-4 border-purple-700 rounded-lg shadow-lg hover:bg-purple-300 focus:outline-none focus:ring-4 focus:ring-purple-500 dark:bg-purple-500 dark:hover:bg-purple-700 dark:focus:ring-purple-700 dark:text-white dark:border-purple-500"
                     onClick={() => handleSelect('Hindi')}
                 >
                     हिंदी
                 </button>
                 <button
-                    className="px-12 py-4 text-3xl text-purple-500 font-bold bg-white border-4 border-purple-700 rounded-lg shadow-neon-purple hover:bg-purple-300 focus:outline-none focus:ring-4 focus:ring-purple-500 focus:ring-opacity-50 hover:border-purple-600 dark:bg-purple-500 dark:hover:bg-purple-700 dark:focus:ring-purple-700 dark:shadow-neon-purple"
+                    className="w-[10vw] h-[10vh] text-[vw] font-bold text-purple-600 bg-white border-4 border-purple-700 rounded-lg shadow-lg hover:bg-purple-300 focus:outline-none focus:ring-4 focus:ring-purple-500 dark:bg-purple-500 dark:hover:bg-purple-700 dark:focus:ring-purple-700 dark:text-white dark:border-purple-500"
                     onClick={() => handleSelect('English')}
                 >
                     English
                 </button>
             </div>
 
-            {/* Show video modal if a language is selected and video hasn't ended */}
             {lang.isSet && !hasVideoEnded && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center">
-                    {/* Backdrop */}
+                <div className="fixed inset-0 flex items-center justify-center">
                     <div className="fixed inset-0 bg-gray-800 opacity-50" />
-                    
-                    {/* Modal Content */}
-                    <div className="bg-black text-white p-2 rounded-lg shadow-lg z-10 dark:bg-white dark:text-black">
+                    <div className="bg-black text-white p-1 rounded-lg shadow-lg z-10 dark:bg-white dark:text-black">
                         <video
                             ref={videoRef}
-                            width="350"
-                            height="350"
+                            className="w-[50vw] h-[50vh]"
                             autoPlay
                             onEnded={handleVideoEnd}
                             onError={(e) => console.error('Error loading video:', e)}

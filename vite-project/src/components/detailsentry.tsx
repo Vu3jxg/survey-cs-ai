@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import Captcha from './Captcha'; // Import the Captcha component
 import DropdownInput from "./dropdown";
 import data from '../data/DetailsDisplayLang.json';
 import schooldata from '../data/SchoolsList.json';
-import { Translations, LanguageCode, SchoolInterface } from '../types/Data'; //I deeply apologize for not using the i18 library
+import { Translations, LanguageCode, SchoolInterface } from '../types/Data';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Header from './header';
@@ -39,9 +40,8 @@ function getLanguageCode(value: string): LanguageCode {
     return 'kan';
 }
 
-export default function DetailsEntry({ selectedlang, willReadScreen, setWillReadScreen }: DetailsEntryProps) {
+export default function DetailsEntryDeferred({ selectedlang, willReadScreen, setWillReadScreen }: DetailsEntryProps) {
     const languageCode: LanguageCode = getLanguageCode(selectedlang);
-
     const Gender = getTranslation('gender', languageCode);
     const genderOptions = [
         getTranslation('genderoptionsmale', languageCode),
@@ -56,6 +56,7 @@ export default function DetailsEntry({ selectedlang, willReadScreen, setWillRead
     const [board, setBoard] = useState('');
     const [rollNo, setRollNo] = useState('');
     const [selectedGender, setSelectedGender] = useState('');
+    const [captchaToken, setCaptchaToken] = useState<string | null>(null); // State for the captcha token
 
     const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSelectedGender(event.target.value);
@@ -69,10 +70,9 @@ export default function DetailsEntry({ selectedlang, willReadScreen, setWillRead
 
     const navigateToCategory = useNavigate();
 
-    // Theme state
     const [isLightMode, setLightMode] = useState(() => {
         const savedTheme = localStorage.getItem('theme');
-        return savedTheme ? savedTheme === 'light' : true; // Default to light mode if not set
+        return savedTheme ? savedTheme === 'light' : true; 
     });
 
     useEffect(() => {
@@ -87,17 +87,20 @@ export default function DetailsEntry({ selectedlang, willReadScreen, setWillRead
 
     const toggleLightMode = () => setLightMode(prevMode => !prevMode);
 
-    // Handle form submission
     const handleCreate = () => {
-        console.log('handleCreate called');
-        let category = ''; // for age category i.e., elementary, middle or high school
-        const classVal = parseInt(classSelection, 10); // Parse the class selection
+        if (!captchaToken) {
+            alert('Please complete the reCAPTCHA');
+            return; // Prevent submission if captcha is not validated
+        }
+
+        let category = ''; 
+        const classVal = parseInt(classSelection, 10); 
         if (classVal <= 5) {
-            category = 'elementary'; // for classes 1-5
+            category = 'elementary'; 
         } else if (classVal <= 8) {
-            category = 'middle'; // for classes 6-8
+            category = 'middle'; 
         } else {
-            category = 'high'; // for classes 9-12
+            category = 'high'; 
         }
 
         const newDetailsList = {
@@ -113,17 +116,16 @@ export default function DetailsEntry({ selectedlang, willReadScreen, setWillRead
                 return index === 0 ? 'M' : index === 1 ? 'F' : 'O';
             })(),
             lang: selectedlang,
-            rollno: rollNo
+            rollno: rollNo,
+            recaptcha_token: captchaToken // Add the captcha token here
         };
 
-        console.log('Making POST request with', newDetailsList);
         axios.post(`http://127.0.0.1:8000/${category}`, newDetailsList)
             .then(res => {
-                console.log('POST request success', res.data);
                 navigateToCategory(`/${category}survey`, { state: res.data });
             })
             .catch(error => {
-                console.error('There was an error with the POST request!', error);
+                console.error('Error with the POST request', error);
             });
     };
 
@@ -133,8 +135,8 @@ export default function DetailsEntry({ selectedlang, willReadScreen, setWillRead
                 willReadScreen={willReadScreen}
                 setWillReadScreen={setWillReadScreen}
                 isLightMode={isLightMode}
-                setLightMode={toggleLightMode} // Pass toggle function for light mode
-                className="fixed top-0 left-0 w-full z-50" // Fixing header at the top
+                setLightMode={toggleLightMode}
+                className="fixed top-0 left-0 w-full z-50"
             />
             <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900">
                 <div className="p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-md w-full dark:shadow-gray-700">
@@ -180,48 +182,50 @@ export default function DetailsEntry({ selectedlang, willReadScreen, setWillRead
                     </label>
                     <DropdownInput
                         className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
-                        options={['CBSE', 'ICSE', 'State']}
+                        options={['CBSE', 'ICSE', 'State Board']}
                         placeholder={getTranslation('boardselection', languageCode)}
                         value={board}
                         onChange={handleBoardChange}
                     />
 
-                    {/* Roll No */}
+                    {/* Gender Selection */}
+                    <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
+                        {Gender}
+                    </label>
+                    <div className="mb-6">
+                        {genderOptions.map((option, index) => (
+                            <div key={index}>
+                                <input
+                                    type="radio"
+                                    value={option}
+                                    checked={selectedGender === option}
+                                    onChange={handleGenderChange}
+                                    className="mr-2"
+                                />
+                                <label>{option}</label>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Roll No Input */}
                     <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
                         {getTranslation('rollno', languageCode)}
                     </label>
                     <input
+                    placeholder='Your Roll Number'
                         type="text"
-                        className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
-                        placeholder={getTranslation('rollnoentry', languageCode)}
                         value={rollNo}
                         onChange={handleRollNoChange}
+                        className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
                     />
 
-                    {/* Gender */}
-                    <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
-                        {Gender}
-                    </label>
-                    <div className="flex space-x-4 mb-6">
-                        {genderOptions.map((option, index) => (
-                            <label key={index} className="inline-flex items-center">
-                                <input
-                                    type="radio"
-                                    name="gender"
-                                    className="form-radio h-5 w-5 text-purple-500 dark:text-purple-400"
-                                    value={option}
-                                    checked={selectedGender === option}
-                                    onChange={handleGenderChange}
-                                />
-                                <span className="ml-2 text-gray-900 dark:text-gray-300">{option}</span>
-                            </label>
-                        ))}
-                    </div>
+                    {/* Captcha Component */}
+                    <Captcha onTokenChange={setCaptchaToken} />
 
                     {/* Submit Button */}
                     <button
                         onClick={handleCreate}
-                        className="w-full p-3 bg-purple-500 dark:bg-purple-700 text-white rounded-lg hover:bg-purple-600 dark:hover:bg-purple-800 transition-colors focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
+                        className="w-full py-3 mb-6 bg-purple-600 text-white font-semibold rounded-lg shadow-md hover:bg-purple-500 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
                     >
                         {getTranslation('submit', languageCode)}
                     </button>

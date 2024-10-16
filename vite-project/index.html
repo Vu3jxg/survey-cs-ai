@@ -8,5 +8,12 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script type="text/javascript">
+      var onloadCallback = function() {
+        console.log("reCAPTCHA is ready!");
+      };
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    
   </body>
 </html>

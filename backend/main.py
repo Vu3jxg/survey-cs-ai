@@ -1,26 +1,31 @@
-from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi import FastAPI, Request, HTTPException, Depends
+import requests
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
-from .database import SessionLocal_db1, engine_db1, SessionLocal_db2, engine_db2, SessionLocal_db3, engine_db3, Base_db1, Base_db2, Base_db3
+from .database import SessionLocal_db1, SessionLocal_db2, SessionLocal_db3, Base_db1, Base_db2, Base_db3, engine_db1, engine_db2, engine_db3
 from . import crud
 from . import schema
 from . import models
+import httpx
 
-# Create all tables in the respective databases that are defined by models inheriting from the base classes
-Base_db1.metadata.create_all(bind=engine_db1)  # For Elementary DB
-Base_db2.metadata.create_all(bind=engine_db2)  # For Middle DB
-Base_db3.metadata.create_all(bind=engine_db3)  # For High DB
+# Create all tables for Elementary, Middle, and High databases
+Base_db1.metadata.create_all(bind=engine_db1)
+Base_db2.metadata.create_all(bind=engine_db2)
+Base_db3.metadata.create_all(bind=engine_db3)
 
 app = FastAPI()
 
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Allow requests from this origin, Replace http://localhost:5173 with the origin of your frontend application.
+    allow_origins=["http://localhost:5173"],  # Update this with your frontend's origin
     allow_credentials=True,
-    allow_methods=["*"],  # Allow all HTTP methods
-    allow_headers=["*"],  # Allow all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
+
+# reCAPTCHA secret key (replace this with your actual secret key)
+RECAPTCHA_SECRET_KEY = "6LeByWIqAAAAAGbPWyYaCm4jeB3o-o561b1PzMEP"
 
 # Dependency to get the SQLAlchemy session for Elementary model
 def get_db_elementary():
@@ -46,22 +51,66 @@ def get_db_high():
     finally:
         db.close()
 
-# Routes for Elementary model
+# Function to verify reCAPTCHA
+async def verify_recaptcha(captcha_token: str) -> bool:
+    async with httpx.AsyncClient() as client:
+        response = await client.post(
+            "https://www.google.com/recaptcha/api/siteverify",
+            data={
+                "secret": "6LeByWIqAAAAAGbPWyYaCm4jeB3o-o561b1PzMEP",
+                "response": captcha_token
+            }
+        )
+        result = response.json()
+        return result.get("success", False)
 
-@app.post("/elementary/", response_model=schema.Elementary)
-def create_elementary(elementary: schema.ElementaryCreate, db: Session = Depends(get_db_elementary)):
-     # Check if an Elementary record with the same ID already exists
-    existing_elementary = db.query(models.Elementary).filter(
-        models.Elementary.school_code == elementary.school_code,
-        models.Elementary.class_name == elementary.class_name,
-        models.Elementary.rollno == elementary.rollno,
-        models.Elementary.board == elementary.board
-    ).first()
+# API endpoint to verify reCAPTCHA and handle form submission
+@app.post("/api/submit-form")
+async def verify_recaptcha_and_submit(request: Request, db: Session = Depends(get_db_elementary)):
+    body = await request.json()
+    captcha_token = body.get("captchaToken")
+
+    if not captcha_token:
+        raise HTTPException(status_code=400, detail="Captcha token missing")
+
+    # Verify captcha token with Google
+    is_human = await verify_recaptcha(captcha_token)
+    if not is_human:
+        raise HTTPException(status_code=400, detail="Captcha verification failed")
+
+    # Proceed with your logic after successful captcha verification
+    # You can access other fields in the body here
+    # For example: school_code = body.get("school_code")
     
+    return {"message": "Form submitted successfully"}
+
+# CRUD Operations for Elementary Model
+@app.post("/elementary/", response_model=schema.Elementary)
+async def create_elementary(request: Request, db: Session = Depends(get_db_elementary)):
+    data = await request.json()
+    recaptcha_token = data.get("recaptcha_token")
+    
+    if not recaptcha_token:
+        raise HTTPException(status_code=400, detail="reCAPTCHA token missing")
+
+    # Verify reCAPTCHA
+    is_human = await verify_recaptcha(recaptcha_token)
+    if not is_human:
+        raise HTTPException(status_code=400, detail="reCAPTCHA verification failed")
+
+    # Proceed with creating the Elementary record
+    elementary_data = schema.ElementaryCreate(**data)
+    existing_elementary = db.query(models.Elementary).filter(
+        models.Elementary.school_code == elementary_data.school_code,
+        models.Elementary.class_name == elementary_data.class_name,
+        models.Elementary.rollno == elementary_data.rollno,
+        models.Elementary.board == elementary_data.board
+    ).first()
+
     if existing_elementary:
         return existing_elementary
     else:
-        return crud.create_elementary(db=db, elementary=elementary)
+        return crud.create_elementary(db=db, elementary=elementary_data)
 
 @app.get("/elementary/{elementary_id}", response_model=schema.Elementary)
 def read_elementary(elementary_id: int, db: Session = Depends(get_db_elementary)):
@@ -88,22 +137,34 @@ def delete_elementary(elementary_id: int, db: Session = Depends(get_db_elementar
         raise HTTPException(status_code=404, detail="Elementary record not found")
     return {"detail": "Elementary record deleted"}
 
-# Routes for Middle model
+# CRUD Operations for Middle Model
 
 @app.post("/middle/", response_model=schema.Middle)
-def create_middle(middle: schema.MiddleCreate, db: Session = Depends(get_db_middle)):
-    # Check if a Middle record with the same ID already exists
-    existing_middle = db.query(models.Middle).filter(
-        models.Middle.school_code == middle.school_code,
-        models.Middle.class_name == middle.class_name,
-        models.Middle.rollno == middle.rollno,
-        models.Middle.board == middle.board
-    ).first()
+async def create_middle(request: Request, db: Session = Depends(get_db_middle)):
+    data = await request.json()
+    recaptcha_token = data.get("recaptcha_token")
     
+    if not recaptcha_token:
+        raise HTTPException(status_code=400, detail="reCAPTCHA token missing")
+
+    # Verify reCAPTCHA
+    is_human = await verify_recaptcha(recaptcha_token)
+    if not is_human:
+        raise HTTPException(status_code=400, detail="reCAPTCHA verification failed")
+
+    # Proceed with creating the Middle record
+    middle_data = schema.MiddleCreate(**data)
+    existing_middle = db.query(models.Middle).filter(
+        models.Middle.school_code == middle_data.school_code,
+        models.Middle.class_name == middle_data.class_name,
+        models.Middle.rollno == middle_data.rollno,
+        models.Middle.board == middle_data.board
+    ).first()
+
     if existing_middle:
         return existing_middle
     else:
-        return crud.create_middle(db=db, middle=middle)
+        return crud.create_middle(db=db, middle=middle_data)
 
 @app.get("/middle/{middle_id}", response_model=schema.Middle)
 def read_middle(middle_id: int, db: Session = Depends(get_db_middle)):
@@ -130,22 +191,34 @@ def delete_middle(middle_id: int, db: Session = Depends(get_db_middle)):
         raise HTTPException(status_code=404, detail="Middle record not found")
     return {"detail": "Middle record deleted"}
 
-# Routes for High model
+# CRUD Operations for High Model
 
 @app.post("/high/", response_model=schema.High)
-def create_high(high: schema.HighCreate, db: Session = Depends(get_db_high)):
-    # Check if a High record with the same ID already exists
-    existing_high = db.query(models.High).filter(
-        models.High.school_code == high.school_code,
-        models.High.class_name == high.class_name,
-        models.High.rollno == high.rollno,
-        models.High.board == high.board
-    ).first()
+async def create_high(request: Request, db: Session = Depends(get_db_high)):
+    data = await request.json()
+    recaptcha_token = data.get("recaptcha_token")
     
+    if not recaptcha_token:
+        raise HTTPException(status_code=400, detail="reCAPTCHA token missing")
+
+    # Verify reCAPTCHA
+    is_human = await verify_recaptcha(recaptcha_token)
+    if not is_human:
+        raise HTTPException(status_code=400, detail="reCAPTCHA verification failed")
+
+    # Proceed with creating the High record
+    high_data = schema.HighCreate(**data)
+    existing_high = db.query(models.High).filter(
+        models.High.school_code == high_data.school_code,
+        models.High.class_name == high_data.class_name,
+        models.High.rollno == high_data.rollno,
+        models.High.board == high_data.board
+    ).first()
+
     if existing_high:
         return existing_high
     else:
-        return crud.create_high(db=db, high=high)
+        return crud.create_high(db=db, high=high_data)
 
 @app.get("/high/{high_id}", response_model=schema.High)
 def read_high(high_id: int, db: Session = Depends(get_db_high)):
