@@ -54,7 +54,7 @@ export default function ElementarySurvey({ willReadScreen, setWillReadScreen }: 
   <div className='flex flex-col w-full items-center justify-center min-h-screen dark:bg-gray-800 dark:text-white'>
 
       {/* Add top margin to prevent content overlap with the fixed header */}
-      <div className='mt-24'>
+      <div className='mt-0'>
           {/* Video and Survey Questions side by side */}
           <div className='flex justify-center items-start gap-8'>
               {/* Video Section */}

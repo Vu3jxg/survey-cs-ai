@@ -57,7 +57,7 @@ async def verify_recaptcha(captcha_token: str) -> bool:
         response = await client.post(
             "https://www.google.com/recaptcha/api/siteverify",
             data={
-                "secret": "6LeByWIqAAAAAGbPWyYaCm4jeB3o-o561b1PzMEP",
+                "secret": RECAPTCHA_SECRET_KEY,
                 "response": captcha_token
             }
         )
@@ -68,7 +68,7 @@ async def verify_recaptcha(captcha_token: str) -> bool:
 @app.post("/api/submit-form")
 async def verify_recaptcha_and_submit(request: Request, db: Session = Depends(get_db_elementary)):
     body = await request.json()
-    captcha_token = body.get("captchaToken")
+    captcha_token = body.get("recaptcha_token")
 
     if not captcha_token:
         raise HTTPException(status_code=400, detail="Captcha token missing")

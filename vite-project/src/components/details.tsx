@@ -76,10 +76,10 @@ export default function Details({ lang, setLang }: DetailsProps) {
             {lang.isSet && !hasVideoEnded && (
                 <div className="fixed inset-0 flex items-center justify-center">
                     <div className="fixed inset-0 bg-gray-800 opacity-50" />
-                    <div className="bg-black text-white p-1 rounded-lg shadow-lg z-10 dark:bg-white dark:text-black">
+                    <div className="bg-black text-white p-1 rounded-lg shadow-lg z-1 dark:bg-white dark:text-black">
                         <video
                             ref={videoRef}
-                            className="w-[50vw] h-[50vh]"
+                            className="w-[24vw] h-[50vh]"
                             autoPlay
                             onEnded={handleVideoEnd}
                             onError={(e) => console.error('Error loading video:', e)}

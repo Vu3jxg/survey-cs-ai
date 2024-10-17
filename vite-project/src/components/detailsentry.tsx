@@ -57,6 +57,7 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
     const [rollNo, setRollNo] = useState('');
     const [selectedGender, setSelectedGender] = useState('');
     const [captchaToken, setCaptchaToken] = useState<string | null>(null); // State for the captcha token
+    const [isFormValid, setIsFormValid] = useState(false); // State to track form validity
 
     const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSelectedGender(event.target.value);
@@ -128,6 +129,11 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
                 console.error('Error with the POST request', error);
             });
     };
+
+    // Check form validity
+    useEffect(() => {
+        setIsFormValid(board !== '' && selectedGender !== '' && captchaToken !== null);
+    }, [board, selectedGender, captchaToken]);
 
     return (
         <>
@@ -225,9 +231,12 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
                     {/* Submit Button */}
                     <button
                         onClick={handleCreate}
-                        className="w-full py-3 mb-6 bg-purple-600 text-white font-semibold rounded-lg shadow-md hover:bg-purple-500 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
+                        className={`mt-6 px-6 py-2 font-bold rounded-lg ${
+                            isFormValid ? 'bg-purple-500 text-white hover:bg-gray-200' : 'bg-gray-500 text-gray-300 cursor-not-allowed'
+                        }`}
+                        disabled={!isFormValid}
                     >
-                        {getTranslation('submit', languageCode)}
+                        Submit
                     </button>
                 </div>
             </div>

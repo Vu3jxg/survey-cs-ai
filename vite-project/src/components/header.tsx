@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaVolumeUp, FaVolumeMute, FaRegSun, FaRegMoon, FaBars } from "react-icons/fa";
-import Toggle from "./toggle";
+import { FaRegSun, FaRegMoon, FaBars } from "react-icons/fa";
 import whiteLogo from "../assets/logos/NITK_white.png"; // White logo for dark mode
 import blackLogo from "../assets/logos/NITK_black.png"; // Black logo for light mode
 
@@ -42,9 +41,6 @@ export default function Header({ willReadScreen, setWillReadScreen, isLightMode,
 
       {/* Right Section: Controls */}
       <div className="flex items-center space-x-6">
-        <FaVolumeMute className={`text-2xl ${isLightMode ? '' : 'text-red-500'}`} />
-        <Toggle willReadScreen={willReadScreen} setWillReadScreen={setWillReadScreen} />
-        <FaVolumeUp className={`text-2xl ${isLightMode ? '' : 'text-red-500'}`} />
         <button 
           onClick={setLightMode} 
           className={`p-2 rounded-md ${isLightMode ? 'hover:bg-blue-600 text-black' : 'hover:bg-green-600 text-red-500'}`}

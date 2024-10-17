@@ -158,7 +158,7 @@ const SurveyQuestions = ({ db_name, record, currentQuestionIndex, setCurrentQues
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-start mt-0"> {/* Ensure the container spans the full height */}
+    <div className="min-h-10 flex flex-col justify-start mt-0 "> {/* Ensure the container spans the full height */}
     <h2 className="text-2xl mt-4 mb-6 font-semibold text-center">{renderQuestion()}</h2> {/* Added margin-top to move it to the top */}
   
     {/* Options section with a grid layout */}
