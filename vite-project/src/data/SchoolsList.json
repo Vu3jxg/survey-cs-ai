@@ -54,5 +54,9 @@
     {
       "schoolCode": "014",
       "schoolName": "Lions Special School, Surathkal"
+    },
+    {
+      "schoolCode": "111",
+      "schoolName": "Others"
     }
   ]

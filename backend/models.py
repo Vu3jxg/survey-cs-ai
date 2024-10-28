@@ -5,6 +5,7 @@ class Elementary(Base_db1):
     __tablename__ = 'responses'
     id = Column(BigInteger, primary_key=True, autoincrement=True)
     school_code = Column(Integer, index=True, nullable=False)
+    other_name = Column(String(100), index=True, nullable=True) 
     class_name = Column(Integer, index=True, nullable=False)
     section = Column(String(1), index=True, nullable=False)
     board = Column(String, index=True, nullable=False)
@@ -27,6 +28,7 @@ class Middle(Base_db2):
     __tablename__ = 'responses'
     id = Column(BigInteger, primary_key=True, autoincrement=True)
     school_code = Column(Integer, index=True)
+    other_name = Column(String(100), index=True, nullable=True)
     class_name = Column(Integer, index=True)
     section = Column(String(1), index=True)
     board = Column(String, index=True)
@@ -59,6 +61,7 @@ class High(Base_db3):
     __tablename__ = 'responses'
     id = Column(BigInteger, primary_key=True, autoincrement=True)
     school_code = Column(Integer, index=True)
+    other_name = Column(String(100), index=True, nullable=True)
     class_name = Column(Integer, index=True)
     section = Column(String(1), index=True)
     board = Column(String, index=True)

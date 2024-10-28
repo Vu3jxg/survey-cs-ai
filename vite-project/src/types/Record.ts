@@ -1,6 +1,7 @@
 export interface RecordType {
     id?: number; 
-    school_code: number; 
+    school_code: number;
+    other_name: string; 
     class_name: number;
     section: string;
     board: string;

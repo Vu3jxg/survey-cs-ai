@@ -24,6 +24,7 @@ CREATE TABLE responses
 (
 	id bigint primary key generated always as identity,
 	school_code int,
+	other_name varchar(100),
 	class_name int,
 	section varchar(1),
 	board boards_options,

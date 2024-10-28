@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Captcha from './Captcha'; // Import the Captcha component
+import Captcha from './Captcha';
 import DropdownInput from "./dropdown";
 import data from '../data/DetailsDisplayLang.json';
 import schooldata from '../data/SchoolsList.json';
@@ -18,6 +18,7 @@ const translations: Translations = data;
 const schools: SchoolInterface[] = schooldata;
 const schoolNames: string[] = schools.map(school => school.schoolName);
 const schoolCodes: string[] = schools.map(school => school.schoolCode);
+const schoolsWithOthers = [...schoolNames, 'Others']; // Add 'Others' option
 
 function getTranslation(key: string, lang: LanguageCode): string {
     const translation = translations[key];
@@ -51,19 +52,26 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
 
     // States
     const [school, setSchool] = useState('');
+    const [customSchoolName, setCustomSchoolName] = useState('');
     const [classSelection, setClassSelection] = useState('');
     const [section, setSection] = useState('');
     const [board, setBoard] = useState('');
     const [rollNo, setRollNo] = useState('');
     const [selectedGender, setSelectedGender] = useState('');
-    const [captchaToken, setCaptchaToken] = useState<string | null>(null); // State for the captcha token
-    const [isFormValid, setIsFormValid] = useState(false); // State to track form validity
+    const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+    const [isFormValid, setIsFormValid] = useState(false);
 
     const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSelectedGender(event.target.value);
     };
 
-    const handleSchoolChange = (value: string) => setSchool(value);
+    const handleSchoolChange = (value: string) => {
+        setSchool(value);
+        if (value !== 'Others') {
+            setCustomSchoolName(''); // Clear custom name if not 'Others'
+        }
+    };
+
     const handleClassChange = (value: string) => setClassSelection(value);
     const handleSectionChange = (value: string) => setSection(value);
     const handleBoardChange = (value: string) => setBoard(value);
@@ -91,7 +99,7 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
     const handleCreate = () => {
         if (!captchaToken) {
             alert('Please complete the reCAPTCHA');
-            return; // Prevent submission if captcha is not validated
+            return; 
         }
 
         let category = ''; 
@@ -109,6 +117,7 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
                 const index = schoolNames.indexOf(school);
                 return index !== -1 ? parseInt(schoolCodes[index], 10) : 0;
             })(),
+            other_name: school === 'Others' ? customSchoolName : null,
             class_name: classVal,
             section: section,
             board: board,
@@ -118,7 +127,7 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
             })(),
             lang: selectedlang,
             rollno: rollNo,
-            recaptcha_token: captchaToken // Add the captcha token here
+            recaptcha_token: captchaToken 
         };
 
         axios.post(`http://127.0.0.1:8000/${category}`, newDetailsList)
@@ -130,7 +139,6 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
             });
     };
 
-    // Check form validity
     useEffect(() => {
         setIsFormValid(board !== '' && selectedGender !== '' && captchaToken !== null);
     }, [board, selectedGender, captchaToken]);
@@ -146,100 +154,114 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
             />
             <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900">
                 <div className="p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-md w-full dark:shadow-gray-700">
+                    
                     {/* School Selection */}
                     <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
                         {getTranslation('school', languageCode)}
                     </label>
                     <DropdownInput
-                        className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
-                        options={schoolNames}
+                        className="w-full p-3 mb-3 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
+                        options={schoolsWithOthers}
                         placeholder={getTranslation('schoolselection', languageCode)}
                         value={school}
                         onChange={handleSchoolChange}
                     />
 
-                    {/* Class Selection */}
-                    <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
-                        {getTranslation('class', languageCode)}
-                    </label>
-                    <DropdownInput
-                        className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
-                        options={['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']}
-                        placeholder={getTranslation('classselection', languageCode)}
-                        value={classSelection}
-                        onChange={handleClassChange}
-                    />
+                    {/* Display Textbox when "Others" is selected */}
+                    {school === 'Others' && (
+                        <input
+                            type="text"
+                            value={customSchoolName}
+                            onChange={(e) => setCustomSchoolName(e.target.value)}
+                            placeholder="Write your school's name"
+                            className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
+                        />
+                    )}
+                    {/* Class Selection*/ }
+<label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
+{getTranslation('class', languageCode)}
+</label>
+<DropdownInput
+className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
+options={['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']}
+placeholder={getTranslation('classselection', languageCode)}
+value={classSelection}
+onChange={handleClassChange}
+/>
 
-                    {/* Section Selection */}
-                    <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
-                        {getTranslation('sec', languageCode)}
-                    </label>
-                    <DropdownInput
-                        className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
-                        options={['A', 'B', 'C', 'D', 'E']}
-                        placeholder={getTranslation('secselection', languageCode)}
-                        value={section}
-                        onChange={handleSectionChange}
-                    />
+{/* Section Selection */}
+<label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
+{getTranslation('sec', languageCode)}
+</label>
+<DropdownInput
+className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
+options={['A', 'B', 'C', 'D', 'E']}
+placeholder={getTranslation('secselection', languageCode)}
+value={section}
+onChange={handleSectionChange}
+/>
 
-                    {/* Board Selection */}
-                    <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
-                        {getTranslation('board', languageCode)}
-                    </label>
-                    <DropdownInput
-                        className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
-                        options={['CBSE', 'ICSE', 'State Board']}
-                        placeholder={getTranslation('boardselection', languageCode)}
-                        value={board}
-                        onChange={handleBoardChange}
-                    />
+{/* Board Selection*/ }
+<label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
+{getTranslation('board', languageCode)}
+</label>
+<DropdownInput
+className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
+options={['CBSE', 'ICSE', 'State Board']}
+placeholder={getTranslation('boardselection', languageCode)}
+value={board}
+onChange={handleBoardChange}
+/>
 
-                    {/* Gender Selection */}
-                    <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
-                        {Gender}
-                    </label>
-                    <div className="mb-6">
-                        {genderOptions.map((option, index) => (
-                            <div key={index}>
-                                <input
-                                    type="radio"
-                                    value={option}
-                                    checked={selectedGender === option}
-                                    onChange={handleGenderChange}
-                                    className="mr-2"
-                                />
-                                <label>{option}</label>
-                            </div>
-                        ))}
-                    </div>
+{/* Gender Selection*/ }
+<label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
+{Gender}
+</label>
+<div className="mb-6">
+    {genderOptions.map((option, index) => (
+        <div key={index}>
+            <input
+                type="radio"
+                value={option}
+                checked={selectedGender === option}
+                onChange={handleGenderChange}
+                className="mr-2"
+            />
+            <label>{option}</label>
+        </div>
+    ))}
+</div>
 
-                    {/* Roll No Input */}
-                    <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
-                        {getTranslation('rollno', languageCode)}
-                    </label>
-                    <input
-                    placeholder='Your Roll Number'
-                        type="text"
-                        value={rollNo}
-                        onChange={handleRollNoChange}
-                        className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
-                    />
+{/* Roll No Input */}
+<label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
+{getTranslation('rollno', languageCode)}
+</label>
+<input
+placeholder='Your Roll Number'
+type="text"
+value={rollNo}
+onChange={handleRollNoChange}
+className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
+/>
 
-                    {/* Captcha Component */}
-                    <Captcha onTokenChange={setCaptchaToken} />
+{/* Captcha Component */}
+<Captcha onTokenChange={setCaptchaToken} />
 
-                    {/* Submit Button */}
-                    <button
-                        onClick={handleCreate}
-                        className={`mt-6 px-6 py-2 font-bold rounded-lg ${
-                            isFormValid ? 'bg-purple-500 text-white hover:bg-gray-200' : 'bg-gray-500 text-gray-300 cursor-not-allowed'
-                        }`}
-                        disabled={!isFormValid}
-                    >
-                        Submit
-                    </button>
+{/* Submit Button */}
+<button
+onClick={handleCreate}
+className={`mt-6 px-6 py-2 font-bold rounded-lg ${
+    isFormValid ? 'bg-purple-500 text-white hover:bg-gray-200' : 'bg-gray-500 text-gray-300 cursor-not-allowed'
+}`}
+disabled={!isFormValid}
+>
+Submit
+</button>
                 </div>
             </div>
         </>
     );
 }
+
+
+

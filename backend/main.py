@@ -15,6 +15,19 @@ Base_db3.metadata.create_all(bind=engine_db3)
 
 app = FastAPI()
 
+visitor_count = 0
+
+@app.get("/api/visitor_count")
+def get_visitor_count():
+    global visitor_count
+    return {"count": visitor_count}
+
+@app.post("/api/increment_visitor_count")
+def increment_visitor_count():
+    global visitor_count
+    visitor_count += 1
+    return {"count": visitor_count}
+
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,

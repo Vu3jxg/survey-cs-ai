@@ -1,7 +1,10 @@
+import React from "react";
 import { Link } from "react-router-dom";
-import { FaRegSun, FaRegMoon, FaBars } from "react-icons/fa";
+import { FaRegSun, FaRegMoon } from "react-icons/fa";
 import whiteLogo from "../assets/logos/NITK_white.png"; // White logo for dark mode
 import blackLogo from "../assets/logos/NITK_black.png"; // Black logo for light mode
+import FlyoutNav from "./FlyOutNav";
+import FlyoutContent from "./FlyOutContent";
 
 interface HeaderProps {
   willReadScreen: boolean;
@@ -21,14 +24,12 @@ export default function Header({ willReadScreen, setWillReadScreen, isLightMode,
       <div className="flex items-center space-x-4">
         {/* Logo with link to App.tsx */}
         <Link to="/">
-          <img 
-            src={isLightMode ? blackLogo : whiteLogo}  
-            alt="Logo" 
-            className="w-12 h-12 cursor-pointer" 
+          <img
+            src={isLightMode ? blackLogo : whiteLogo}
+            alt="NITK Logo"
+            className="h-10 mr-3"
           />
         </Link>
-
-        {/* Text container with link to App.tsx */}
         <div className="flex flex-col">
           <div className="text-2xl font-semibold text-purple-500">
             Cyber Security Research Laboratory
@@ -38,8 +39,7 @@ export default function Header({ willReadScreen, setWillReadScreen, isLightMode,
           </Link>
         </div>
       </div>
-
-      {/* Right Section: Controls */}
+      {/* Right Section: Light Mode Toggle and FlyoutNav */}
       <div className="flex items-center space-x-6">
         <button 
           onClick={setLightMode} 
@@ -47,9 +47,7 @@ export default function Header({ willReadScreen, setWillReadScreen, isLightMode,
         >
           {isLightMode ? <FaRegMoon className="text-2xl" /> : <FaRegSun className="text-2xl" />}
         </button>
-        <a href="https://www.nitk.ac.in/" target="_blank" rel="noopener noreferrer">
-          <FaBars className={`text-2xl rounded-md ${isLightMode ? 'hover:bg-blue-600' : 'hover:bg-green-600'}`} />
-        </a>
+        <FlyoutNav FlyoutContent={FlyoutContent} />
       </div>
     </header>
   );

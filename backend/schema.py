@@ -18,6 +18,7 @@ class BoardsOptions(str,Enum):
 class ElementaryBase(BaseModel): #base model for elementary school data
     school_code: int
     class_name: int
+    other_name: Optional[str] = None
     section: str
     board: BoardsOptions
     gender: str
@@ -41,6 +42,7 @@ class ElementaryCreate(ElementaryBase): #model for creating a new elementary sch
 class ElementaryUpdate(BaseModel): #model for updating an existing elementary school record
     school_code: Optional[int] = None
     class_name: Optional[int] = None
+    other_name: Optional[str] = None
     section: Optional[str] = None
     board: Optional[BoardsOptions] = None
     gender: Optional[str] = None
@@ -67,6 +69,7 @@ class Elementary(ElementaryBase): #model for returning elementary school record 
 class MiddleBase(BaseModel): #base model for middle school data
     school_code: int
     class_name: int
+    other_name: Optional[str] = None
     section: str
     board: BoardsOptions
     gender: str
@@ -100,6 +103,7 @@ class MiddleCreate(MiddleBase): #model for creating a new middle school record. 
 class MiddleUpdate(BaseModel): #model for updating an existing middle school record
     school_code: Optional[int] = None
     class_name: Optional[int] = None
+    other_name: Optional[str] = None
     section: Optional[str] = None
     board: Optional[BoardsOptions] = None
     gender: Optional[str] = None
@@ -137,6 +141,7 @@ class Middle(MiddleBase): #model for returning middle school record details, inc
 class HighBase(BaseModel):
     school_code: int
     class_name: int
+    other_name: Optional[str] = None
     section: str
     board: BoardsOptions
     gender: str
@@ -178,6 +183,7 @@ class HighCreate(HighBase):
 class HighUpdate(BaseModel):
     school_code: Optional[int] = None
     class_name: Optional[int] = None
+    other_name: Optional[str] = None
     section: Optional[str] = None
     board: Optional[BoardsOptions] = None
     gender: Optional[str] = None

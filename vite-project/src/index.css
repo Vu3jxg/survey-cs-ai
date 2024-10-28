@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.visitor-count {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(128, 0, 128, 0.8); /* Purple background with opacity */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-family: 'Courier New', Courier, monospace; /* Different font */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .visitor-count-label {
+    font-size: 40px;
+    color: #ffeb3b; /* Yellow color for the count */
+  }
+  footer {
+    background-color: #4a4a4a; /* Dark gray background */
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 14px;
+  }
