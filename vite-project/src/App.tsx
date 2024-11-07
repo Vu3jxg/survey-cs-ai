@@ -193,11 +193,11 @@ const App = () => {
             
             
             {/* Developer Images Animation */}
-            <div className="relative mt-16 py-2">
+            <div className="relative mt-12 py-1">
               <div className="relative inset-0 bg-gray-300 opacity-40"></div>
-              <div className="relative z-10">
-                <div className="flex animate-slide space-x-40 pb-1">
-                  <p className="mt-1 text-center text-lg font-semibold text-purple-700 whitespace-nowrap">
+              <div className="relative z-30">
+                <div className="flex justify-center space-x-35 pb-1">
+                  <p className="mt-1 text-center text-lg font-semibold text-purple-700 ">
                     Developed By:
                   </p>
   

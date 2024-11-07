@@ -54,6 +54,7 @@ import MidHinq17 from '../assets/middle/hindi/h17.mp4';
 import MidHinq18 from '../assets/middle/hindi/h18.mp4';
 import MidHinq19 from '../assets/middle/hindi/h19.mp4';
 import MidHinq20 from '../assets/middle/hindi/h20.mp4';
+import MidHinq21 from '../assets/middle/hindi/h21.png';
 
 import MidKanq1 from '../assets/middle/kannada/kn1.mp4';
 import MidKanq2 from '../assets/middle/kannada/kn2.mp4';
@@ -75,6 +76,7 @@ import MidKanq17 from '../assets/middle/kannada/kn17.mp4';
 import MidKanq18 from '../assets/middle/kannada/kn18.mp4';
 import MidKanq19 from '../assets/middle/kannada/kn19.mp4';
 import MidKanq20 from '../assets/middle/kannada/kn20.mp4';
+import MidKanq21 from '../assets/middle/kannada/kn21.png';
 
 import MidEngq1 from '../assets/middle/english/1.mp4';
 import MidEngq2 from '../assets/middle/english/2.mp4';
@@ -96,6 +98,7 @@ import MidEngq17 from '../assets/middle/english/17.mp4';
 import MidEngq18 from '../assets/middle/english/18.mp4';
 import MidEngq19 from '../assets/middle/english/19.mp4';
 import MidEngq20 from '../assets/middle/english/20.mp4';
+import MidEngq21 from '../assets/middle/english/21.png';
 
 import HighEngq1 from '../assets/high/english/1.mp4';
 import HighEngq2 from '../assets/high/english/2.mp4';
@@ -125,6 +128,7 @@ import HighEngq25 from '../assets/high/english/25.mp4';
 import HighEngq26 from '../assets/high/english/26.mp4';
 import HighEngq27 from '../assets/high/english/27.mp4';
 import HighEngq28 from '../assets/high/english/28.mp4';
+import HighEngq29 from '../assets/high/english/29.png';
 
 import HighHinq1 from '../assets/high/hindi/hn1.mp4';
 import HighHinq2 from '../assets/high/hindi/hn2.mp4';
@@ -154,6 +158,7 @@ import HighHinq25 from '../assets/high/hindi/hn25.mp4';
 import HighHinq26 from '../assets/high/hindi/hn26.mp4';
 import HighHinq27 from '../assets/high/hindi/hn27.mp4';
 import HighHinq28 from '../assets/high/hindi/hn28.mp4';
+import HighHinq29 from '../assets/high/hindi/hn29.png';
 
 import HighKanq1 from '../assets/high/kannada/kn1.mp4';
 import HighKanq2 from '../assets/high/kannada/kn2.mp4';
@@ -183,6 +188,7 @@ import HighKanq25 from '../assets/high/kannada/kn25.mp4';
 import HighKanq26 from '../assets/high/kannada/kn26.mp4';
 import HighKanq27 from '../assets/high/kannada/kn27.mp4';
 import HighKanq28 from '../assets/high/kannada/kn28.mp4';
+import HighKanq29 from '../assets/high/kannada/kn29.png';
 
 export const ElementaryEngVideoMap: Record<number, string> = {
     1: ElemEngq1,
@@ -246,7 +252,8 @@ export const MiddleHinVideoMap: Record<number, string> = {
     17: MidHinq17,
     18: MidHinq18,
     19: MidHinq19,
-    20: MidHinq20
+    20: MidHinq20,
+    21: MidHinq21
 };
 
 export const MiddleKanVideoMap: Record<number, string> = {
@@ -269,7 +276,8 @@ export const MiddleKanVideoMap: Record<number, string> = {
     17: MidKanq17,
     18: MidKanq18,
     19: MidKanq19,
-    20: MidKanq20
+    20: MidKanq20,
+    21: MidKanq21
 };
 
 export const MiddleEngVideoMap: Record<number, string> = {
@@ -292,7 +300,8 @@ export const MiddleEngVideoMap: Record<number, string> = {
     17: MidEngq17,
     18: MidEngq18,
     19: MidEngq19,
-    20: MidEngq20
+    20: MidEngq20,
+    21: MidEngq21
 };
 
 export const HighEngVideoMap: Record<number, string> = {
@@ -323,7 +332,8 @@ export const HighEngVideoMap: Record<number, string> = {
     25: HighEngq25,
     26: HighEngq26,
     27: HighEngq27,
-    28: HighEngq28
+    28: HighEngq28,
+    29: HighEngq29
 };
 
 export const HighHinVideoMap: Record<number, string> = {
@@ -354,7 +364,8 @@ export const HighHinVideoMap: Record<number, string> = {
     25: HighHinq25,
     26: HighHinq26,
     27: HighHinq27,
-    28: HighHinq28
+    28: HighHinq28,
+    29: HighHinq29
 };
 
 export const HighKanVideoMap: Record<number, string> = {
@@ -385,7 +396,8 @@ export const HighKanVideoMap: Record<number, string> = {
     25: HighKanq25,
     26: HighKanq26,
     27: HighKanq27,
-    28: HighKanq28
+    28: HighKanq28,
+    29: HighKanq29
 };
 
 // Export all maps in a single object
