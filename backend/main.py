@@ -115,6 +115,8 @@ async def create_elementary(request: Request, db: Session = Depends(get_db_eleme
     elementary_data = schema.ElementaryCreate(**data)
     existing_elementary = db.query(models.Elementary).filter(
         models.Elementary.school_code == elementary_data.school_code,
+        models.Elementary.state_n == elementary_data.state_n,
+        models.Elementary.district == elementary_data.district,
         models.Elementary.class_name == elementary_data.class_name,
         models.Elementary.rollno == elementary_data.rollno,
         models.Elementary.board == elementary_data.board
@@ -169,6 +171,8 @@ async def create_middle(request: Request, db: Session = Depends(get_db_middle)):
     middle_data = schema.MiddleCreate(**data)
     existing_middle = db.query(models.Middle).filter(
         models.Middle.school_code == middle_data.school_code,
+        models.Middle.state_n == middle_data.state_n,
+        models.Middle.district == middle_data.district,
         models.Middle.class_name == middle_data.class_name,
         models.Middle.rollno == middle_data.rollno,
         models.Middle.board == middle_data.board
@@ -223,6 +227,8 @@ async def create_high(request: Request, db: Session = Depends(get_db_high)):
     high_data = schema.HighCreate(**data)
     existing_high = db.query(models.High).filter(
         models.High.school_code == high_data.school_code,
+        models.High.state_n == high_data.state_n,
+        models.High.district == high_data.district,
         models.High.class_name == high_data.class_name,
         models.High.rollno == high_data.rollno,
         models.High.board == high_data.board

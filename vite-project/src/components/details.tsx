@@ -52,7 +52,7 @@ export default function Details({ lang, setLang }: DetailsProps) {
                 </p>
             </center>
 
-            <div className="flex flex-wrap gap-6 justify-center items-center px-4 py-6">
+            <div className="flex flex-wrap gap-6 justify-center items-center px-4 py-4">
                 <button
                     className="w-[10vw] h-[10vh] text-[vw] font-bold text-purple-600 bg-white border-4 border-purple-700 rounded-lg shadow-lg hover:bg-purple-300 focus:outline-none focus:ring-4 focus:ring-purple-500 dark:bg-purple-500 dark:hover:bg-purple-700 dark:focus:ring-purple-700 dark:text-white dark:border-purple-500"
                     onClick={() => handleSelect('Kannada')}
@@ -72,14 +72,18 @@ export default function Details({ lang, setLang }: DetailsProps) {
                     English
                 </button>
             </div>
-
+            {/* Show video modal if a language is selected and video hasn't ended */}
             {lang.isSet && !hasVideoEnded && (
-                <div className="fixed inset-0 flex items-center justify-center">
+                <div className="fixed inset-0 z-50 flex items-center justify-center">
+                    {/* Backdrop */}
                     <div className="fixed inset-0 bg-gray-800 opacity-50" />
-                    <div className="bg-black text-white p-1 rounded-lg shadow-lg z-1 dark:bg-white dark:text-black">
+                    
+                    {/* Modal Content */}
+                    <div className="bg-black text-white p-2 rounded-lg shadow-lg z-10 dark:bg-white dark:text-black">
                         <video
                             ref={videoRef}
-                            className="w-[24vw] h-[50vh]"
+                            width="350"
+                            height="350"
                             autoPlay
                             onEnded={handleVideoEnd}
                             onError={(e) => console.error('Error loading video:', e)}
@@ -90,6 +94,7 @@ export default function Details({ lang, setLang }: DetailsProps) {
                     </div>
                 </div>
             )}
+            
         </div>
     );
 }

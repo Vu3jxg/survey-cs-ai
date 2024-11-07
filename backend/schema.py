@@ -19,6 +19,8 @@ class ElementaryBase(BaseModel): #base model for elementary school data
     school_code: int
     class_name: int
     other_name: Optional[str] = None
+    state_n: str = "None"
+    district: str = "None"
     section: str
     board: BoardsOptions
     gender: str
@@ -43,6 +45,8 @@ class ElementaryUpdate(BaseModel): #model for updating an existing elementary sc
     school_code: Optional[int] = None
     class_name: Optional[int] = None
     other_name: Optional[str] = None
+    state_n: Optional[str] = None
+    district: Optional[str] = None
     section: Optional[str] = None
     board: Optional[BoardsOptions] = None
     gender: Optional[str] = None
@@ -70,6 +74,8 @@ class MiddleBase(BaseModel): #base model for middle school data
     school_code: int
     class_name: int
     other_name: Optional[str] = None
+    state_n: str = "None"
+    district: str = "None"
     section: str
     board: BoardsOptions
     gender: str
@@ -104,6 +110,8 @@ class MiddleUpdate(BaseModel): #model for updating an existing middle school rec
     school_code: Optional[int] = None
     class_name: Optional[int] = None
     other_name: Optional[str] = None
+    state_n: Optional[str] = None
+    district: Optional[str] = None
     section: Optional[str] = None
     board: Optional[BoardsOptions] = None
     gender: Optional[str] = None
@@ -142,6 +150,8 @@ class HighBase(BaseModel):
     school_code: int
     class_name: int
     other_name: Optional[str] = None
+    state_n: str = "None"
+    district: str = "None"
     section: str
     board: BoardsOptions
     gender: str
@@ -184,6 +194,8 @@ class HighUpdate(BaseModel):
     school_code: Optional[int] = None
     class_name: Optional[int] = None
     other_name: Optional[str] = None
+    state_n: Optional[str] = None
+    district: Optional[str] = None
     section: Optional[str] = None
     board: Optional[BoardsOptions] = None
     gender: Optional[str] = None

@@ -23,6 +23,8 @@ CREATE TABLE responses
 	id bigint primary key generated always as identity,
 	school_code int,
 	other_name varchar(100),
+	state_n varchar(20),
+	district varchar(20),
 	class_name int,
 	section varchar(1),
 	board boards_options,

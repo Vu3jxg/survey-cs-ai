@@ -16,7 +16,8 @@ import Dev2 from './assets/devs/Shreya.jpg';
 import Dev3 from './assets/devs/mehul.jpg';
 import Dev4 from './assets/devs/sinchana.jpg';
 import Dev5 from './assets/devs/MPS-Photo-2023.jpg';
-import Dev6 from './assets/devs/Gaurav.jpg';
+import Dev6 from './assets/devs/Pais.jpg';
+import Dev7 from './assets/devs/GAURAV.jpg'
 
 const App = () => {
   const [willReadScreen, setWillReadScreen] = useState(true);
@@ -93,7 +94,6 @@ const App = () => {
                 Cyber Security Research Laboratory
               </div>
             </div>
-  
             <Header
               willReadScreen={willReadScreen}
               setWillReadScreen={setWillReadScreen}
@@ -101,49 +101,97 @@ const App = () => {
               setLightMode={toggleLightMode}
             />
   
-            <h1 className="text-center text-4xl font-bold mb-2 text-shadow-neon-purple">
+            <h1 className="text-center text-4xl font-bold  text-shadow-neon-purple">
               CYBER SMART
             </h1>
-  
-            {/* Flex layout for Funded By and Main Paragraph */}
-            <div className="flex flex-col md:flex-row w-full px-4 items-start justify-between mb-6">
-              {/* Funded by Section (Left) */}
-              <div className="w-full md:w-1/4 flex flex-col items-center md:items-start">
-                <img src={FundedLogo} alt="Funded by NCSTC" className="w-48 h-auto mb-2" />
-                <p className="text-justify text-lg font-semibold text-purple-700">
-                  Funded by: <br /> National Council Science and Technology Communication (NCSTC)
-                </p>
-              </div>
-  
-              {/* Main Content Paragraph (Right) */}
-              <div className="w-full md:w-3/4">
-                <p className="text-lg mb-6 max-w-2xl font-semibold text-justify">
-                  Welcome to a special activity designed just for you! In today’s world, the internet
-                  plays a huge role in our lives, from learning new things to staying connected with
-                  friends. But just like in real life, it’s important to stay safe online too! This
-                  activity will take you on a quick journey to explore how much you know about using the
-                  internet wisely and safely.
-                  <br />
-                  Let’s find out together what you already know about online safety and how we can help
-                  you learn even more. Your responses will help us create a safer, smarter online world
-                  for students like you!
-                </p>
-              </div>
-            </div>
-  
-            {/* Contact Information */}
-            <div className="w-full px-4 mb-8">
-              <div className="w-full md:w-1/4 bg-white shadow-lg p-2 rounded-lg">
-                <h2 className="text-xl font-bold mb-0 text-gray-800">Contact Information</h2>
-                <p className="text-gray-700"><strong>Landline:</strong> +91-824-2473402</p>
-                <p className="text-gray-700"><strong>Email:</strong> projectcihub@gmail.com</p>
-              </div>
-            </div>
-            <div className="mx-auto w-1/2">
+            <div className='h-3/4 w-full'>
+            <div>
+            {/* Flex layout for Funded By */}            
+            <div className="flex flex-col md:flex-row w-full px-2 items-start justify-between mb-6">
+    {/* Funded by Section (Left) */}
+    <div className="flex flex-col items-center md:items-start w-full md:w-1/5 bg-white shadow-lg p-3 rounded-lg">
+    {/* Funded by Section */}
+    <div className="flex flex-col items-center md:items-start w-full">
+        <p className="text-center md:text-left text-lg font-semibold text-purple-700 mb-2">
+            Funded by: <br /> National Council Science and Technology Communication (NCSTC)
+        </p>
+        <img src={FundedLogo} alt="Funded by NCSTC" className="w-40 h-auto mb-4" />
+    </div>
+
+    {/* Contact Information Section */}
+    <div className="w-full bg-white shadow-lg p-4 rounded-lg mt-4">
+        <h2 className="text-lg font-bold text-gray-800 mb-2 text-center md:text-left">
+            Contact Information
+        </h2>
+        <p className="text-gray-700 text-center md:text-left"><strong>Landline:</strong> +91-824-2473402</p>
+        <p className="text-gray-700 text-center md:text-left"><strong>Email:</strong> projectcihub@gmail.com</p>
+    </div>
+</div>
+
+
+    {/* Main Content Paragraph (Center - 60% width) */}
+    <div className="w-full md:w-3/5 p-6 rounded-lg">
+        <p className="text-lg font-semibold text-justify p-8">
+            Welcome to a special activity designed just for you! In today’s world, the internet
+            plays a huge role in our lives, from learning new things to staying connected with
+            friends. But just like in real life, it’s important to stay safe online too! This
+            activity will take you on a quick journey to explore how much you know about using the
+            internet wisely and safely.
+            <br />
+            Let’s find out together what you already know about online safety and how we can help
+            you learn even more. Your responses will help us create a safer, smarter online world
+            for students like you!
+        </p>
+        <div className="mx-16 w-1/1 p-0">
                        
                         <Details lang={lang} setLang={setLang} />
                        
             </div>
+    </div>
+
+    {/* Guidance Section (Right) */}
+    <div className="flex flex-col md:w-1/5 items-center space-y-4">
+        <div className="flex flex-col items-center">
+            <p className="text-center text-base font-semibold text-purple-700 mb-2">Under the Guidance of:</p>
+        </div>
+        
+        {/* Dr. Mahendra Pratap Singh */}
+        <div className="flex flex-col items-center">
+            <img src={Dev5} alt="Dr. Mahendra Pratap Singh" className="w-24 h-24 rounded-lg shadow-md transition-transform duration-500 hover:scale-105 border-2 border-purple-800" />
+            <p className="mt-1 text-center text-sm font-semibold text-purple-700">Dr. Mahendra Pratap Singh</p>
+            <p className="text-center text-xs text-purple-700">Asst. Professor, Dept. of CSE</p>
+        </div>
+
+        {/* Dr. Alwyn Roshan Pais */}
+        <div className="flex flex-col items-center">
+            <img src={Dev6} alt="Dr. Alwyn Roshan Pais" className="w-24 h-24 rounded-lg shadow-md transition-transform duration-500 hover:scale-105 border-2 border-purple-800" />
+            <p className="mt-1 text-center text-sm font-semibold text-purple-700">Dr. Alwyn Roshan Pais</p>
+            <p className="text-center text-xs text-purple-700">Professor, Dept. of CSE</p>
+        </div>
+
+        {/* Mr. Gaurav Pal */}
+        <div className="flex flex-col items-center">
+            <img src={Dev7} alt="Gaurav Pal" className="w-24 h-24 rounded-lg shadow-md transition-transform duration-500 hover:scale-105 border-2 border-purple-800" />
+            <p className="mt-1 text-center text-sm font-semibold text-purple-700">Mr. Gaurav Pal</p>
+            <p className="text-center text-xs text-purple-700">Project Coordinator, CSRL, NITK Surathkal</p>
+        </div>
+    </div>
+</div>
+
+            {/* Contact Information */}
+            
+            
+            </div>
+            
+            
+  
+              
+              
+            </div>
+            
+            
+            
+            
             {/* Developer Images Animation */}
             <div className="relative mt-16 py-2">
               <div className="relative inset-0 bg-gray-300 opacity-40"></div>
@@ -209,54 +257,22 @@ const App = () => {
                         </p>
                       </div>
   
-                  <p className="mt-1 text-center text-lg font-semibold text-purple-700 whitespace-nowrap">
-                    Under the Guidance of:
-                  </p>
-  
-                  <div className="flex flex-col items-center mx-6">
-                    <img
-                      src={Dev5}
-                      alt="Developer 5"
-                      className="w-28 h-28 rounded-lg shadow-lg transition-transform duration-1000 hover:scale-105 border-4 border-purple-800"
-                    />
-                    <p className="mt-1 text-center text-lg font-semibold text-purple-700">
-                      Dr. Mahendra Pratap Singh
-                    </p>
-                    <p className="text-center text-sm text-purple-700">
-                      Asst. Professor, Dept. of Computer Science & Engineering, NITK Surathkal
-                    </p>
-                  </div>
-  
-                  <div className="flex flex-col items-center mx-5">
-                    <img
-                      src={Dev6}
-                      alt="Developer 6"
-                      className="w-28 h-28 rounded-lg shadow-lg transition-transform duration-1000 hover:scale-105 border-4 border-purple-800"
-                    />
-                    <p className="mt-1 text-center text-lg font-semibold text-purple-700">
-                      Mr. Gaurav Pal
-                    </p>
-                    <p className="text-center text-sm text-purple-700">
-                      Project Co-ordinator, CSRL, NITK Surathkal
-                    </p>
-                  </div>
+                  
                 </div>
               </div>
             </div>
   
-            {/* Visitor Count */}
-            <div className="visitor-count">
-              <center>
-                <h3>
-                  You visited this page <label className="visitor-count-label">{counter}</label> times.
-                </h3>
-              </center>
-            </div>
-  
             {/* Footer */}
-            <footer className="w-full py-4 bg-gray-800 text-white text-center">
-              &copy; {new Date().getFullYear()} CSRL, NITK Surathkal. All rights reserved.
-            </footer>
+            <footer className="w-full py-4 bg-gray-800 text-white">
+    <div className="container mx-auto flex justify-between items-center">
+        <div className="flex-1 text-center">
+            &copy; {new Date().getFullYear()} CSRL, NITK Surathkal. All rights reserved.
+        </div>
+        <div className="text-right flex-none">
+            Visitors: {counter}
+        </div>
+    </div>
+</footer>
           </main>
         }
           />

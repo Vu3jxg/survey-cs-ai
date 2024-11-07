@@ -8,6 +8,7 @@ import ElemEngq7 from '../assets/elementary/eng/animq7.mp4';
 import ElemEngq8 from '../assets/elementary/eng/animq8.mp4';
 import ElemEngq9 from '../assets/elementary/eng/animq9.mp4';
 import ElemEngq10 from '../assets/elementary/eng/animq10.mp4';
+import ElemEngq11 from '../assets/elementary/eng/animq11.png';
 
 import ElemHinq1 from '../assets/elementary/hin/animq1.mp4';
 import ElemHinq2 from '../assets/elementary/hin/animq2.mp4';
@@ -19,6 +20,7 @@ import ElemHinq7 from '../assets/elementary/hin/animq7.mp4';
 import ElemHinq8 from '../assets/elementary/hin/animq8.mp4';
 import ElemHinq9 from '../assets/elementary/hin/animq9.mp4';
 import ElemHinq10 from '../assets/elementary/hin/animq10.mp4';
+import ElemHinq11 from '../assets/elementary/hin/animq11.png';
 
 import ElemKanq1 from '../assets/elementary/kan/animq1.mp4';
 import ElemKanq2 from '../assets/elementary/kan/animq2.mp4';
@@ -30,6 +32,7 @@ import ElemKanq7 from '../assets/elementary/kan/animq7.mp4';
 import ElemKanq8 from '../assets/elementary/kan/animq8.mp4';
 import ElemKanq9 from '../assets/elementary/kan/animq9.mp4';
 import ElemKanq10 from '../assets/elementary/kan/animq10.mp4';
+import ElemKanq11 from '../assets/elementary/kan/animq11.png';
 
 import MidHinq1 from '../assets/middle/hindi/h1.mp4';
 import MidHinq2 from '../assets/middle/hindi/h2.mp4';
@@ -191,7 +194,8 @@ export const ElementaryEngVideoMap: Record<number, string> = {
     7: ElemEngq7,
     8: ElemEngq8,
     9: ElemEngq9,
-    10: ElemEngq10
+    10: ElemEngq10,
+    11: ElemEngq11
 };
 
 export const ElementaryHinVideoMap: Record<number, string> = {
@@ -204,7 +208,8 @@ export const ElementaryHinVideoMap: Record<number, string> = {
     7: ElemHinq7,
     8: ElemHinq8,
     9: ElemHinq9,
-    10: ElemHinq10
+    10: ElemHinq10,
+    11: ElemHinq11
 };
 
 export const ElementaryKanVideoMap: Record<number, string> = {
@@ -217,7 +222,8 @@ export const ElementaryKanVideoMap: Record<number, string> = {
     7: ElemKanq7,
     8: ElemKanq8,
     9: ElemKanq9,
-    10: ElemKanq10
+    10: ElemKanq10,
+    11: ElemKanq11
 };
 
 export const MiddleHinVideoMap: Record<number, string> = {

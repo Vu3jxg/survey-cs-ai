@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Captcha from './Captcha';
-import DropdownInput from "./dropdown";
+import DropdownInput from './dropdown';
 import data from '../data/DetailsDisplayLang.json';
 import schooldata from '../data/SchoolsList.json';
+import statesData from '../data/states.json'; // Import your states and districts JSON
 import { Translations, LanguageCode, SchoolInterface } from '../types/Data';
+
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Header from './header';
@@ -18,7 +20,7 @@ const translations: Translations = data;
 const schools: SchoolInterface[] = schooldata;
 const schoolNames: string[] = schools.map(school => school.schoolName);
 const schoolCodes: string[] = schools.map(school => school.schoolCode);
-const schoolsWithOthers = [...schoolNames, 'Others']; // Add 'Others' option
+const schoolsWithOthers = schoolNames.includes('Others') ? schoolNames : [...schoolNames, 'Others'];
 
 function getTranslation(key: string, lang: LanguageCode): string {
     const translation = translations[key];
@@ -50,16 +52,23 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
         getTranslation('genderoptionsother', languageCode)
     ];
 
-    // States
     const [school, setSchool] = useState('');
     const [customSchoolName, setCustomSchoolName] = useState('');
     const [classSelection, setClassSelection] = useState('');
     const [section, setSection] = useState('');
     const [board, setBoard] = useState('');
-    const [rollNo, setRollNo] = useState('');
     const [selectedGender, setSelectedGender] = useState('');
+    const [selectedState, setSelectedState] = useState(''); 
+    const [rollNo, setRollNo] = useState('');
+    const [selectedDistrict, setSelectedDistrict] = useState('');
     const [captchaToken, setCaptchaToken] = useState<string | null>(null);
     const [isFormValid, setIsFormValid] = useState(false);
+
+    // Extract state names from the JSON data
+    const stateNames = statesData.states.map(state => state.state);
+
+    // Filtered districts based on selected state
+    const districts = selectedState ? statesData.states.find(state => state.state === selectedState)?.districts || [] : [];
 
     const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSelectedGender(event.target.value);
@@ -68,7 +77,7 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
     const handleSchoolChange = (value: string) => {
         setSchool(value);
         if (value !== 'Others') {
-            setCustomSchoolName(''); // Clear custom name if not 'Others'
+            setCustomSchoolName('');
         }
     };
 
@@ -77,11 +86,20 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
     const handleBoardChange = (value: string) => setBoard(value);
     const handleRollNoChange = (event: React.ChangeEvent<HTMLInputElement>) => setRollNo(event.target.value);
 
+    const handleStateChange = (value: string) => {
+        setSelectedState(value);
+        setSelectedDistrict(''); // Reset district when state changes
+    };
+
+    const handleDistrictChange = (value: string) => {
+        setSelectedDistrict(value);
+    };
+
     const navigateToCategory = useNavigate();
 
     const [isLightMode, setLightMode] = useState(() => {
         const savedTheme = localStorage.getItem('theme');
-        return savedTheme ? savedTheme === 'light' : true; 
+        return savedTheme ? savedTheme === 'light' : true;
     });
 
     useEffect(() => {
@@ -99,17 +117,17 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
     const handleCreate = () => {
         if (!captchaToken) {
             alert('Please complete the reCAPTCHA');
-            return; 
+            return;
         }
 
-        let category = ''; 
-        const classVal = parseInt(classSelection, 10); 
+        let category = '';
+        const classVal = parseInt(classSelection, 10);
         if (classVal <= 5) {
-            category = 'elementary'; 
+            category = 'elementary';
         } else if (classVal <= 8) {
-            category = 'middle'; 
+            category = 'middle';
         } else {
-            category = 'high'; 
+            category = 'high';
         }
 
         const newDetailsList = {
@@ -127,7 +145,9 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
             })(),
             lang: selectedlang,
             rollno: rollNo,
-            recaptcha_token: captchaToken 
+            state_n: selectedState, 
+            district: selectedDistrict,
+            recaptcha_token: captchaToken
         };
 
         axios.post(`http://127.0.0.1:8000/${category}`, newDetailsList)
@@ -140,8 +160,9 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
     };
 
     useEffect(() => {
-        setIsFormValid(board !== '' && selectedGender !== '' && captchaToken !== null);
-    }, [board, selectedGender, captchaToken]);
+        setIsFormValid(board !== '' && selectedGender !== '' && selectedState !== '' && selectedDistrict !== '' && captchaToken !== null);
+    }, [board, selectedGender, selectedState, selectedDistrict, captchaToken]);
+
 
     return (
         <>
@@ -154,8 +175,7 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
             />
             <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900">
                 <div className="p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-md w-full dark:shadow-gray-700">
-                    
-                    {/* School Selection */}
+
                     <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
                         {getTranslation('school', languageCode)}
                     </label>
@@ -167,7 +187,6 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
                         onChange={handleSchoolChange}
                     />
 
-                    {/* Display Textbox when "Others" is selected */}
                     {school === 'Others' && (
                         <input
                             type="text"
@@ -177,6 +196,29 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
                             className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
                         />
                     )}
+                     {/* State Selection */}
+                     <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
+                        {getTranslation('State', languageCode)}
+                    </label>
+                    <DropdownInput
+                        className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
+                        options={stateNames}
+                        placeholder={getTranslation('stateselection', languageCode)}
+                        value={selectedState}
+                        onChange={handleStateChange}
+                    />
+
+                    {/* District Selection */}
+                    <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
+                        {getTranslation('District', languageCode)}
+                    </label>
+                    <DropdownInput
+                        className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
+                        options={districts}
+                        placeholder={getTranslation('districtselection', languageCode)}
+                        value={selectedDistrict}
+                        onChange={handleDistrictChange}
+                    />
                     {/* Class Selection*/ }
 <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
 {getTranslation('class', languageCode)}
@@ -244,24 +286,19 @@ onChange={handleRollNoChange}
 className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
 />
 
-{/* Captcha Component */}
-<Captcha onTokenChange={setCaptchaToken} />
+                    <Captcha onTokenChange={setCaptchaToken} />
 
-{/* Submit Button */}
-<button
-onClick={handleCreate}
-className={`mt-6 px-6 py-2 font-bold rounded-lg ${
-    isFormValid ? 'bg-purple-500 text-white hover:bg-gray-200' : 'bg-gray-500 text-gray-300 cursor-not-allowed'
-}`}
-disabled={!isFormValid}
->
-Submit
-</button>
+                    <button
+                        onClick={handleCreate}
+                        className={`mt-6 px-6 py-2 font-bold rounded-lg ${
+                            isFormValid ? 'bg-purple-500 text-white hover:bg-gray-200' : 'bg-gray-500 text-gray-300 cursor-not-allowed'
+                        }`}
+                        disabled={!isFormValid}
+                    >
+                        Submit
+                    </button>
                 </div>
             </div>
         </>
     );
 }
-
-
-

@@ -51,7 +51,7 @@ export default function ElementarySurvey({ willReadScreen, setWillReadScreen }: 
       setLightMode={toggleLightMode} // Pass toggle function for light mode
       className="fixed top-0 left-0 w-full z-50" // Fixing header at the top
   />
-  <div className='flex flex-col w-full items-center justify-center min-h-screen dark:bg-gray-800 dark:text-white'>
+  <div className='flex flex-col w-full items-center justify-start mt-14 min-h-screen dark:bg-gray-800 dark:text-white'>
 
       {/* Add top margin to prevent content overlap with the fixed header */}
       <div className='mt-0'>
