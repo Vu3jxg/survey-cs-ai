@@ -155,7 +155,7 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
                 navigateToCategory(`/${category}survey`, { state: res.data });
             })
             .catch(error => {
-                console.error('Error with the POST request', error);
+                console.error('Error with the POST request', error.response?.data || error.message);
             });
     };
 
@@ -249,7 +249,7 @@ onChange={handleSectionChange}
 </label>
 <DropdownInput
 className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
-options={['CBSE', 'ICSE', 'State Board']}
+options={['CBSE', 'ICSE', 'State']}
 placeholder={getTranslation('boardselection', languageCode)}
 value={board}
 onChange={handleBoardChange}
