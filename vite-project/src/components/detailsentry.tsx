@@ -174,7 +174,7 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
                 className="fixed top-0 left-0 w-full z-50"
             />
             <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900">
-                <div className="p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-md w-full dark:shadow-gray-700">
+                <div className="p-8 my-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-5xl w-full dark:shadow-gray-700">
 
                     <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
                         {getTranslation('school', languageCode)}
@@ -259,17 +259,25 @@ onChange={handleBoardChange}
 <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
 {Gender}
 </label>
-<div className="mb-6">
+<div className="mb-6 flex gap-8">
     {genderOptions.map((option, index) => (
-        <div key={index}>
+        <div key={index} className="inline-block">
             <input
                 type="radio"
                 value={option}
                 checked={selectedGender === option}
                 onChange={handleGenderChange}
-                className="mr-2"
+                className="hidden" // Hides the original radio button
+                id={`gender-${index}`}
             />
-            <label>{option}</label>
+            <label
+                htmlFor={`gender-${index}`}
+                className={`cursor-pointer px-4 py-2 rounded-full transition-colors ${
+                    selectedGender === option ? 'bg-purple-500 text-white' : 'bg-gray-200 text-gray-700'
+                }`}
+            >
+                {option}
+            </label>
         </div>
     ))}
 </div>

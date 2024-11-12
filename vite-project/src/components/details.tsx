@@ -1,5 +1,5 @@
-import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import videoSrcEnglish from '../assets/intro/WhatsApp Video 2024-09-27 at 22.01.18_6328378a.mp4';
 import videoSrcHindi from '../assets/intro/Hindi_intro.mp4';
 import videoSrcKannada from '../assets/intro/Kannada_intro.mp4';
@@ -16,6 +16,18 @@ export default function Details({ lang, setLang }: DetailsProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [hasVideoEnded, setVideoEnded] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
+
+    // Reset states when returning to home page
+    useEffect(() => {
+        if (location.pathname === '/') {
+            setVideoEnded(false);
+            setLang({
+                isSet: false,
+                name: ''
+            });
+        }
+    }, [location.pathname, setLang]);
 
     const getVideoSrc = (language: string) => {
         switch (language) {
@@ -45,7 +57,6 @@ export default function Details({ lang, setLang }: DetailsProps) {
 
     return (
         <div className="relative w-full h-[30vh] max-w-[90vw] mx-auto bg-white dark:bg-gray-900 rounded-xl shadow-lg dark:shadow-gray-700">
-
             <center>
                 <p className="text-[2vw] font-bold mb-1 text-gray-800 dark:text-gray-200">
                     CHOOSE YOUR LANGUAGE
@@ -72,13 +83,11 @@ export default function Details({ lang, setLang }: DetailsProps) {
                     English
                 </button>
             </div>
-            {/* Show video modal if a language is selected and video hasn't ended */}
+            
             {lang.isSet && !hasVideoEnded && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center">
-                    {/* Backdrop */}
                     <div className="fixed inset-0 bg-gray-800 opacity-50" />
                     
-                    {/* Modal Content */}
                     <div className="bg-black text-white p-2 rounded-lg shadow-lg z-10 dark:bg-white dark:text-black">
                         <video
                             ref={videoRef}
@@ -94,7 +103,6 @@ export default function Details({ lang, setLang }: DetailsProps) {
                     </div>
                 </div>
             )}
-            
         </div>
     );
 }

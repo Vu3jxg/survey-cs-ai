@@ -56,7 +56,7 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
       {isOpen && (
         <div
           ref={dropdownRef}
-          className="absolute mt-1 w-full border border-gray-300 bg-white rounded-md shadow-lg z-10"
+          className="absolute mt-1 w-full border border-gray-300 bg-white rounded-md shadow-lg z-10 max-h-60 overflow-y-auto"
         >
           <ul className="list-none p-0 m-0">
             {options.map((option) => (

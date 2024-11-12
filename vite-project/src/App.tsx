@@ -9,6 +9,7 @@ import HighSurvey from "./components/highsurvey";
 import blackLogo from './assets/logos/NITK_black.png'; // NITK black logo
 import DetailsEntry from "./components/detailsentry";
 import FundedLogo from './assets/logos/NCSTC.jpg'; // Update with actual path
+import VisitCounter from './components/visitorCount';
 
 // Developer images (replace these with actual images)
 import Dev1 from './assets/devs/Anoop.jpg'; // Update with actual paths
@@ -17,7 +18,7 @@ import Dev3 from './assets/devs/mehul.jpg';
 import Dev4 from './assets/devs/sinchana.jpg';
 import Dev5 from './assets/devs/MPS-Photo-2023.jpg';
 import Dev6 from './assets/devs/Pais.jpg';
-import Dev7 from './assets/devs/GAURAV.jpg'
+import Dev7 from './assets/devs/GAURAV.jpg';
 
 const App = () => {
   const [willReadScreen, setWillReadScreen] = useState(true);
@@ -29,7 +30,6 @@ const App = () => {
     isSet: false,
     name: '',
   });
-  const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     if (isLightMode) {
@@ -40,37 +40,6 @@ const App = () => {
       localStorage.setItem('theme', 'dark');
     }
   }, [isLightMode]);
-
-  useEffect(() => {
-    const cookieVal = (cookieName) => {
-      const thisCookie = document.cookie.split("; ");
-      for (let i = 0; i < thisCookie.length; i++) {
-        if (cookieName === thisCookie[i].split("=")[0]) {
-          return thisCookie[i].split("=")[1];
-        }
-      }
-      return 0;
-    };
-  
-    // Get the current visitor count from the cookie
-    let counter = parseInt(cookieVal("total_visited")) || 0;
-    
-    // Only increment if no visit cookie is set for this session
-    if (!sessionStorage.getItem('visited')) {
-      counter++;
-      setCounter(counter);
-  
-      // Set cookie expiration to 6 months
-      const expiration = new Date();
-      expiration.setMonth(expiration.getMonth() + 6);
-      document.cookie = `total_visited=${counter};expires=${expiration.toGMTString()}`;
-      
-      // Mark this session as visited to avoid double increment
-      sessionStorage.setItem('visited', 'true');
-    } else {
-      setCounter(counter); // Just set the counter without incrementing
-    }
-  }, []);
 
   const toggleLightMode = () => {
     setLightMode(prevMode => !prevMode);
@@ -268,9 +237,7 @@ const App = () => {
         <div className="flex-1 text-center">
             &copy; {new Date().getFullYear()} CSRL, NITK Surathkal. All rights reserved.
         </div>
-        <div className="text-right flex-none">
-            Visitors: {counter}
-        </div>
+        <VisitCounter />
     </div>
 </footer>
           </main>
