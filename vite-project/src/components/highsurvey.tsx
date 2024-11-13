@@ -72,14 +72,17 @@ export default function HighSurvey({ willReadScreen, setWillReadScreen }: HighSu
               </div>
 
               {/* Survey Questions Section */}
-              <div className='bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-2xl mx-4 overflow-hidden'>
-                  <SurveyQuestions
-                      db_name="high"
-                      record={record}
-                      currentQuestionIndex={currentQuestionIndex}
-                      setCurrentQuestionIndex={setCurrentQuestionIndex} 
-                  />
-              </div>
+              <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-2xl mx-auto mb-8">
+    <SurveyQuestions
+        db_name="high"
+        record={record}
+        currentQuestionIndex={currentQuestionIndex}
+        setCurrentQuestionIndex={setCurrentQuestionIndex}
+    />
+    <p className="text-purple-500 text-sm font-semibold mt-4">
+        Each survey question will have either a single choice or multiple choices. Please read the question carefully and select the appropriate option(s).
+    </p>
+</div>
           </div>
       </div>
   </div>
