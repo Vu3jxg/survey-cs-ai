@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import data from '../data/Questions.json';
 import { QuestionsInterface } from '../types/Data';
 import { RecordType } from '../types/Record';
-import axios from 'axios';
+import axios from '../axiosconfig';
 import { FaStar } from 'react-icons/fa';  // Import FaStar from react-icons
 
 interface SurveyQuestionsProps {
@@ -65,7 +65,7 @@ const SurveyQuestions = ({ db_name, record, currentQuestionIndex, setCurrentQues
       } else {
         // Submit the final answers and rating
         const updatedRecord = { ...record, ...responses, rating: selectedRating };
-        axios.put(`http://127.0.0.1:8000/${db_name}/${record?.id}`, updatedRecord)
+        axios.put(`/${db_name}/${record?.id}`, updatedRecord)
           .then(res => {
             console.log('PUT request success', res.data);
             navigateToFinish('/finish'); // Navigate to the finish page

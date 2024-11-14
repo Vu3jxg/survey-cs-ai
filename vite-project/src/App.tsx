@@ -128,14 +128,14 @@ const App = () => {
         <div className="flex flex-col items-center">
             <img src={Dev5} alt="Dr. Mahendra Pratap Singh" className="w-24 h-24 rounded-lg shadow-md transition-transform duration-500 hover:scale-105 border-2 border-purple-800" />
             <p className="mt-1 text-center text-sm font-semibold text-purple-700">Dr. Mahendra Pratap Singh</p>
-            <p className="text-center text-xs text-purple-700">Asst. Professor, Dept. of CSE</p>
+            <p className="text-center text-xs text-purple-700">Asst. Professor, Dept. of CSE (P.I)</p>
         </div>
 
         {/* Dr. Alwyn Roshan Pais */}
         <div className="flex flex-col items-center">
             <img src={Dev6} alt="Dr. Alwyn Roshan Pais" className="w-24 h-24 rounded-lg shadow-md transition-transform duration-500 hover:scale-105 border-2 border-purple-800" />
             <p className="mt-1 text-center text-sm font-semibold text-purple-700">Dr. Alwyn Roshan Pais</p>
-            <p className="text-center text-xs text-purple-700">Professor, Dept. of CSE</p>
+            <p className="text-center text-xs text-purple-700">Professor, Dept. of CSE (Co-P.I)</p>
         </div>
 
         {/* Mr. Gaurav Pal */}

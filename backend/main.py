@@ -31,7 +31,7 @@ def increment_visitor_count():
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Update this with your frontend's origin
+    allow_origins=["*"],  # Update this with your frontend's origin
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -266,4 +266,4 @@ def delete_high(high_id: int, db: Session = Depends(get_db_high)):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -6,7 +6,7 @@ import schooldata from '../data/SchoolsList.json';
 import statesData from '../data/states.json'; // Import your states and districts JSON
 import { Translations, LanguageCode, SchoolInterface } from '../types/Data';
 
-import axios from 'axios';
+import axios from '../axiosconfig';
 import { useNavigate } from 'react-router-dom';
 import Header from './header';
 
@@ -150,7 +150,7 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
             recaptcha_token: captchaToken
         };
 
-        axios.post(`http://127.0.0.1:8000/${category}`, newDetailsList)
+        axios.post(`/${category}`, newDetailsList)
             .then(res => {
                 navigateToCategory(`/${category}survey`, { state: res.data });
             })
