@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import videoSrcEnglish from '../assets/intro/WhatsApp Video 2024-09-27 at 22.01.18_6328378a.mp4';
-import videoSrcHindi from '../assets/intro/Hindi_intro.mp4';
-import videoSrcKannada from '../assets/intro/Kannada_intro.mp4';
+import videoSrcEnglish from '../assets/intro/english.mp4';
+import videoSrcHindi from '../assets/intro/hindi.mp4';
+import videoSrcKannada from '../assets/intro/kannada.mp4';
 
 interface DetailsProps {
     lang: {
