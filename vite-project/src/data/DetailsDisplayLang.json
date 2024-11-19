@@ -20,9 +20,9 @@
         "kan":"ತರಗತಿ"
     },
     "school": {
-        "eng":"School",
-        "hin":"स्कूल",
-        "kan":"ಶಾಲೆ"
+        "eng":"School (Please select 'Others' option, if the school name is not present in the list)",
+        "hin":"स्कूल (यदि स्कूल का नाम सूची में नहीं है, तो कृपया 'अन्य' विकल्प चुनें।)",
+        "kan":"ಶಾಲೆ (ಯಾವುದೇ ಶಾಲೆಯ ಹೆಸರು ಪಟ್ಟಿಯಲ್ಲಿ ಇರದಿದ್ದರೆ, 'ಇತರರು' ಆಯ್ಕೆಯನ್ನು ಆರಿಸಿ)"
     },
     "schoolselection": {
         "eng":"Select your School",
