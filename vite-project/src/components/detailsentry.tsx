@@ -178,6 +178,7 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
 
                     <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
                         {getTranslation('school', languageCode)}
+                        {getTranslation(' (Please select "Others" option, if the school name is not present in the list)', languageCode)}
                     </label>
                     <DropdownInput
                         className="w-full p-3 mb-3 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"

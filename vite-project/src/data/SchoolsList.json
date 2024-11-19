@@ -1,62 +1,146 @@
 [
-    {
-      "schoolCode": "001",
-      "schoolName": "NITK English Medium School, Srinivas Nagar"
-    },
-    {
-      "schoolCode": "002",
-      "schoolName": "KREC Higher Primary School, Srinivas Nagar"
-    },
-    {
-      "schoolCode": "003",
-      "schoolName": "NITK High School, Srinivas Nagar"
-    },
-    {
-      "schoolCode": "004",
-      "schoolName": "Vidyadayinee School, Surathkal"
-    },
-    {
-      "schoolCode": "005",
-      "schoolName": "Vidyadayinee English Medium School, Surathkal"
-    },
-    {
-      "schoolCode": "006",
-      "schoolName": "Sri Mahalingeshwara School, Iddya"
-    },
-    {
-      "schoolCode": "007",
-      "schoolName": "Sacred Heart School, Iddya"
-    },
-    {
-      "schoolCode": "008",
-      "schoolName": "Khilriya English Medium School, Iddya"
-    },
-    {
-      "schoolCode": "009",
-      "schoolName": "Govinda Dasa Pre University College, Surathkal"
-    },
-    {
-      "schoolCode": "010",
-      "schoolName": "Holy Family School, Surathkal"
-    },
-    {
-      "schoolCode": "011",
-      "schoolName": "Holy Spirit School, Mukka"
-    },
-    {
-      "schoolCode": "012",
-      "schoolName": "Sri Dhoomavathi School, Mukka"
-    },
-    {
-      "schoolCode": "013",
-      "schoolName": "Anjuman English Medium School, Mukka"
-    },
-    {
-      "schoolCode": "014",
-      "schoolName": "Lions Special School, Surathkal"
-    },
-    {
-      "schoolCode": "111",
-      "schoolName": "Others"
-    }
-  ]
+  {
+    "schoolCode": "001",
+    "schoolName": "NITK English Medium School, Srinivas Nagar"
+  },
+  {
+    "schoolCode": "002",
+    "schoolName": "KREC Higher Primary School, Srinivas Nagar"
+  },
+  {
+    "schoolCode": "003",
+    "schoolName": "NITK High School, Srinivas Nagar"
+  },
+  {
+    "schoolCode": "004",
+    "schoolName": "Vidyadayinee School, Surathkal"
+  },
+  {
+    "schoolCode": "005",
+    "schoolName": "Vidyadayinee English Medium School, Surathkal"
+  },
+  {
+    "schoolCode": "006",
+    "schoolName": "Sri Mahalingeshwara School, Iddya"
+  },
+  {
+    "schoolCode": "007",
+    "schoolName": "Sacred Heart School, Iddya"
+  },
+  {
+    "schoolCode": "008",
+    "schoolName": "Khilriya English Medium School, Iddya"
+  },
+  {
+    "schoolCode": "009",
+    "schoolName": "Govinda Dasa Pre University College, Surathkal"
+  },
+  {
+    "schoolCode": "010",
+    "schoolName": "Holy Family School, Surathkal"
+  },
+  {
+    "schoolCode": "011",
+    "schoolName": "Holy Spirit School, Mukka"
+  },
+  {
+    "schoolCode": "012",
+    "schoolName": "Sri Dhoomavathi School, Mukka"
+  },
+  {
+    "schoolCode": "013",
+    "schoolName": "Anjuman English Medium School, Mukka"
+  },
+  {
+    "schoolCode": "014",
+    "schoolName": "Lions Special School, Surathkal"
+  },
+  {
+    "schoolCode": "015",
+    "schoolName": "Ankur Higher Primary School, Kulai"
+  },
+  {
+    "schoolCode": "016",
+    "schoolName": "Bertrand Russel Higher Primary School, Baikampady"
+  },
+  {
+    "schoolCode": "017",
+    "schoolName": "Bharathi High School, Kulai"
+  },
+  {
+    "schoolCode": "018",
+    "schoolName": "Kendriya Vidyalaya, Panambur"
+  },
+  {
+    "schoolCode": "019",
+    "schoolName": "Sri Venkatramana Higher Primary School, Kulai"
+  },
+  {
+    "schoolCode": "020",
+    "schoolName": "Ganapathy Pre University College, Mangalore"
+  },
+  {
+    "schoolCode": "021",
+    "schoolName": "St. Aloysius High School, Kodiyalbail"
+  },
+  {
+    "schoolCode": "022",
+    "schoolName": "Milagres High School, Mangalore"
+  },
+  {
+    "schoolCode": "023",
+    "schoolName": "Sharada Vidyalaya, Kodialbail"
+  },
+  {
+    "schoolCode": "024",
+    "schoolName": "Badriya English Medium High School, Kandak"
+  },
+  {
+    "schoolCode": "025",
+    "schoolName": "Rosario High School, Mangalore"
+  },
+  {
+    "schoolCode": "026",
+    "schoolName": "St. Anns High School, Kuntikana"
+  },
+  {
+    "schoolCode": "027",
+    "schoolName": "Infant Mary School, Katipalla"
+  },
+  {
+    "schoolCode": "028",
+    "schoolName": "Bearys Public School, Hathill"
+  },
+  {
+    "schoolCode": "029",
+    "schoolName": "Ladyhill Victoria Girls High School, Ladyhill"
+  },
+  {
+    "schoolCode": "030",
+    "schoolName": "Mount Carmel Central School, Maryhill"
+  },
+  {
+    "schoolCode": "031",
+    "schoolName": "St. Aloysius English Medium High School, Urwa"
+  },
+  {
+    "schoolCode": "032",
+    "schoolName": "Pompei High School, Urwa"
+  },
+  {
+    "schoolCode": "033",
+    "schoolName": "Bethany English Medium High School, Kilpady"
+  },
+  {
+    "schoolCode": "034",
+    "schoolName": "Narayan Guru Pre University College, Mulky"
+  },
+  {
+    "schoolCode": "035",
+    "schoolName": "Holy Family Higher Primary School, Derebail"
+  },
+  {
+    "schoolCode": "111",
+    "schoolName": "Others"
+  }
+]
