@@ -61,7 +61,7 @@ CREATE TABLE responses
 	q26 response_option,
 	q27 response_option,
 	q28 varchar(12),
-	rating int
+	rating int,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

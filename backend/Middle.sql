@@ -53,7 +53,7 @@ CREATE TABLE responses
 	q18 response_option,
 	q19 response_option,
 	q20 response_option,
-	rating int
+	rating int,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
