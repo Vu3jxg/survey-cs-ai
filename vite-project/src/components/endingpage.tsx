@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import background from '../assets/logos/Circle-pattern-on-purple-abstract-background.-scaled.jpg'; 
 import bgCharacter from '../assets/logos/BG_character.png';  // Import the background image and character
 import Header from './header';  // Import the header component

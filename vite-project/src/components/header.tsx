@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { FaRegSun, FaRegMoon } from "react-icons/fa";
 import whiteLogo from "../assets/logos/NITK_white.png"; // White logo for dark mode
