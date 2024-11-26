@@ -2,7 +2,11 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FaBars } from "react-icons/fa";
 
-const FlyoutNav = ({ FlyoutContent }) => {
+interface FlyoutNavProps {
+  FlyoutContent: React.ComponentType;
+}
+
+const FlyoutNav: React.FC<FlyoutNavProps> = ({ FlyoutContent }) => {
   const [open, setOpen] = useState(false);
 
   const showFlyout = FlyoutContent && open;
@@ -42,8 +46,8 @@ const FlyoutNav = ({ FlyoutContent }) => {
   );
 };
 
-/* Flyout content */
-const FlyoutContent = () => {
+/* Rename the local Flyout content */
+const ExampleFlyoutContent = () => {
   return (
     <div className="space-y-3">
       <a 
@@ -62,16 +66,15 @@ const FlyoutContent = () => {
       >
         Contact Us
       </a>
-      <a 
-        href="https://www.nitk.ac.in/contact-us" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        className="block text-sm text-gray-700 hover:underline"
-      >
-        Contact Us
-      </a>
     </div>
   );
 };
 
-export default FlyoutNav;
+/* Example usage */
+const App = () => {
+  return (
+    <FlyoutNav FlyoutContent={ExampleFlyoutContent} />
+  );
+};
+
+export default App;
