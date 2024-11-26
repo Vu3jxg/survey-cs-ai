@@ -5,14 +5,13 @@ import blackLogo from "../assets/logos/NITK_black.png"; // Black logo for light 
 import FlyoutNav from "./FlyOutNav";
 import FlyoutContent from "./FlyOutContent";
 
+
 interface HeaderProps {
-  willReadScreen: boolean;
-  setWillReadScreen: (value: boolean) => void;
   isLightMode: boolean;
   setLightMode: () => void;
 }
 
-export default function Header({ willReadScreen, setWillReadScreen, isLightMode, setLightMode }: HeaderProps) {
+export default function Header({ isLightMode, setLightMode }: HeaderProps) {
   return (
     <header
       className={`top-0 w-full flex items-center justify-between p-4 border-b border-gray-300 z-50 ${

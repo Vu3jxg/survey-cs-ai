@@ -171,12 +171,12 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
                 setWillReadScreen={setWillReadScreen}
                 isLightMode={isLightMode}
                 setLightMode={toggleLightMode}
-                className="fixed top-0 left-0 w-full z-50"
+                className="fixed top-1 left-0 w-full z-50"
             />
             <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900">
                 <div className="p-8 my-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-5xl w-full dark:shadow-gray-700">
 
-                    <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">
+                    <label className="block text-left text-lg font-semibold mb-4 text-purple-700 dark:text-purple-300">
                         {getTranslation('school', languageCode)}
                         {/* {getTranslation(' (Please select "Others" option, if the school name is not present in the list)', languageCode)} */}
                     </label>

@@ -9,8 +9,6 @@ interface FlyoutNavProps {
 const FlyoutNav: React.FC<FlyoutNavProps> = ({ FlyoutContent }) => {
   const [open, setOpen] = useState(false);
 
-  const showFlyout = FlyoutContent && open;
-
   return (
     <div
       onMouseEnter={() => setOpen(true)}
@@ -21,13 +19,13 @@ const FlyoutNav: React.FC<FlyoutNavProps> = ({ FlyoutContent }) => {
         <FaBars className="text-black text-2xl" />
         <span
           style={{
-            transform: showFlyout ? "scaleX(1)" : "scaleX(0)",
+            transform: open ? "scaleX(1)" : "scaleX(0)",
           }}
           className="absolute -bottom-2 -left-2 -right-2 h-1 origin-left scale-x-0 rounded-full bg-indigo-300 transition-transform duration-300 ease-out"
         />
       </button>
       <AnimatePresence>
-        {showFlyout && (
+        {open && (
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -46,35 +44,4 @@ const FlyoutNav: React.FC<FlyoutNavProps> = ({ FlyoutContent }) => {
   );
 };
 
-/* Rename the local Flyout content */
-const ExampleFlyoutContent = () => {
-  return (
-    <div className="space-y-3">
-      <a 
-        href="https://www.nitk.ac.in" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        className="block text-sm text-gray-700 hover:underline"
-      >
-        Visit NITK Website
-      </a>
-      <a 
-        href="https://www.nitk.ac.in/contact-us" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        className="block text-sm text-gray-700 hover:underline"
-      >
-        Contact Us
-      </a>
-    </div>
-  );
-};
-
-/* Example usage */
-const App = () => {
-  return (
-    <FlyoutNav FlyoutContent={ExampleFlyoutContent} />
-  );
-};
-
-export default App;
+export default FlyoutNav;
