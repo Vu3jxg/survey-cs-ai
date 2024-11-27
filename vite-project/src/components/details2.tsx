@@ -97,7 +97,15 @@ export default function Details({ lang, setLang }: DetailsProps) {
             {/* Show DetailsEntry component after the video ends */}
             {hasVideoEnded && (
                 <div className="mt-8 text-center">
-                    <DetailsEntry selectedlang={lang.name} />
+                    <DetailsEntry
+    selectedlang={lang.name ?? ''}
+    willReadScreen={false}
+    setWillReadScreen={(value: boolean) => {
+        console.log("Will read screen:", value);
+        
+    }}
+/>
+
                 </div>
             )}
         </div>

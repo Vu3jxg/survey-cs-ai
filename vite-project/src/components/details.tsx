@@ -3,13 +3,12 @@ import { useNavigate, useLocation } from "react-router-dom";
 import videoSrcEnglish from '../assets/intro/english.mp4';
 import videoSrcHindi from '../assets/intro/hindi.mp4';
 import videoSrcKannada from '../assets/intro/kannada.mp4';
-
 interface DetailsProps {
     lang: {
         isSet: boolean;
         name: string;
     };
-    setLang: (value: { isSet: boolean; name?: string }) => void;
+    setLang: React.Dispatch<React.SetStateAction<{ isSet: boolean; name: string }>>;
 }
 
 export default function Details({ lang, setLang }: DetailsProps) {
