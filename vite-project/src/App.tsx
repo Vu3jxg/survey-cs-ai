@@ -21,7 +21,7 @@ import Dev6 from './assets/devs/Pais.jpg';
 import Dev7 from './assets/devs/GAURAV.jpg';
 
 const App = () => {
-  const [willReadScreen, setWillReadScreen] = useState(true);
+  const [willReadScreen] = useState(true);
   const [isLightMode, setLightMode] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
     return savedTheme ? savedTheme === 'light' : true; // Default to light mode if not set
@@ -64,8 +64,8 @@ const App = () => {
               </div>
             </div>
             <Header
-              willReadScreen={willReadScreen}
-              setWillReadScreen={setWillReadScreen}
+              // willReadScreen={willReadScreen}
+              // setWillReadScreen={setWillReadScreen}
               isLightMode={isLightMode}
               setLightMode={toggleLightMode}
             />
@@ -291,10 +291,10 @@ const App = () => {
             path="/finish"
             element={
               <Ending
-                willReadScreen={false}
-                setWillReadScreen={() => {
-                  throw new Error("Function not implemented.");
-                }}
+                // willReadScreen={false}
+                // setWillReadScreen={() => {
+                //   throw new Error("Function not implemented.");
+                // }}
               />
             }
           />
