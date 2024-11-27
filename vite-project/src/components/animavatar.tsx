@@ -1,16 +1,15 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, MutableRefObject } from 'react';
 import { videoMaps } from '../types/videos';
 
 export interface AnimProps {
   willReadScreen: boolean;
   lang: string | undefined;
   currentQuestionIndex: number;
-  schoolLevel: 'elementary' | 'middle' | 'high'; 
+  schoolLevel: 'elementary' | 'middle' | 'high';
+  videoRef: MutableRefObject<HTMLVideoElement | null>; // Accepting videoRef as a prop
 }
 
-export default function AnimAvatar({ willReadScreen, lang, currentQuestionIndex, schoolLevel }: AnimProps) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
+export default function AnimAvatar({ willReadScreen, lang, currentQuestionIndex, schoolLevel, videoRef }: AnimProps) {
   // Determine the video map based on the language and school level
   let videoMap: Record<number, string> = {};
 
@@ -47,18 +46,19 @@ export default function AnimAvatar({ willReadScreen, lang, currentQuestionIndex,
 
     if (videoElement) {
       videoElement.playbackRate = 0.75; // Set the desired playback rate to 0.75
-      videoElement.muted = !willReadScreen;
-      videoElement.src = videoSrc;
+      videoElement.muted = !willReadScreen; // Mute or unmute based on willReadScreen
+      videoElement.src = videoSrc; // Assign the video source
       videoElement.load();
 
-      videoElement.play()
+      videoElement
+        .play()
         .then(() => {
           // Ensure playback rate is maintained even after play starts
           videoElement.playbackRate = 0.75;
         })
         .catch((error) => console.error('Error attempting to play video:', error));
     }
-  }, [videoSrc, willReadScreen]);
+  }, [videoSrc, willReadScreen, videoRef]);
 
   return (
     <div>

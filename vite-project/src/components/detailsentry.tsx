@@ -43,7 +43,7 @@ function getLanguageCode(value: string): LanguageCode {
     return 'kan';
 }
 
-export default function DetailsEntryDeferred({ selectedlang, willReadScreen, setWillReadScreen }: DetailsEntryProps) {
+export default function DetailsEntryDeferred({ selectedlang }: DetailsEntryProps) {
     const languageCode: LanguageCode = getLanguageCode(selectedlang);
     const Gender = getTranslation('gender', languageCode);
     const genderOptions = [
@@ -167,11 +167,11 @@ export default function DetailsEntryDeferred({ selectedlang, willReadScreen, set
     return (
         <>
             <Header
-                willReadScreen={willReadScreen}
-                setWillReadScreen={setWillReadScreen}
+                // willReadScreen={willReadScreen}
+                // setWillReadScreen={setWillReadScreen}
                 isLightMode={isLightMode}
                 setLightMode={toggleLightMode}
-                className="fixed top-1 left-0 w-full z-50"
+                // className="fixed top-1 left-0 w-full z-50"
             />
             <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900">
                 <div className="p-8 my-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-5xl w-full dark:shadow-gray-700">

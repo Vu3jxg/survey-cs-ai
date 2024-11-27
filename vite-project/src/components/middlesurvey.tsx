@@ -10,7 +10,7 @@ interface MiddleSurveyProps {
     setWillReadScreen: (value: boolean) => void;
 }
 
-export default function MiddleSurvey({ willReadScreen, setWillReadScreen }: MiddleSurveyProps) {
+export default function MiddleSurvey({ willReadScreen }: MiddleSurveyProps) {
     const location = useLocation();
     // Extract record from location state
     const record = location.state as RecordType | undefined;
@@ -44,11 +44,11 @@ export default function MiddleSurvey({ willReadScreen, setWillReadScreen }: Midd
         <>
             <header className="fixed top-0 left-0 w-full bg-gray-800 text-white shadow-lg z-50">
         <Header
-          willReadScreen={willReadScreen}
-         setWillReadScreen={setWillReadScreen}
+        //   willReadScreen={willReadScreen}
+        //  setWillReadScreen={setWillReadScreen}
          isLightMode={isLightMode}
           setLightMode={toggleLightMode} // Pass toggle function for light mode
-          className="fixed top-0 left-0 w-full z-50" // Fixing header at the top
+        //   className="fixed top-0 left-0 w-full z-50" // Fixing header at the top
             />
         </header>
   <div className='flex flex-col w-full items-center justify-center mt-14 min-h-screen dark:bg-gray-800 dark:text-white'>

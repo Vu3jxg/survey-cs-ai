@@ -10,7 +10,7 @@ interface ElemSurveyProps {
     setWillReadScreen: (value: boolean) => void;
 }
 
-export default function ElementarySurvey({ willReadScreen, setWillReadScreen }: ElemSurveyProps) {
+export default function ElementarySurvey({ willReadScreen }: ElemSurveyProps) {
     const location = useLocation();
 
     // Extract record from location state
@@ -46,11 +46,11 @@ export default function ElementarySurvey({ willReadScreen, setWillReadScreen }: 
         <>
         <header className="fixed top-0 left-0 w-full bg-gray-800 text-white shadow-lg z-50">
         <Header
-          willReadScreen={willReadScreen}
-         setWillReadScreen={setWillReadScreen}
+        //   willReadScreen={willReadScreen}
+        //  setWillReadScreen={setWillReadScreen}
          isLightMode={isLightMode}
           setLightMode={toggleLightMode} // Pass toggle function for light mode
-          className="fixed top-0 left-0 w-full z-50" // Fixing header at the top
+        //   className="fixed top-0 left-0 w-full z-50" // Fixing header at the top
             />
         </header>
   
