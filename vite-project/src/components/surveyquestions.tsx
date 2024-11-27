@@ -114,7 +114,7 @@ const SurveyQuestions = ({
     else return currentQuestion.kan;
   };
 
-  const options: string[] = (() => {
+  const options: (string | number)[] = (() => {
     if (record?.lang === 'English') return currentQuestion.eng_options || [];
     if (record?.lang === 'Hindi') return currentQuestion.hin_options || [];
     return currentQuestion.kan_options || [];
