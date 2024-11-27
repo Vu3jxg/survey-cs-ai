@@ -1,13 +1,13 @@
 import { RecordType } from "./Record";
 
 export interface QuestionsInterface {
-    eng: string;
-    hin: string;
-    kan: string;
-    eng_options: string[];
-    hin_options: string[];
-    kan_options: string[];
-    multiselect: string;
+  eng: string;
+  hin: string;
+  kan: string;
+  eng_options: (string | number)[]; // Allow both strings and numbers
+  hin_options: (string | number)[];
+  kan_options: (string | number)[];
+  multiselect: string;
   }
 
   export interface Translations {
