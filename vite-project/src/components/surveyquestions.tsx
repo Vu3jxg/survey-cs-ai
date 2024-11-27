@@ -21,7 +21,7 @@ const SurveyQuestions = ({
 }: SurveyQuestionsProps) => {
   const navigateToFinish = useNavigate();
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null); // Ensure this is a string or null
-  const [responses, setResponses] = useState<Record<string, string | null>>({});
+  const [responses, setResponses] = useState<Record<string, string | number | null>>({});
   const [selectedRating, setSelectedRating] = useState<number | null>(null);
   const [hoveredStar, setHoveredStar] = useState<number | null>(null);
   const [questionsData, setQuestionsData] = useState<QuestionsInterface[]>([]);
@@ -37,17 +37,25 @@ const SurveyQuestions = ({
         questions = data.questions_high;
       }
       setQuestionsData(questions);
-      setSelectedAnswer(responses[`q${currentQuestionIndex + 1}`] || null);
+      setSelectedAnswer(responses[`q${currentQuestionIndex + 1}`] as string | null);
     } else {
       console.error('Record is not available.');
       setQuestionsData([]);
     }
 
     const currentQuestionKey = `q${currentQuestionIndex + 1}`;
-    setSelectedAnswer(responses[currentQuestionKey] || null);
+    setSelectedAnswer(responses[currentQuestionKey] as string | null);
   }, [currentQuestionIndex, record, responses]);
 
-  const currentQuestion = questionsData[currentQuestionIndex] || { eng: '', hin: '', kan: '', eng_options: [], hin_options: [], kan_options: [], multiselect: 'No' };
+  const currentQuestion = questionsData[currentQuestionIndex] || {
+    eng: '',
+    hin: '',
+    kan: '',
+    eng_options: [],
+    hin_options: [],
+    kan_options: [],
+    multiselect: 'No',
+  };
 
   const handleNext = () => {
     if (selectedAnswer || selectedRating !== null) {
@@ -86,7 +94,7 @@ const SurveyQuestions = ({
       setCurrentQuestionIndex((prevIndex) => {
         const newIndex = prevIndex - 1;
         const prevQuestionKey = `q${newIndex + 1}`;
-        setSelectedAnswer(responses[prevQuestionKey] || null);
+        setSelectedAnswer(responses[prevQuestionKey] as string | null);
         return newIndex;
       });
     } else {
