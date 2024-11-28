@@ -91,7 +91,12 @@ const App = () => {
         <h2 className="text-lg font-bold text-gray-800 mb-2 text-center md:text-left">
             Contact Information
         </h2>
-        <p className="text-gray-700 text-center md:text-left">Department of Computer Science & Engineering</p>
+        <a href="https://cse.nitk.ac.in" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-gray-700 text-center font-semibold hover:underline md:text-left">
+          Department of Computer Science & Engineering
+          </a>
         <p className="text-gray-700 text-center md:text-left"><strong>Landline:</strong> +91-824-2473402</p>
         <p className="text-gray-700 text-center md:text-left"><strong>Email:</strong> projectcihub@gmail.com</p>
     </div>
@@ -127,14 +132,20 @@ const App = () => {
         {/* Dr. Mahendra Pratap Singh */}
         <div className="flex flex-col items-center">
             <img src={Dev5} alt="Dr. Mahendra Pratap Singh" className="w-24 h-24 rounded-lg shadow-md transition-transform duration-500 hover:scale-105 border-2 border-purple-800" />
-            <p className="mt-1 text-center text-sm font-semibold text-purple-700">Dr. Mahendra Pratap Singh</p>
+            <a href="https://cse.nitk.ac.in/faculty/mahendra-pratap-singh" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="mt-1 text-center text-sm font-semibold hover:underline text-purple-700">Dr. Mahendra Pratap Singh</a>
             <p className="text-center text-xs text-purple-700">Asst. Professor, Dept. of CSE (PI)</p>
         </div>
 
         {/* Dr. Alwyn Roshan Pais */}
         <div className="flex flex-col items-center">
             <img src={Dev6} alt="Dr. Alwyn Roshan Pais" className="w-24 h-24 rounded-lg shadow-md transition-transform duration-500 hover:scale-105 border-2 border-purple-800" />
-            <p className="mt-1 text-center text-sm font-semibold text-purple-700">Dr. Alwyn Roshan Pais</p>
+            <a href="https://cse.nitk.ac.in/faculty/alwyn-roshan-pais" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="mt-1 text-center text-sm font-semibold hover:underline text-purple-700">Dr. Alwyn Roshan Pais</a>
             <p className="text-center text-xs text-purple-700">Professor, Dept. of CSE (Co-PI)</p>
         </div>
 
