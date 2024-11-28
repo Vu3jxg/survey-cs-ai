@@ -172,7 +172,7 @@ const App = () => {
                   {/* Developer avatars and names */}
                   <div className="flex flex-col items-center mx-5">
                     <img
-                      src={Dev2}
+                      src={Dev3}
                       alt="Developer 2"
                       className="w-28 h-28 rounded-lg shadow-lg transition-transform duration-1000 hover:scale-105 border-4 border-purple-800"
                     />
@@ -200,7 +200,7 @@ const App = () => {
   
                   <div className="flex flex-col items-center mx-5">
                     <img
-                      src={Dev3}
+                      src={Dev2}
                       alt="Developer 3"
                       className="w-28 h-28 rounded-lg shadow-lg transition-transform duration-1000 hover:scale-105 border-4 border-purple-800"
                     />
