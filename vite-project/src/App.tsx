@@ -83,14 +83,15 @@ const App = () => {
         <p className="text-center md:text-left text-lg font-semibold text-purple-700 mb-2">
             Funded by: <br /> National Council Science and Technology Communication (NCSTC)
         </p>
-        <img src={FundedLogo} alt="Funded by NCSTC" className="w-40 h-auto mb-4" />
+        <img src={FundedLogo} alt="Funded by NCSTC" className="w-43 h-auto mb-4" />
     </div>
 
     {/* Contact Information Section */}
-    <div className="w-full bg-white shadow-lg p-4 rounded-lg mt-4">
+    <div className="w-full bg-white shadow-lg p-4 rounded-lg mt-5">
         <h2 className="text-lg font-bold text-gray-800 mb-2 text-center md:text-left">
             Contact Information
         </h2>
+        <p className="text-gray-700 text-center md:text-left">Department of Computer Science & Engineering</p>
         <p className="text-gray-700 text-center md:text-left"><strong>Landline:</strong> +91-824-2473402</p>
         <p className="text-gray-700 text-center md:text-left"><strong>Email:</strong> projectcihub@gmail.com</p>
     </div>
