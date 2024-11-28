@@ -33,7 +33,7 @@ export default function Header({ isLightMode, setLightMode }: HeaderProps) {
             Cyber Security Research Laboratory
           </div>
           <Link to="/" className="text-2xl font-semibold hover:underline cursor-pointer">
-            National Institute of Technology Karnataka
+            National Institute of Technology Karnataka, Surathkal
           </Link>
         </div>
       </div>

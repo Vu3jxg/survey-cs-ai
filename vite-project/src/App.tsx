@@ -246,7 +246,7 @@ const App = () => {
             <footer className="w-full py-4 bg-gray-800 text-white">
     <div className="container mx-auto flex justify-between items-center">
         <div className="flex-1 text-center">
-            &copy; {new Date().getFullYear()} CSRL, NITK Surathkal. All rights reserved.
+            &copy; {new Date().getFullYear()} CSRL, Dept. of CSE, NITK, Surathkal. All rights reserved.
         </div>
         <VisitCounter />
     </div>
