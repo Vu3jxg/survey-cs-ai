@@ -178,7 +178,7 @@ const App = () => {
                       className="w-28 h-28 rounded-lg shadow-lg transition-transform duration-1000 hover:scale-105 border-4 border-purple-800"
                     />
                     <p className="mt-1 text-center text-lg font-semibold text-purple-700">
-                      Ms. Shreya S Rao
+                      Mr. Mehul Muralidhar Kini
                     </p>
                     <p className="text-center text-sm text-purple-700">
                       Intern, CSRL NITK
@@ -206,13 +206,13 @@ const App = () => {
                       className="w-28 h-28 rounded-lg shadow-lg transition-transform duration-1000 hover:scale-105 border-4 border-purple-800"
                     />
                     <p className="mt-1 text-center text-lg font-semibold text-purple-700">
-                      Mr. Mehul Muralidhar Kini
+                      Ms. Shreya S Rao
                     </p>
                     <p className="text-center text-sm text-purple-700">
                       Intern, CSRL NITK
                     </p>
                   </div>
-                  <div className="flex flex-col items-center mx-5">
+                  {/* <div className="flex flex-col items-center mx-5">
                         <img
                           src={Dev4}
                           alt="Developer 4"
@@ -224,7 +224,7 @@ const App = () => {
                         <p className="text-center text-sm text-purple-700 whitespace-nowrap">
                           Intern, CSRL NITK
                         </p>
-                      </div>
+                      </div> */}
   
                   
                 </div>
