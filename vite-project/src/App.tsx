@@ -15,7 +15,6 @@ import VisitCounter from './components/visitorCount';
 import Dev1 from './assets/devs/Anoop.jpg'; // Update with actual paths
 import Dev2 from './assets/devs/Shreya.jpg';
 import Dev3 from './assets/devs/mehul.jpg';
-import Dev4 from './assets/devs/sinchana.jpg';
 import Dev5 from './assets/devs/MPS-Photo-2023.jpg';
 import Dev6 from './assets/devs/Pais.jpg';
 import Dev7 from './assets/devs/GAURAV.jpg';
