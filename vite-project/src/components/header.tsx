@@ -25,7 +25,7 @@ export default function Header({ isLightMode, setLightMode }: HeaderProps) {
           <img
             src={isLightMode ? blackLogo : whiteLogo}
             alt="NITK Logo"
-            className="h-10 mr-3"
+            className="w-[70px] h-[70px] mr-1"
           />
         </Link>
         <div className="flex flex-col">
