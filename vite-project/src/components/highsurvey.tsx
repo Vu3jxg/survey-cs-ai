@@ -79,9 +79,9 @@ export default function HighSurvey({ willReadScreen }: HighSurveyProps) {
         currentQuestionIndex={currentQuestionIndex}
         setCurrentQuestionIndex={setCurrentQuestionIndex}
     />
-    <p className="text-purple-500 text-sm font-semibold mt-4">
+    {/* <p className="text-purple-500 text-sm font-semibold mt-4">
         Each survey question will have either a single choice or multiple choices. Please read the question carefully and select the appropriate option(s).
-    </p>
+    </p> */}
 </div>
           </div>
       </div>

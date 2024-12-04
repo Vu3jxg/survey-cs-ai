@@ -20,7 +20,7 @@ const SurveyQuestions = ({
   setCurrentQuestionIndex,
 }: SurveyQuestionsProps) => {
   const navigateToFinish = useNavigate();
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null); // Ensure this is a string or null
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [responses, setResponses] = useState<Record<string, string | number | null>>({});
   const [selectedRating, setSelectedRating] = useState<number | null>(null);
   const [hoveredStar, setHoveredStar] = useState<number | null>(null);
@@ -108,7 +108,7 @@ const SurveyQuestions = ({
       setSelectedAnswer(option);
     } else {
       setSelectedAnswer((prevSelection) => {
-        const selection = (prevSelection || '') as string; // Ensure it's treated as a string
+        const selection = (prevSelection || '') as string;
         return selection.includes(option)
           ? selection.replace(option, '').trim()
           : `${selection}, ${option}`;
@@ -182,12 +182,12 @@ const SurveyQuestions = ({
           className="p-2 text-white rounded bg-orange-400"
           disabled={currentQuestionIndex === 0}
         >
-          Prev
+          {record?.lang === 'Hindi' ? 'पिछला' : 'Prev'}
         </button>
 
         {currentQuestionIndex === questionsData.length - 1 ? (
           <button className="ml-4 px-4 py-2 bg-red-500 text-white rounded" onClick={handleNext}>
-            Submit
+            {record?.lang === 'Hindi' ? 'सबमिट करें' : 'Submit'}
           </button>
         ) : (
           <button
@@ -197,7 +197,7 @@ const SurveyQuestions = ({
             }`}
             disabled={!selectedAnswer && selectedRating === null}
           >
-            Next
+            {record?.lang === 'Hindi' ? 'अगला' : 'Next'}
           </button>
         )}
       </div>
