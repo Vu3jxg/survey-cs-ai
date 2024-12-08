@@ -54,6 +54,7 @@ export default function DetailsEntryDeferred({ selectedlang }: DetailsEntryProps
 
     const [school, setSchool] = useState('');
     const [customSchoolName, setCustomSchoolName] = useState('');
+    const [filteredSchools, setFilteredSchools] = useState<string[]>(schoolNames);
     const [classSelection, setClassSelection] = useState('');
     const [section, setSection] = useState('');
     const [board, setBoard] = useState('');
@@ -62,7 +63,9 @@ export default function DetailsEntryDeferred({ selectedlang }: DetailsEntryProps
     const [rollNo, setRollNo] = useState('');
     const [selectedDistrict, setSelectedDistrict] = useState('');
     const [captchaToken, setCaptchaToken] = useState<string | null>(null);
-    const [isFormValid, setIsFormValid] = useState(false);
+    const [isFormValid, setIsFormValid] = useState(false); 
+    const [filteredDistricts, setFilteredDistricts] = useState<string[]>([]);
+
 
     // Extract state names from the JSON data
     const stateNames = statesData.states.map(state => state.state);
@@ -89,10 +92,27 @@ export default function DetailsEntryDeferred({ selectedlang }: DetailsEntryProps
     const handleStateChange = (value: string) => {
         setSelectedState(value);
         setSelectedDistrict(''); // Reset district when state changes
+        const updatedDistricts = statesData.states.find(state => state.state === value)?.districts || [];
+        setFilteredDistricts(updatedDistricts); // Update filtered options dynamically
     };
+    
 
     const handleDistrictChange = (value: string) => {
         setSelectedDistrict(value);
+    };
+
+    const handleCustomSchoolInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const inputValue = event.target.value;
+        setCustomSchoolName(inputValue);
+
+        // Check if the typed input matches any school names
+        const matchingSchools = schoolNames.filter(schoolName =>
+            schoolName.toLowerCase().includes(inputValue.toLowerCase())
+        );
+
+        // If no match, include "Others" in the dropdown
+        const updatedSchools = matchingSchools.length > 0 ? matchingSchools : [...matchingSchools, 'Others'];
+        setFilteredSchools(updatedSchools);
     };
 
     const navigateToCategory = useNavigate();
@@ -181,21 +201,21 @@ export default function DetailsEntryDeferred({ selectedlang }: DetailsEntryProps
                         {/* {getTranslation(' (Please select "Others" option, if the school name is not present in the list)', languageCode)} */}
                     </label>
                     <DropdownInput
-                        className="w-full p-3 mb-3 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
-                        options={schoolsWithOthers}
-                        placeholder={getTranslation('schoolselection', languageCode)}
-                        value={school}
-                        onChange={handleSchoolChange}
-                    />
+                className="w-full p-3 mb-3 border border-purple-300 rounded-lg bg-gray-50 text-gray-900 focus:outline-none focus:ring-4 focus:ring-purple-300"
+                options={filteredSchools}
+                placeholder="Select or type your school name"
+                value={school}
+                onChange={handleSchoolChange}
+            />
 
-                    {school === 'Others' && (
-                        <input
-                            type="text"
-                            value={customSchoolName}
-                            onChange={(e) => setCustomSchoolName(e.target.value)}
-                            placeholder="Write your school's name"
-                            className="w-full p-3 mb-6 border border-purple-300 dark:border-purple-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-600"
-                        />
+            {school === 'Others' && (
+                <input
+                    type="text"
+                    value={customSchoolName}
+                    onChange={handleCustomSchoolInput}
+                    placeholder="Write your school's name"
+                    className="w-full p-3 mb-6 border border-purple-300 rounded-lg bg-gray-50 text-gray-900 focus:outline-none focus:ring-4 focus:ring-purple-300"
+                />
                     )}
                      {/* State Selection */}
                      <label className="block text-left text-lg font-semibold mb-3 text-purple-700 dark:text-purple-300">

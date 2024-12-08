@@ -13,11 +13,12 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
   options,
   placeholder = 'Select an option...',
   onSelect,
-  className = '', // Default to empty string if no className is provided
+  className = '',
   value = '',
   onChange,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [filteredOptions, setFilteredOptions] = useState(options);
   const inputRef = useRef<HTMLInputElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -32,14 +33,28 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const handleInputClick = () => {
-    setIsOpen(!isOpen);
-  };
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = event.target.value;
+    if (onChange) onChange(inputValue);
+
+    const matches = options.filter((option) =>
+        option.toLowerCase().includes(inputValue.toLowerCase())
+    );
+    setFilteredOptions(matches);
+};
+
+const handleInputClick = () => {
+    if (!value) {
+        setFilteredOptions(options); // Show all options if no value
+    }
+    setIsOpen((prev) => !prev); // Toggle dropdown visibility
+};
+
 
   const handleOptionClick = (option: string) => {
-    if (onChange) onChange(option); // Call onChange if provided
-    setIsOpen(false);
+    if (onChange) onChange(option);
     if (onSelect) onSelect(option);
+    setIsOpen(false);
   };
 
   return (
@@ -49,17 +64,18 @@ const DropdownInput: React.FC<DropdownInputProps> = ({
         value={value}
         placeholder={placeholder}
         onClick={handleInputClick}
-        readOnly
+        onChange={handleInputChange}
         className="border border-gray-300 rounded-md p-2 w-full cursor-pointer"
         ref={inputRef}
       />
-      {isOpen && (
+
+      {isOpen && filteredOptions.length > 0 && (
         <div
           ref={dropdownRef}
           className="absolute mt-1 w-full border border-gray-300 bg-white rounded-md shadow-lg z-10 max-h-60 overflow-y-auto"
         >
           <ul className="list-none p-0 m-0">
-            {options.map((option) => (
+            {filteredOptions.map((option) => (
               <li
                 key={option}
                 onClick={() => handleOptionClick(option)}
