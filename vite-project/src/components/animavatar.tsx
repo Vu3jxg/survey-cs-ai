@@ -45,7 +45,7 @@ export default function AnimAvatar({ willReadScreen, lang, currentQuestionIndex,
     const videoElement = videoRef.current;
 
     if (videoElement) {
-      videoElement.playbackRate = 0.75; // Set the desired playback rate to 0.75
+      videoElement.playbackRate = 1; // Set the desired playback rate to 0.75
       videoElement.muted = !willReadScreen; // Mute or unmute based on willReadScreen
       videoElement.src = videoSrc; // Assign the video source
       videoElement.load();
@@ -54,7 +54,7 @@ export default function AnimAvatar({ willReadScreen, lang, currentQuestionIndex,
         .play()
         .then(() => {
           // Ensure playback rate is maintained even after play starts
-          videoElement.playbackRate = 0.75;
+          videoElement.playbackRate = 1;
         })
         .catch((error) => console.error('Error attempting to play video:', error));
     }

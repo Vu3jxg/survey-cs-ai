@@ -9,7 +9,7 @@ import HighSurvey from "./components/highsurvey";
 import blackLogo from './assets/logos/NITK_black.png'; // NITK black logo
 import DetailsEntry from "./components/detailsentry";
 import FundedLogo from './assets/logos/NCSTC.jpg'; // Update with actual path
-import VisitCounter from './components/visitorCount';
+
 
 // Developer images (replace these with actual images)
 import Dev1 from './assets/devs/Anoop.jpg'; // Update with actual paths
@@ -248,7 +248,10 @@ const App = () => {
         <div className="flex-1 text-center">
             &copy; {new Date().getFullYear()} CSRL, Dept. of CSE, NITK, Surathkal. All rights reserved.
         </div>
-        <VisitCounter />
+        <div>
+<a href="https://www.hitwebcounter.com" target="_blank">
+<img src="https://hitwebcounter.com/counter/counter.php?page=18032406&style=0036&nbdigits=5&type=page&initCount=0" title="Counter Widget" alt="Visit counter For Websites" 
+      style={{ border: 0 }} /></a>      </div>
     </div>
 </footer>
           </main>

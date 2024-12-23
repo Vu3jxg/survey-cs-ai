@@ -20,7 +20,7 @@ const translations: Translations = data;
 const schools: SchoolInterface[] = schooldata;
 const schoolNames: string[] = schools.map(school => school.schoolName);
 const schoolCodes: string[] = schools.map(school => school.schoolCode);
-const schoolsWithOthers = schoolNames.includes('Others') ? schoolNames : [...schoolNames, 'Others'];
+//const schoolsWithOthers = schoolNames.includes('Others') ? schoolNames : [...schoolNames, 'Others'];
 
 function getTranslation(key: string, lang: LanguageCode): string {
     const translation = translations[key];
@@ -64,7 +64,7 @@ export default function DetailsEntryDeferred({ selectedlang }: DetailsEntryProps
     const [selectedDistrict, setSelectedDistrict] = useState('');
     const [captchaToken, setCaptchaToken] = useState<string | null>(null);
     const [isFormValid, setIsFormValid] = useState(false); 
-    const [filteredDistricts, setFilteredDistricts] = useState<string[]>([]);
+    //const [filteredDistricts, setFilteredDistricts] = useState<string[]>([]);
 
 
     // Extract state names from the JSON data
@@ -92,8 +92,8 @@ export default function DetailsEntryDeferred({ selectedlang }: DetailsEntryProps
     const handleStateChange = (value: string) => {
         setSelectedState(value);
         setSelectedDistrict(''); // Reset district when state changes
-        const updatedDistricts = statesData.states.find(state => state.state === value)?.districts || [];
-        setFilteredDistricts(updatedDistricts); // Update filtered options dynamically
+        //const updatedDistricts = statesData.states.find(state => state.state === value)?.districts || [];
+        //setFilteredDistricts(updatedDistricts); // Update filtered options dynamically
     };
     
 
