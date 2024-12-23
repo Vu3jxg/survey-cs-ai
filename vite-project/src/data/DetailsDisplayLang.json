@@ -1,0 +1,87 @@
+{
+    "classselection": {
+        "eng":"Select your class",
+        "hin":"अपना कक्षा चुनें",
+        "kan":"ನಿಮ್ಮ ತರಗತಿಯನ್ನು ಆಯ್ಕೆಮಾಡಿ"
+    },
+    "State": {
+        "eng":"State",
+        "hin":"राज्य",
+        "kan":"ರಾಜ್ಯ"
+    },
+    "District": {
+        "eng":"District",
+        "hin":"जिला",
+        "kan":"ಜಿಲ್ಲೆ"
+    },
+    "class": {
+        "eng":"Class",
+        "hin":"कक्षा",
+        "kan":"ತರಗತಿ"
+    },
+    "school": {
+        "eng":"School (Please select 'Others' option, if the school name is not present in the list)",
+        "hin":"स्कूल (यदि स्कूल का नाम सूची में नहीं है, तो कृपया 'अन्य' विकल्प चुनें।)",
+        "kan":"ಶಾಲೆ (ಯಾವುದೇ ಶಾಲೆಯ ಹೆಸರು ಪಟ್ಟಿಯಲ್ಲಿ ಇರದಿದ್ದರೆ, 'ಇತರರು' ಆಯ್ಕೆಯನ್ನು ಆರಿಸಿ)"
+    },
+    "schoolselection": {
+        "eng":"Select your School",
+        "hin":"अपना स्कूल चुनें",
+        "kan":"ನಿಮ್ಮ ಶಾಲೆ ಆಯ್ಕೆಮಾಡಿ"
+    },
+    "sec": {
+        "eng":"Section",
+        "hin":"सेक्शन",
+        "kan":"ವಿಭಾಗ"
+    },
+    "secselection": {
+        "eng":"Select your section",
+        "hin":"अपनी सेक्शन दर्ज करें",
+        "kan":"ನಿಮ್ಮ ವಿಭಾಗವನ್ನು ನಮೂದಿಸಿ"
+    },
+    "gender": {
+        "eng":"Gender",
+        "hin":"लिंग",
+        "kan":"ಲಿಂಗ"
+    },
+    "genderselection": {
+        "eng":"Select your gender",
+        "hin":"अपनी लिंग चयन करें",
+        "kan":"ನಿಮ್ಮ ಲಿಂಗವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
+    },
+    "board": {
+        "eng":"Board",
+        "hin":"बोर्ड",
+        "kan":"ಬೋರ್ಡ್"
+    },
+    "boardselection": {
+        "eng":"Select your board",
+        "hin":"अपना बोर्ड चुनें",
+        "kan":"ನಿಮ್ಮ ಬೋರ್ಡ್ ಆಯ್ಕೆಮಾಡಿ"
+    },
+    "rollno": {
+        "eng":"Roll number",
+        "hin":"रोल नंबर",
+        "kan":"ಕ್ರಮ ಸಂಖ್ಯೆ"
+    },
+    "rollnoselection": {
+        "eng":"Enter your roll number",
+        "hin":"अपना रोल नंबर दर्ज करें",
+        "kan":"ನಿಮ್ಮ ಕ್ರಮ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ"
+    },
+    "genderoptionsmale": {
+        "eng": "Male",
+        "hin": "पुरुष",
+        "kan": "ಪುರುಷ"
+    },
+    "genderoptionsfemale": {
+        "eng": "Female",
+        "hin": "स्त्री",
+        "kan": "ಸ್ತ್ರೀ"
+    },
+    "genderoptionsother": {
+        "eng": "Other",
+        "hin": "अन्य",
+        "kan": "ಇತರ"
+    }
+}
