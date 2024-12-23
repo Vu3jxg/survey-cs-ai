@@ -98,7 +98,11 @@ const App = () => {
           Department of Computer Science & Engineering
           </a>
         <p className="text-gray-700 text-center md:text-left"><strong>Landline:</strong> +91-824-2473402</p>
+<<<<<<< HEAD
         <p className="text-gray-700 text-center md:text-left"><strong>Email:</strong> projectcihub@gmail.com</p>
+=======
+        <p className="text-gray-700 text-center md:text-left"><strong>Email:</strong> csrl@nitk.edu.in</p>
+>>>>>>> c9252fb (Restore initial commit)
     </div>
 </div>
 

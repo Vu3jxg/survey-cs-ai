@@ -64,7 +64,11 @@ export default function Details({ lang, setLang }: DetailsProps) {
 
             <div className="flex flex-wrap gap-6 justify-center items-center px-4 py-4">
                 <button
+<<<<<<< HEAD
                     className="w-[10vw] h-[10vh] text-[vw] font-bold text-purple-600 bg-white border-4 border-purple-700 rounded-lg shadow-lg hover:bg-purple-300 focus:outline-none focus:ring-4 focus:ring-purple-500 dark:bg-purple-500 dark:hover:bg-purple-700 dark:focus:ring-purple-700 dark:text-white dark:border-purple-500"
+=======
+                    className="w-[10vw] h-[10vh] text-[vw] text-l font-bold text-purple-600 bg-white border-4 border-purple-700 rounded-lg shadow-lg hover:bg-purple-300 focus:outline-none focus:ring-4 focus:ring-purple-500 dark:bg-purple-500 dark:hover:bg-purple-700 dark:focus:ring-purple-700 dark:text-white dark:border-purple-500"
+>>>>>>> c9252fb (Restore initial commit)
                     onClick={() => handleSelect('Kannada')}
                 >
                     ಕನ್ನಡ

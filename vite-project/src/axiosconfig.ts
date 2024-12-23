@@ -8,3 +8,7 @@ const instance = axios.create({
 });
 
 export default instance;
+<<<<<<< HEAD
+=======
+//http://10.100.15.103:8000   for the NITK Network
+>>>>>>> c9252fb (Restore initial commit)
